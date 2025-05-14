@@ -26,7 +26,7 @@ body {
     --muted: 203 10% 25%; /* Dark Gray */
     --muted-foreground: 0 0% 65%; /* Gray */
 
-    --accent: 182 100% 74%; /* Electric Blue */
+    --accent: 68 67% 57%; /* #ceda4a */
     --accent-foreground: 203 10% 15%; /* #23282b (for text on accent) */
 
     --destructive: 0 70% 50%; /* Red */
@@ -34,7 +34,7 @@ body {
 
     --border: 203 10% 35%; /* Visible border */
     --input: 203 10% 30%; /* Dark input background */
-    --ring: 182 100% 74%; /* Electric Blue for focus rings */
+    --ring: 68 67% 57%; /* #ceda4a for focus rings */
 
     --radius: 0rem; /* Brutalist - no rounded corners */
 
@@ -47,12 +47,12 @@ body {
     /* Sidebar specific vars, if needed, but general theme should cover */
     --sidebar-background: 203 10% 18%; /* Dark sidebar background */
     --sidebar-foreground: 0 0% 80%;
-    --sidebar-primary: 182 100% 74%; /* Electric blue for active/hover */
+    --sidebar-primary: 68 67% 57%; /* #ceda4a for active/hover */
     --sidebar-primary-foreground: 203 10% 15%; /* #23282b */
     --sidebar-accent: 203 10% 25%;
     --sidebar-accent-foreground: 0 0% 90%;
     --sidebar-border: 203 10% 30%;
-    --sidebar-ring: 182 100% 74%;
+    --sidebar-ring: 68 67% 57%; /* #ceda4a */
   }
 
   .dark {
@@ -69,13 +69,13 @@ body {
     --secondary-foreground: 0 0% 90%; /* Light Gray */
     --muted: 203 10% 25%; /* Dark Gray */
     --muted-foreground: 0 0% 65%; /* Gray */
-    --accent: 182 100% 74%; /* Electric Blue */
+    --accent: 68 67% 57%; /* #ceda4a */
     --accent-foreground: 203 10% 15%; /* #23282b (for text on accent) */
     --destructive: 0 70% 50%; /* Red */
     --destructive-foreground: 0 0% 100%; /* White */
     --border: 203 10% 35%; /* Visible border */
     --input: 203 10% 30%; /* Dark input background */
-    --ring: 182 100% 74%; /* Electric Blue for focus rings */
+    --ring: 68 67% 57%; /* #ceda4a for focus rings */
     --radius: 0rem;
 
     --chart-1: 220 70% 50%;
@@ -86,12 +86,12 @@ body {
 
     --sidebar-background: 203 10% 18%; /* Dark sidebar background */
     --sidebar-foreground: 0 0% 80%;
-    --sidebar-primary: 182 100% 74%; /* Electric blue for active/hover */
+    --sidebar-primary: 68 67% 57%; /* #ceda4a for active/hover */
     --sidebar-primary-foreground: 203 10% 15%; /* #23282b */
     --sidebar-accent: 203 10% 25%;
     --sidebar-accent-foreground: 0 0% 90%;
     --sidebar-border: 203 10% 30%;
-    --sidebar-ring: 182 100% 74%;
+    --sidebar-ring: 68 67% 57%; /* #ceda4a */
   }
 }
 
