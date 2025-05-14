@@ -1,11 +1,10 @@
 
-import { Github, Linkedin, Twitter, Instagram } from 'lucide-react';
+import { Github, Instagram, Facebook } from 'lucide-react'; // Updated imports
 import Link from 'next/link';
 
 const socialLinks = [
   { name: 'GitHub', href: 'https://github.com', icon: Github, ariaLabel: 'View GitHub profile' },
-  { name: 'LinkedIn', href: 'https://linkedin.com', icon: Linkedin, ariaLabel: 'View LinkedIn profile' },
-  { name: 'Twitter', href: 'https://twitter.com', icon: Twitter, ariaLabel: 'View Twitter profile' },
+  { name: 'Facebook', href: 'https://facebook.com', icon: Facebook, ariaLabel: 'View Facebook profile' }, // Added Facebook
   { name: 'Instagram', href: 'https://instagram.com', icon: Instagram, ariaLabel: 'View Instagram profile' },
 ];
 
