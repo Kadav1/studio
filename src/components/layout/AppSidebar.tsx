@@ -2,7 +2,7 @@
 "use client";
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Home, Briefcase, CodeXml } from 'lucide-react'; // Using CodeXml as a generic logo
+import { Home, Briefcase, Blocks } from 'lucide-react'; // Changed CodeXml to Blocks
 import { cn } from '@/lib/utils';
 
 const navItems = [
@@ -17,7 +17,8 @@ export default function AppSidebar() {
     <aside className="fixed left-0 top-0 z-40 h-screen w-64 bg-sidebar text-sidebar-foreground border-r-2 border-border flex flex-col shadow-2xl">
       <div className="p-6 border-b-2 border-border">
         <Link href="/" className="flex items-center gap-3 group">
-          <CodeXml className="h-10 w-10 text-accent group-hover:animate-pulse" />
+          {/* Using Blocks icon as a thematic logo */}
+          <Blocks className="h-10 w-10 text-accent group-hover:animate-pulse" />
           <h1 className="text-3xl font-black uppercase tracking-tighter text-foreground group-hover:text-accent transition-colors">
             BruteFolio
           </h1>
