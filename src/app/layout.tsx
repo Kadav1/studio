@@ -1,7 +1,8 @@
+
 import type { Metadata } from 'next';
 import { Inter, Roboto_Mono } from 'next/font/google';
 import './globals.css';
-import AppSidebar from '@/components/layout/AppSidebar';
+import TopNavbar from '@/components/layout/TopNavbar';
 import { Toaster } from "@/components/ui/toaster";
 
 
@@ -28,12 +29,10 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${robotoMono.variable}`}>
       <body className="antialiased bg-background text-foreground">
-        <div className="flex min-h-screen">
-          <AppSidebar />
-          <main className="flex-1 ml-64 p-4 sm:p-8 md:p-12 overflow-y-auto">
+        <TopNavbar />
+        <main className="flex-1 p-4 sm:p-8 md:p-12 overflow-y-auto pt-20 md:pt-24">
             {children}
-          </main>
-        </div>
+        </main>
         <Toaster />
       </body>
     </html>
