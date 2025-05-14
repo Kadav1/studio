@@ -8,7 +8,18 @@ export default {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
+    container: {
+      center: true,
+      padding: "2rem",
+      screens: {
+        "2xl": "1400px",
+      },
+    },
   	extend: {
+      fontFamily: {
+        sans: ["var(--font-inter)"],
+        mono: ["var(--font-roboto-mono)"],
+      },
   		colors: {
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
@@ -63,8 +74,8 @@ export default {
   		},
   		borderRadius: {
   			lg: 'var(--radius)',
-  			md: 'calc(var(--radius) - 2px)',
-  			sm: 'calc(var(--radius) - 4px)'
+  			md: 'calc(var(--radius) - 0px)', // Adjusted for 0rem base
+  			sm: 'calc(var(--radius) - 0px)'  // Adjusted for 0rem base
   		},
   		keyframes: {
   			'accordion-down': {
@@ -87,7 +98,16 @@ export default {
   		animation: {
   			'accordion-down': 'accordion-down 0.2s ease-out',
   			'accordion-up': 'accordion-up 0.2s ease-out'
-  		}
+  		},
+      boxShadow: {
+        // Custom brutalist shadow
+        'brutalist-sm': '4px 4px 0px 0px hsl(var(--foreground))',
+        'brutalist-md': '6px 6px 0px 0px hsl(var(--foreground))',
+        'brutalist-lg': '8px 8px 0px 0px hsl(var(--foreground))',
+        'brutalist-accent-sm': '4px 4px 0px 0px hsl(var(--accent))',
+        'brutalist-accent-md': '6px 6px 0px 0px hsl(var(--accent))',
+        'brutalist-accent-lg': '8px 8px 0px 0px hsl(var(--accent))',
+      }
   	}
   },
   plugins: [require("tailwindcss-animate")],
