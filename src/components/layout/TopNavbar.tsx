@@ -2,12 +2,12 @@
 "use client";
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Home, Briefcase, Blocks } from 'lucide-react';
+import { MdHome, MdWork, MdWidgets } from 'react-icons/md'; // Material Design Icons
 import { cn } from '@/lib/utils';
 
 const navItems = [
-  { href: '/', label: 'Home', icon: Home },
-  { href: '/projects', label: 'Projects', icon: Briefcase },
+  { href: '/', label: 'Home', icon: MdHome },
+  { href: '/projects', label: 'Projects', icon: MdWork },
 ];
 
 export default function TopNavbar() {
@@ -17,7 +17,7 @@ export default function TopNavbar() {
     <header className="fixed top-0 left-0 right-0 z-50 bg-background text-foreground border-b-2 border-border shadow-md">
       <div className="container mx-auto flex items-center justify-between h-16 px-4 sm:px-6 lg:px-8">
         <Link href="/" className="flex items-center gap-3 group">
-          <Blocks className="h-8 w-8 text-accent group-hover:animate-pulse" />
+          <MdWidgets className="h-8 w-8 text-accent group-hover:animate-pulse" />
           <h1 className="text-2xl font-black uppercase tracking-tighter text-foreground group-hover:text-accent transition-colors">
             BruteFolio
           </h1>

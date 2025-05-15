@@ -1,6 +1,6 @@
 import ProjectCard from '@/components/ProjectCard';
 import { projects } from '@/lib/projects';
-import { LayoutGrid } from 'lucide-react';
+import { MdGridView } from 'react-icons/md'; // Material Design Icons
 
 export const metadata = {
   title: 'Projects - BruteFolio',
@@ -12,7 +12,7 @@ export default function ProjectsPage() {
     <div className="space-y-12">
       <header className="border-b-2 border-foreground pb-6 mb-12">
         <div className="flex items-center">
-          <LayoutGrid className="h-12 w-12 text-accent mr-4" />
+          <MdGridView className="h-12 w-12 text-accent mr-4" />
           <h1 className="text-5xl md:text-7xl font-black uppercase tracking-tighter">
             Projects
           </h1>

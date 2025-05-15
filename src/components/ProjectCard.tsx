@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import type { Project } from '@/types';
-import { ArrowUpRight } from 'lucide-react';
+import { MdArrowOutward } from 'react-icons/md'; // Material Design Icons
 
 interface ProjectCardProps {
   project: Project;
@@ -28,7 +28,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
           {project.shortDescription}
         </p>
         <div className="flex items-center text-accent font-bold uppercase text-sm tracking-wider">
-          View Project <ArrowUpRight className="h-5 w-5 ml-1 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+          View Project <MdArrowOutward className="h-5 w-5 ml-1 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
         </div>
       </div>
     </Link>

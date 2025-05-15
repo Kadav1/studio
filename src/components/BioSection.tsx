@@ -1,5 +1,5 @@
 import { generateBio } from '@/ai/flows/generate-bio';
-import { BrainCircuit } from 'lucide-react';
+import { MdPsychology } from 'react-icons/md'; // Material Design Icons
 
 export default async function BioSection() {
   // Example keywords, these could be dynamic or from a config
@@ -19,7 +19,7 @@ export default async function BioSection() {
   return (
     <section className="py-16 md:py-24 border-2 border-foreground p-8 md:p-12 bg-card shadow-[8px_8px_0px_0px_hsl(var(--accent))]">
       <div className="flex items-center mb-6">
-        <BrainCircuit className="h-12 w-12 text-accent mr-4" />
+        <MdPsychology className="h-12 w-12 text-accent mr-4" />
         <h2 className="text-4xl md:text-6xl font-black uppercase tracking-tighter">
           About Me
         </h2>

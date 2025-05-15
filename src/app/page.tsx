@@ -3,7 +3,7 @@ import BioSection from '@/components/BioSection';
 import SocialLinks from '@/components/SocialLinks';
 import ProjectCard from '@/components/ProjectCard';
 import { projects } from '@/lib/projects';
-import { LayoutGrid, ArrowRight } from 'lucide-react';
+import { MdGridView, MdArrowForward } from 'react-icons/md'; // Material Design Icons
 import Link from 'next/link';
 
 export default function HomePage() {
@@ -22,7 +22,7 @@ export default function HomePage() {
           <div className="container mx-auto px-4">
             <header className="mb-10 md:mb-12 text-center md:text-left border-b-2 border-foreground pb-6">
               <div className="flex flex-col md:flex-row items-center justify-center md:justify-start">
-                <LayoutGrid className="h-10 w-10 md:h-12 md:w-12 text-accent mr-0 md:mr-4 mb-2 md:mb-0" />
+                <MdGridView className="h-10 w-10 md:h-12 md:w-12 text-accent mr-0 md:mr-4 mb-2 md:mb-0" />
                 <h2 id="featured-projects-heading" className="text-4xl md:text-5xl font-black uppercase tracking-tighter">
                   Featured Projects
                 </h2>
@@ -42,7 +42,7 @@ export default function HomePage() {
               <div className="mt-10 md:mt-12 text-center">
                 <Link href="/projects" className="btn-brutalist group inline-flex items-center">
                   View All Projects
-                  <ArrowRight className="h-5 w-5 ml-2 group-hover:translate-x-1 transition-transform" />
+                  <MdArrowForward className="h-5 w-5 ml-2 group-hover:translate-x-1 transition-transform" />
                 </Link>
               </div>
             )}

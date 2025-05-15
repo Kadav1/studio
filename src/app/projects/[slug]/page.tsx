@@ -2,8 +2,7 @@ import { getProjectBySlug, projects as allProjects } from '@/lib/projects';
 import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { Button } from '@/components/ui/button';
-import { ArrowLeft, Tag } from 'lucide-react';
+import { MdArrowBack, MdLocalOffer } from 'react-icons/md'; // Material Design Icons
 
 type ProjectDetailPageProps = {
   params: {
@@ -39,7 +38,7 @@ export default function ProjectDetailPage({ params }: ProjectDetailPageProps) {
     <div className="min-h-[calc(100vh-8rem)] flex flex-col">
       <header className="mb-8 md:mb-12">
         <Link href="/projects" className="inline-flex items-center btn-brutalist-sm mb-8 group">
-          <ArrowLeft className="h-5 w-5 mr-2 group-hover:-translate-x-1 transition-transform" />
+          <MdArrowBack className="h-5 w-5 mr-2 group-hover:-translate-x-1 transition-transform" />
           Back to Projects
         </Link>
         <h1 className="text-4xl sm:text-5xl md:text-7xl font-black uppercase tracking-tighter break-words">
@@ -75,7 +74,7 @@ export default function ProjectDetailPage({ params }: ProjectDetailPageProps) {
           <ul className="space-y-2">
             {project.technologies.map((tech) => (
               <li key={tech} className="flex items-center font-mono text-base md:text-lg">
-                <Tag className="h-5 w-5 mr-3 text-accent" />
+                <MdLocalOffer className="h-5 w-5 mr-3 text-accent" />
                 {tech}
               </li>
             ))}

@@ -1,11 +1,12 @@
 
-import { Github, Instagram, Facebook } from 'lucide-react'; // Updated imports
+import { MdFacebook, MdGithub } from 'react-icons/md'; // Material Design Icons
+import { FaInstagram } from 'react-icons/fa'; // Font Awesome for Instagram
 import Link from 'next/link';
 
 const socialLinks = [
-  { name: 'GitHub', href: 'https://github.com', icon: Github, ariaLabel: 'View GitHub profile' },
-  { name: 'Facebook', href: 'https://facebook.com', icon: Facebook, ariaLabel: 'View Facebook profile' }, // Added Facebook
-  { name: 'Instagram', href: 'https://instagram.com', icon: Instagram, ariaLabel: 'View Instagram profile' },
+  { name: 'GitHub', href: 'https://github.com', icon: MdGithub, ariaLabel: 'View GitHub profile' },
+  { name: 'Facebook', href: 'https://facebook.com', icon: MdFacebook, ariaLabel: 'View Facebook profile' },
+  { name: 'Instagram', href: 'https://instagram.com', icon: FaInstagram, ariaLabel: 'View Instagram profile' },
 ];
 
 export default function SocialLinks() {
