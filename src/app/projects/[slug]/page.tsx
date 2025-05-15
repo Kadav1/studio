@@ -3,6 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { MdArrowBack, MdLocalOffer } from 'react-icons/md'; // Material Design Icons
+import type { Metadata } from 'next';
 
 type ProjectDetailPageProps = {
   params: {
@@ -16,14 +17,37 @@ export async function generateStaticParams() {
   }));
 }
 
-export async function generateMetadata({ params }: ProjectDetailPageProps) {
+export async function generateMetadata({ params }: ProjectDetailPageProps): Promise<Metadata> {
   const project = getProjectBySlug(params.slug);
   if (!project) {
-    return { title: 'Project Not Found' };
+    return { 
+      title: 'Project Not Found',
+      description: 'The project you are looking for does not exist.',
+    };
   }
   return {
-    title: `${project.title} - BruteFolio`,
+    title: project.title, // Will be combined with title.template from layout
     description: project.shortDescription,
+    openGraph: {
+      title: `${project.title} - BruteFolio`,
+      description: project.shortDescription,
+      type: 'article',
+      url: `https://yourwebsite.com/projects/${project.slug}`, // Replace with your actual domain
+      images: [
+        {
+          url: project.imageUrl, // Assuming imageUrl is absolute or will be prefixed
+          width: 1200, // Adjust if your images have different dimensions
+          height: 800, // Adjust if your images have different dimensions
+          alt: `Showcase image for ${project.title}`,
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: `${project.title} - BruteFolio`,
+      description: project.shortDescription,
+      images: [project.imageUrl], // Assuming imageUrl is absolute or will be prefixed
+    },
   };
 }
 
@@ -38,7 +62,7 @@ export default function ProjectDetailPage({ params }: ProjectDetailPageProps) {
     <div className="min-h-[calc(100vh-8rem)] flex flex-col">
       <header className="mb-8 md:mb-12">
         <Link href="/projects" className="inline-flex items-center btn-brutalist-sm mb-8 group">
-          <MdArrowBack className="h-5 w-5 mr-2 group-hover:-translate-x-1 transition-transform" />
+          <MdArrowBack className="h-5 w-5 mr-2 group-hover:-translate-x-1 transition-transform" aria-hidden="true" />
           Back to Projects
         </Link>
         <h1 className="text-4xl sm:text-5xl md:text-7xl font-black uppercase tracking-tighter break-words">
@@ -74,7 +98,7 @@ export default function ProjectDetailPage({ params }: ProjectDetailPageProps) {
           <ul className="space-y-2">
             {project.technologies.map((tech) => (
               <li key={tech} className="flex items-center font-mono text-base md:text-lg">
-                <MdLocalOffer className="h-5 w-5 mr-3 text-accent" />
+                <MdLocalOffer className="h-5 w-5 mr-3 text-accent" aria-hidden="true" />
                 {tech}
               </li>
             ))}
