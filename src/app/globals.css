@@ -104,7 +104,7 @@ body {
   }
   /* Brutalist button style overrides */
   .btn-brutalist {
-    @apply bg-transparent border-2 border-foreground text-foreground hover:bg-accent hover:text-accent-foreground hover:border-accent px-6 py-3 text-lg font-bold uppercase tracking-wider transition-colors duration-150;
+    @apply bg-transparent border-2 border-foreground text-foreground hover:bg-accent hover:text-accent-foreground hover:border-accent px-4 py-2 text-base md:px-6 md:py-3 md:text-lg font-bold uppercase tracking-wider transition-colors duration-150;
   }
   .btn-brutalist-sm {
      @apply bg-transparent border-2 border-foreground text-foreground hover:bg-accent hover:text-accent-foreground hover:border-accent px-4 py-2 text-sm font-bold uppercase tracking-wider transition-colors duration-150;
