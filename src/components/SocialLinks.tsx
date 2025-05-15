@@ -1,10 +1,10 @@
 
-import { MdFacebook, MdGithub } from 'react-icons/md'; // Material Design Icons
-import { FaInstagram } from 'react-icons/fa'; // Font Awesome for Instagram
+import { MdFacebook } from 'react-icons/md'; // Material Design Icons
+import { FaInstagram, FaGithub } from 'react-icons/fa'; // Font Awesome for Instagram and GitHub
 import Link from 'next/link';
 
 const socialLinks = [
-  { name: 'GitHub', href: 'https://github.com', icon: MdGithub, ariaLabel: 'View GitHub profile' },
+  { name: 'GitHub', href: 'https://github.com', icon: FaGithub, ariaLabel: 'View GitHub profile' },
   { name: 'Facebook', href: 'https://facebook.com', icon: MdFacebook, ariaLabel: 'View Facebook profile' },
   { name: 'Instagram', href: 'https://instagram.com', icon: FaInstagram, ariaLabel: 'View Instagram profile' },
 ];
