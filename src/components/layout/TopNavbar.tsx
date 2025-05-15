@@ -16,10 +16,10 @@ export default function TopNavbar() {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background text-foreground border-b-2 border-border shadow-md">
       <nav className="container mx-auto flex items-center justify-between h-16 px-4 sm:px-6 lg:px-8" aria-label="Main navigation">
-        <Link href="/" className="flex items-center gap-3 group" aria-label="BruteFolio - Go to homepage">
+        <Link href="/" className="flex items-center gap-3 group" aria-label="måsstaden - Go to homepage">
           <MdWidgets className="h-8 w-8 text-accent group-hover:animate-pulse" />
           <h1 className="text-2xl font-black uppercase tracking-tighter text-foreground group-hover:text-accent transition-colors">
-            BruteFolio
+            måsstaden
           </h1>
         </Link>
         <div className="flex items-center space-x-1 sm:space-x-2">

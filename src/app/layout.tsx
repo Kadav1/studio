@@ -18,20 +18,20 @@ const robotoMono = Roboto_Mono({
 
 export const metadata: Metadata = {
   title: {
-    template: '%s | BruteFolio',
-    default: 'BruteFolio - A Brutalist Portfolio',
+    template: '%s | Alex Zewebrand',
+    default: 'Alex Zewebrand - A måsstaden Portfolio',
   },
   description: 'Explore a unique brutalist-inspired portfolio showcasing innovative web projects and design experiments. Built with Next.js and Tailwind CSS.',
   keywords: ['brutalist design', 'portfolio', 'web developer', 'Next.js', 'Tailwind CSS', 'UI/UX', 'frontend developer', 'projects'],
-  authors: [{ name: 'Your Name' }], // Replace 'Your Name'
-  creator: 'Your Name', // Replace 'Your Name'
+  authors: [{ name: 'Alex Zewebrand' }], // Replace 'Your Name'
+  creator: 'Alex Zewebrand', // Replace 'Your Name'
   openGraph: {
-    title: 'BruteFolio - A Brutalist Portfolio',
+    title: 'Alex Zewebrand - A måsstaden Portfolio',
     description: 'A unique brutalist-inspired portfolio showcasing innovative web projects.',
     type: 'website',
-    locale: 'en_US',
-    url: 'https://yourwebsite.com', // Replace with your actual domain
-    siteName: 'BruteFolio',
+    locale: 'en_EU',
+    url: 'https://alexzewebrand.com', // Replace with your actual domain
+    siteName: 'Alex Zewebrand',
     // images: [ // Optionally, add a default OG image
     //   {
     //     url: 'https://yourwebsite.com/og-image.png', // Replace with your actual OG image URL

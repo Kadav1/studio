@@ -8,16 +8,16 @@ import Link from 'next/link';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Home - BruteFolio',
-  description: 'Welcome to BruteFolio, a brutalist-inspired portfolio showcasing innovative web projects, design experiments, and a passion for creative technology.',
+  title: 'Home - Alex Zewebrand',
+  description: 'Welcome to måsstaden, a brutalist-inspired portfolio showcasing innovative web projects, design experiments, and a passion for creative technology.',
   openGraph: {
-    title: 'Home - BruteFolio',
-    description: 'Welcome to BruteFolio, a brutalist-inspired portfolio.',
+    title: 'Home - Alex Zewebrand',
+    description: 'Welcome to måsstaden, a brutalist-inspired portfolio.',
     // Potentially add a specific OG image for the homepage if different from the default
   },
   twitter: {
-    title: 'Home - BruteFolio',
-    description: 'Welcome to BruteFolio, a brutalist-inspired portfolio.',
+    title: 'Home - Alex Zewebrand',
+    description: 'Welcome to måsstaden, a brutalist-inspired portfolio.',
      // Potentially add a specific Twitter image for the homepage
   }
 };

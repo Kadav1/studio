@@ -3,8 +3,8 @@ import { projects } from '@/lib/projects';
 import { MdGridView } from 'react-icons/md'; // Material Design Icons
 
 export const metadata = {
-  title: 'Projects - BruteFolio',
-  description: 'A showcase of projects with brutalist design.',
+  title: 'Projects - måsstaden',
+  description: 'A showcase of projects.',
 };
 
 export default function ProjectsPage() {
