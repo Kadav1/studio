@@ -34,7 +34,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'BruteFolio - A Brutalist Portfolio', // Consider making this consistent with OG
+    title: 'Alex Zewebrand - A måsstaden Portfolio', // Consider making this consistent with OG
     description: 'A unique brutalist-inspired portfolio showcasing innovative web projects.',
     // Twitter images can also be specified here or rely on OG image
   },
