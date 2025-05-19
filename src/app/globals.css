@@ -26,15 +26,23 @@ body {
     --muted: 203 10% 25%; /* Dark Gray */
     --muted-foreground: 0 0% 65%; /* Gray */
 
-    --accent: 68 67% 57%; /* #ceda4a */
-    --accent-foreground: 203 10% 15%; /* #23282b (for text on accent) */
+    /* Accent color definitions */
+    --accent-home-values: 318 89% 50%; /* #f20caf */
+    --accent-home-foreground-values: 0 0% 100%; /* White for #f20caf */
+
+    --accent-projects-values: 68 67% 57%; /* #c7db48 */
+    --accent-projects-foreground-values: 203 10% 15%; /* #23282b for #c7db48 */
+
+    /* Default to Projects theme */
+    --accent: var(--accent-projects-values);
+    --accent-foreground: var(--accent-projects-foreground-values);
+    --ring: var(--accent-projects-values); /* Focus rings based on current accent */
 
     --destructive: 0 70% 50%; /* Red */
     --destructive-foreground: 0 0% 100%; /* White */
 
     --border: 203 10% 35%; /* Visible border */
     --input: 203 10% 30%; /* Dark input background */
-    --ring: 68 67% 57%; /* #ceda4a for focus rings */
 
     --radius: 0rem; /* Brutalist - no rounded corners */
 
@@ -44,38 +52,48 @@ body {
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
 
-    /* Sidebar specific vars, if needed, but general theme should cover */
+    /* Sidebar specific vars, using dynamic accent */
     --sidebar-background: 203 10% 18%; /* Dark sidebar background */
     --sidebar-foreground: 0 0% 80%;
-    --sidebar-primary: 68 67% 57%; /* #ceda4a for active/hover */
-    --sidebar-primary-foreground: 203 10% 15%; /* #23282b */
+    --sidebar-primary: var(--accent); /* Use dynamic accent */
+    --sidebar-primary-foreground: var(--accent-foreground); /* Use dynamic accent foreground */
     --sidebar-accent: 203 10% 25%;
     --sidebar-accent-foreground: 0 0% 90%;
     --sidebar-border: 203 10% 30%;
-    --sidebar-ring: 68 67% 57%; /* #ceda4a */
+    --sidebar-ring: var(--accent); /* Use dynamic accent for ring */
+  }
+
+  body.theme-home {
+    --accent: var(--accent-home-values);
+    --accent-foreground: var(--accent-home-foreground-values);
+    --ring: var(--accent-home-values);
+  }
+
+  body.theme-projects {
+    --accent: var(--accent-projects-values);
+    --accent-foreground: var(--accent-projects-foreground-values);
+    --ring: var(--accent-projects-values);
   }
 
   .dark {
-    /* Assuming dark is the default, but if a toggle is added, these would be the same or adjusted */
-    --background: 203 10% 15%; /* #23282b */
-    --foreground: 0 0% 100%; /* White */
-    --card: 203 10% 22%; /* Dark Gray */
-    --card-foreground: 0 0% 95%; /* Off-White */
-    --popover: 203 10% 20%; /* Darker Gray */
-    --popover-foreground: 0 0% 95%; /* Off-White */
-    --primary: 0 0% 100%; /* White */
-    --primary-foreground: 203 10% 15%; /* #23282b */
-    --secondary: 203 10% 30%; /* Medium Gray */
-    --secondary-foreground: 0 0% 90%; /* Light Gray */
-    --muted: 203 10% 25%; /* Dark Gray */
-    --muted-foreground: 0 0% 65%; /* Gray */
-    --accent: 68 67% 57%; /* #ceda4a */
-    --accent-foreground: 203 10% 15%; /* #23282b (for text on accent) */
-    --destructive: 0 70% 50%; /* Red */
-    --destructive-foreground: 0 0% 100%; /* White */
-    --border: 203 10% 35%; /* Visible border */
-    --input: 203 10% 30%; /* Dark input background */
-    --ring: 68 67% 57%; /* #ceda4a for focus rings */
+    /* All values are same as :root for this theme, as dark is default */
+    --background: 203 10% 15%;
+    --foreground: 0 0% 100%;
+    --card: 203 10% 22%;
+    --card-foreground: 0 0% 95%;
+    --popover: 203 10% 20%;
+    --popover-foreground: 0 0% 95%;
+    --primary: 0 0% 100%;
+    --primary-foreground: 203 10% 15%;
+    --secondary: 203 10% 30%;
+    --secondary-foreground: 0 0% 90%;
+    --muted: 203 10% 25%;
+    --muted-foreground: 0 0% 65%;
+    /* Accent, accent-foreground, and ring are handled by body.theme-* or default in :root */
+    --destructive: 0 70% 50%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 203 10% 35%;
+    --input: 203 10% 30%;
     --radius: 0rem;
 
     --chart-1: 220 70% 50%;
@@ -84,14 +102,12 @@ body {
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
 
-    --sidebar-background: 203 10% 18%; /* Dark sidebar background */
+    --sidebar-background: 203 10% 18%;
     --sidebar-foreground: 0 0% 80%;
-    --sidebar-primary: 68 67% 57%; /* #ceda4a for active/hover */
-    --sidebar-primary-foreground: 203 10% 15%; /* #23282b */
+    /* sidebar-primary, primary-foreground, and ring handled by dynamic accent */
     --sidebar-accent: 203 10% 25%;
     --sidebar-accent-foreground: 0 0% 90%;
     --sidebar-border: 203 10% 30%;
-    --sidebar-ring: 68 67% 57%; /* #ceda4a */
   }
 }
 

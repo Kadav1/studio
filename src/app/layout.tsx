@@ -2,9 +2,7 @@
 import type { Metadata } from 'next';
 import { Inter, Roboto_Mono, Space_Grotesk } from 'next/font/google';
 import './globals.css';
-import TopNavbar from '@/components/layout/TopNavbar';
-import { Toaster } from "@/components/ui/toaster";
-
+import AppBodyClient from './AppBodyClient'; // Import the new client component
 
 const inter = Inter({
   variable: '--font-inter',
@@ -19,7 +17,7 @@ const robotoMono = Roboto_Mono({
 const spaceGrotesk = Space_Grotesk({
   variable: '--font-space-grotesk',
   subsets: ['latin'],
-  weight: ['300', '400', '500', '700'], // Specify weights you intend to use
+  weight: ['300', '400', '500', '700'],
 });
 
 export const metadata: Metadata = {
@@ -29,8 +27,8 @@ export const metadata: Metadata = {
   },
   description: 'Explore a unique brutalist-inspired portfolio showcasing innovative web projects and design experiments. Built with Next.js and Tailwind CSS.',
   keywords: ['brutalist design', 'portfolio', 'web developer', 'Next.js', 'Tailwind CSS', 'UI/UX', 'frontend developer', 'projects'],
-  authors: [{ name: 'Alex Zewebrand' }], // Replace 'Your Name'
-  creator: 'Alex Zewebrand', // Replace 'Your Name'
+  authors: [{ name: 'Alex Zewebrand' }],
+  creator: 'Alex Zewebrand',
   openGraph: {
     title: 'Alex Zewebrand - A måsstaden Portfolio',
     description: 'A unique brutalist-inspired portfolio showcasing innovative web projects.',
@@ -38,24 +36,15 @@ export const metadata: Metadata = {
     locale: 'en_EU',
     url: 'https://alexzewebrand.com', // Replace with your actual domain
     siteName: 'Alex Zewebrand',
-    // images: [ // Optionally, add a default OG image
-    //   {
-    //     url: 'https://yourwebsite.com/og-image.png', // Replace with your actual OG image URL
-    //     width: 1200,
-    //     height: 630,
-    //     alt: 'BruteFolio Homepage',
-    //   },
-    // ],
+    // The opengraph-image.tsx will generate the default image
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'BruteFolio - A Brutalist Portfolio',
+    title: 'BruteFolio - A Brutalist Portfolio', // Consider making this consistent with OG
     description: 'A unique brutalist-inspired portfolio showcasing innovative web projects.',
-    // site: '@yourTwitterHandle', // Replace with your Twitter handle
-    // creator: '@yourTwitterHandle', // Replace with your Twitter handle
-    // images: ['https://yourwebsite.com/twitter-image.png'], // Replace with your actual Twitter image URL
+    // Twitter images can also be specified here or rely on OG image
   },
-  robots: { // Optional: good for SEO
+  robots: {
     index: true,
     follow: true,
     googleBot: {
@@ -66,10 +55,6 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
-  // icons: { // Optional: Add favicon links
-  //   icon: '/favicon.ico',
-  //   apple: '/apple-touch-icon.png',
-  // },
 };
 
 export default function RootLayout({
@@ -79,13 +64,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${inter.variable} ${robotoMono.variable} ${spaceGrotesk.variable}`}>
-      <body className="antialiased bg-background text-foreground">
-        <TopNavbar />
-        <main className="flex-1 p-4 sm:p-8 md:p-12 overflow-y-auto pt-20 md:pt-24">
-            {children}
-        </main>
-        <Toaster />
-      </body>
+      <AppBodyClient>{children}</AppBodyClient>
     </html>
   );
 }
