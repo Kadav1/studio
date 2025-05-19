@@ -17,5 +17,8 @@
     "lib": "@/lib",
     "hooks": "@/hooks"
   },
-  "iconLibrary": "lucide"
+  "iconLibrary": "lucide",
+  "bioSection": {
+    "keywords": "innovative designer, brutalist enthusiast, graffiti connoisseur"
+  }
 }

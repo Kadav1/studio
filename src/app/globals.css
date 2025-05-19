@@ -135,3 +135,16 @@ body {
 html {
   font-family: var(--font-inter), sans-serif;
 }
+
+/* Masonry layout */
+.masonry {
+  display: grid;
+  grid-column-gap: 16px; /* Gap between columns */
+  grid-row-gap: 16px; /* Gap between rows */
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Adjust minmax as needed */
+  grid-auto-rows: 20px; /* set the default row height */
+}
+
+.masonry > * {
+  break-inside: avoid;
+}
