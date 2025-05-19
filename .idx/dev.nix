@@ -21,6 +21,14 @@
     # Search for the extensions you want on https://open-vsx.org/ and use "publisher.id"
     extensions = [
       # "vscodevim.vim"
+      "bradlc.vscode-tailwindcss"
+      "dracula-theme.theme-dracula"
+      "eamodio.gitlens"
+      "esbenp.prettier-vscode"
+      "felipecaputo.git-project-manager"
+      "mhutchie.git-graph"
+      "pinage404.git-extension-pack"
+      "PKief.material-icon-theme"
     ];
     workspace = {
       onCreate = {
