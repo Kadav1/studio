@@ -39,7 +39,7 @@ export default function HomePage() {
             <header className="mb-10 md:mb-12 text-center md:text-left border-b-2 border-foreground pb-6">
               <div className="flex flex-col md:flex-row items-center justify-center md:justify-start">
                 <MdGridView className="h-10 w-10 md:h-12 md:w-12 text-accent mr-0 md:mr-4 mb-2 md:mb-0" aria-hidden="true" />
-                <h2 id="featured-projects-heading" className="text-4xl md:text-5xl font-black uppercase tracking-tighter">
+                <h2 id="featured-projects-heading" className="font-heading text-4xl md:text-5xl font-black uppercase tracking-tighter">
                   Featured Projects
                 </h2>
               </div>

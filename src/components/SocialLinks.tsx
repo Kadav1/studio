@@ -1,5 +1,5 @@
 
-import { FaFacebook, FaGithub, FaInstagram } from 'react-icons/fa'; // Font Awesome for social icons
+import { FaFacebook, FaGithub, FaInstagram } from 'react-icons/fa'; 
 import Link from 'next/link';
 
 const socialLinks = [
@@ -11,7 +11,7 @@ const socialLinks = [
 export default function SocialLinks() {
   return (
     <section aria-labelledby="connect-with-me-heading" className="py-8 md:py-12 mt-12 md:mt-16 text-center">
-      <h3 id="connect-with-me-heading" className="text-2xl md:text-3xl font-black uppercase tracking-tight mb-8">
+      <h3 id="connect-with-me-heading" className="font-heading text-2xl md:text-3xl font-black uppercase tracking-tight mb-8">
         Connect With Me
       </h3>
       <div className="flex justify-center items-center space-x-4 md:space-x-6">

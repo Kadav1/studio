@@ -1,6 +1,6 @@
 
 import type { Metadata } from 'next';
-import { Inter, Roboto_Mono } from 'next/font/google';
+import { Inter, Roboto_Mono, Space_Grotesk } from 'next/font/google';
 import './globals.css';
 import TopNavbar from '@/components/layout/TopNavbar';
 import { Toaster } from "@/components/ui/toaster";
@@ -14,6 +14,12 @@ const inter = Inter({
 const robotoMono = Roboto_Mono({
   variable: '--font-roboto-mono',
   subsets: ['latin'],
+});
+
+const spaceGrotesk = Space_Grotesk({
+  variable: '--font-space-grotesk',
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '700'], // Specify weights you intend to use
 });
 
 export const metadata: Metadata = {
@@ -72,7 +78,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${robotoMono.variable}`}>
+    <html lang="en" className={`${inter.variable} ${robotoMono.variable} ${spaceGrotesk.variable}`}>
       <body className="antialiased bg-background text-foreground">
         <TopNavbar />
         <main className="flex-1 p-4 sm:p-8 md:p-12 overflow-y-auto pt-20 md:pt-24">
