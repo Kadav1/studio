@@ -18,7 +18,10 @@ export default async function BioSection() {
   }
 
   return (
-    <section aria-labelledby="about-me-heading" className="py-16 md:py-24 border-2 border-foreground p-8 md:p-12 bg-card shadow-[8px_8px_0px_0px_hsl(var(--accent))]">
+    <section
+      aria-labelledby="about-me-heading"
+      className="py-16 md:py-24 border-2 border-foreground p-8 md:p-12 bg-card shadow-[8px_8px_0px_0px_hsl(var(--accent))] hover:shadow-[10px_10px_0px_0px_hsl(var(--accent))] transition-shadow duration-200"
+    >
       <div className="flex items-center mb-6">
         <MdCodeOff className="h-12 w-12 text-accent mr-4" aria-hidden="true" />
         <h2 id="about-me-heading" className="text-4xl md:text-6xl font-black uppercase tracking-tighter">

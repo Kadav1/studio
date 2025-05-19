@@ -70,7 +70,7 @@ export default function ProjectDetailPage({ params }: ProjectDetailPageProps) {
         </h1>
       </header>
 
-      <div className="relative w-full aspect-[16/9] md:aspect-[2/1] border-2 border-foreground mb-8 md:mb-12 overflow-hidden shadow-[8px_8px_0px_0px_hsl(var(--foreground))]">
+      <div className="relative w-full aspect-[16/9] md:aspect-[2/1] border-2 border-foreground mb-8 md:mb-12 overflow-hidden shadow-[8px_8px_0px_0px_hsl(var(--foreground))] hover:shadow-[10px_10px_0px_0px_hsl(var(--foreground))] transition-shadow duration-200">
         <Image
           src={project.imageUrl}
           alt={`Showcase image for ${project.title}`}
