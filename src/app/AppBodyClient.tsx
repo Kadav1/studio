@@ -4,9 +4,16 @@
 import { usePathname } from 'next/navigation';
 import TopNavbar from '@/components/layout/TopNavbar';
 import { Toaster } from "@/components/ui/toaster";
+import { useEffect, useState } from 'react';
 
 export default function AppBodyClient({ children }: Readonly<{ children: React.ReactNode }>) {
   const pathname = usePathname();
+  const [currentYear, setCurrentYear] = useState<number | null>(null);
+
+  useEffect(() => {
+    setCurrentYear(new Date().getFullYear());
+  }, []);
+
   let themeSpecificClass = 'theme-projects'; // Default to projects theme
 
   if (pathname === '/') {
@@ -16,7 +23,7 @@ export default function AppBodyClient({ children }: Readonly<{ children: React.R
   }
   // Add more conditions if other top-level pages need specific themes
 
-  const bodyClassName = `antialiased bg-background text-foreground ${themeSpecificClass}`;
+  const bodyClassName = `antialiased bg-background text-foreground ${themeSpecificClass} flex flex-col min-h-screen`;
 
   return (
     <body className={bodyClassName}>
@@ -25,6 +32,13 @@ export default function AppBodyClient({ children }: Readonly<{ children: React.R
           {children}
       </main>
       <Toaster />
+      <footer className="py-4 px-4 sm:px-8 md:px-12 text-center text-muted-foreground text-sm font-mono border-t-2 border-border">
+        {currentYear !== null ? (
+          <p>&copy; {currentYear} Alex Zewebrand. All rights reserved.</p>
+        ) : (
+          <p>&copy; Alex Zewebrand. All rights reserved.</p> 
+        )}
+      </footer>
     </body>
   );
 }
