@@ -1,6 +1,6 @@
 
 import type { Metadata } from 'next';
-import { Inter, Roboto_Mono, Space_Grotesk } from 'next/font/google';
+import { Inter, Roboto_Mono } from 'next/font/google';
 import './globals.css';
 import AppBodyClient from './AppBodyClient'; // Import the new client component
 
@@ -12,12 +12,6 @@ const inter = Inter({
 const robotoMono = Roboto_Mono({
   variable: '--font-roboto-mono',
   subsets: ['latin'],
-});
-
-const spaceGrotesk = Space_Grotesk({
-  variable: '--font-space-grotesk',
-  subsets: ['latin'],
-  weight: ['300', '400', '500', '700'],
 });
 
 export const metadata: Metadata = {
@@ -63,7 +57,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${robotoMono.variable} ${spaceGrotesk.variable}`}>
+    <html lang="en" className={`${inter.variable} ${robotoMono.variable}`}>
       <AppBodyClient>{children}</AppBodyClient>
     </html>
   );

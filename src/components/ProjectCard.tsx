@@ -21,7 +21,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
             data-ai-hint="abstract technology"
           />
         </div>
-        <h3 className="font-heading text-2xl md:text-3xl font-black uppercase tracking-tight mb-2 group-hover:text-accent transition-colors">
+        <h3 className="text-2xl md:text-3xl font-black uppercase tracking-tight mb-2 group-hover:text-accent transition-colors">
           {project.title}
         </h3>
         <p className="text-sm md:text-base text-muted-foreground font-mono mb-3 line-clamp-2">

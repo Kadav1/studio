@@ -65,7 +65,7 @@ export default function ProjectDetailPage({ params }: ProjectDetailPageProps) {
           <MdArrowBack className="h-5 w-5 mr-2 group-hover:-translate-x-1 transition-transform" aria-hidden="true" />
           Back to Projects
         </Link>
-        <h1 className="font-heading text-4xl sm:text-5xl md:text-7xl font-black uppercase tracking-tighter break-words">
+        <h1 className="text-4xl sm:text-5xl md:text-7xl font-black uppercase tracking-tighter break-words">
           {project.title}
         </h1>
       </header>
@@ -84,7 +84,7 @@ export default function ProjectDetailPage({ params }: ProjectDetailPageProps) {
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
         <div className="md:col-span-2">
-          <h2 className="font-heading text-3xl md:text-4xl font-bold uppercase tracking-tight mb-4 border-b-2 border-accent pb-2">
+          <h2 className="text-3xl md:text-4xl font-bold uppercase tracking-tight mb-4 border-b-2 border-accent pb-2">
             Description
           </h2>
           <p className="text-base md:text-lg leading-relaxed font-mono whitespace-pre-line">
@@ -92,7 +92,7 @@ export default function ProjectDetailPage({ params }: ProjectDetailPageProps) {
           </p>
         </div>
         <div>
-          <h2 className="font-heading text-3xl md:text-4xl font-bold uppercase tracking-tight mb-4 border-b-2 border-accent pb-2">
+          <h2 className="text-3xl md:text-4xl font-bold uppercase tracking-tight mb-4 border-b-2 border-accent pb-2">
             Tech Stack
           </h2>
           <ul className="space-y-2">

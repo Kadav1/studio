@@ -13,7 +13,7 @@ export default function ProjectsPage() {
       <header className="border-b-2 border-foreground pb-6 mb-12">
         <div className="flex items-center">
           <MdGridView className="h-12 w-12 text-accent mr-4" />
-          <h1 className="font-heading text-5xl md:text-7xl font-black uppercase tracking-tighter">
+          <h1 className="text-5xl md:text-7xl font-black uppercase tracking-tighter">
             Projects
           </h1>
         </div>
