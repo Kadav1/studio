@@ -3,7 +3,6 @@ import { MdCodeOff } from 'react-icons/md'; // Material Design Icons
 import componentsConfig from '@/../components.json';
 
 export default async function BioSection() {
-  // Example keywords, these could be dynamic or from a config
   const keywords = componentsConfig.bioSection?.keywords || "innovative designer, brutalist enthusiast, graffiti connoisseur";
   let bioText = "Loading bio...";
   let errorOccurred = false;
