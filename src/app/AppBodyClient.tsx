@@ -9,18 +9,9 @@ import { useEffect, useState } from 'react';
 export default function AppBodyClient({ children }: Readonly<{ children: React.ReactNode }>) {
   const pathname = usePathname();
   const [currentYear, setCurrentYear] = useState<number | null>(null);
-  // Time display has been moved to TopNavbar, remove from here if it was duplicated
-  // const [currentTime, setCurrentTime] = useState<string | null>(null);
 
   useEffect(() => {
     setCurrentYear(new Date().getFullYear());
-    // Time update logic is now in TopNavbar
-    // const timer = setInterval(() => {
-    //   setCurrentTime(new Date().toLocaleTimeString());
-    // }, 1000);
-    // // Set initial time
-    // setCurrentTime(new Date().toLocaleTimeString());
-    // return () => clearInterval(timer);
   }, []);
 
   let themeSpecificClass = ''; // Default to projects theme
@@ -50,7 +41,6 @@ export default function AppBodyClient({ children }: Readonly<{ children: React.R
             ) : (
               <p>&copy; Alex Zewebrand. All rights reserved.</p> 
             )}
-            {/* Time display removed from here as it's in TopNavbar now */}
         </div>
       </footer>
     </body>

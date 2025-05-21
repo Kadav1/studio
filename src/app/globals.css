@@ -46,21 +46,21 @@ body {
 
     --radius: 0rem; /* Brutalist - no rounded corners */
 
-    --chart-1: 12 76% 61%;
-    --chart-2: 173 58% 39%;
-    --chart-3: 197 37% 24%;
-    --chart-4: 43 74% 66%;
-    --chart-5: 27 87% 67%;
+    /* --chart-1: 12 76% 61%; */
+    /* --chart-2: 173 58% 39%; */
+    /* --chart-3: 197 37% 24%; */
+    /* --chart-4: 43 74% 66%; */
+    /* --chart-5: 27 87% 67%; */
 
-    /* Sidebar specific vars, using dynamic accent */
-    --sidebar-background: 203 10% 18%; /* Dark sidebar background */
-    --sidebar-foreground: 0 0% 80%;
-    --sidebar-primary: var(--accent); /* Use dynamic accent */
-    --sidebar-primary-foreground: var(--accent-foreground); /* Use dynamic accent foreground */
-    --sidebar-accent: 203 10% 25%;
-    --sidebar-accent-foreground: 0 0% 90%;
-    --sidebar-border: 203 10% 30%;
-    --sidebar-ring: var(--accent); /* Use dynamic accent for ring */
+    /* Sidebar specific vars were removed from tailwind.config.ts, keep commented/removed */
+    /* --sidebar-background: 203 10% 18%; */
+    /* --sidebar-foreground: 0 0% 80%; */
+    /* --sidebar-primary: var(--accent); */
+    /* --sidebar-primary-foreground: var(--accent-foreground); */
+    /* --sidebar-accent: 203 10% 25%; */
+    /* --sidebar-accent-foreground: 0 0% 90%; */
+    /* --sidebar-border: 203 10% 30%; */
+    /* --sidebar-ring: var(--accent); */
   }
 
   body.theme-home {
@@ -96,25 +96,22 @@ body {
     --input: 203 10% 30%;
     --radius: 0rem;
 
-    --chart-1: 220 70% 50%;
-    --chart-2: 160 60% 45%;
-    --chart-3: 30 80% 55%;
-    --chart-4: 280 65% 60%;
-    --chart-5: 340 75% 55%;
+    /* --chart-1: 220 70% 50%; */
+    /* --chart-2: 160 60% 45%; */
+    /* --chart-3: 30 80% 55%; */
+    /* --chart-4: 280 65% 60%; */
+    /* --chart-5: 340 75% 55%; */
 
-    --sidebar-background: 203 10% 18%;
-    --sidebar-foreground: 0 0% 80%;
-    /* sidebar-primary, primary-foreground, and ring handled by dynamic accent */
-    --sidebar-accent: 203 10% 25%;
-    --sidebar-accent-foreground: 0 0% 90%;
-    --sidebar-border: 203 10% 30%;
+    /* --sidebar-background: 203 10% 18%; */
+    /* --sidebar-foreground: 0 0% 80%; */
+    /* --sidebar-accent: 203 10% 25%; */
+    /* --sidebar-accent-foreground: 0 0% 90%; */
+    /* --sidebar-border: 203 10% 30%; */
   }
 }
 
 @layer base {
-  * {
-    @apply border-border;
-  }
+  /* * { @apply border-border; } */ /* This was problematic */
   body {
     @apply bg-background text-foreground;
   }
@@ -129,22 +126,4 @@ body {
   .input-brutalist {
     @apply bg-background border-2 border-foreground text-foreground placeholder-muted-foreground p-3 focus:border-accent focus:ring-0 outline-none;
   }
-}
-
-/* Ensure fallback fonts are available if needed */
-html {
-  font-family: var(--font-inter), sans-serif;
-}
-
-/* Masonry layout */
-.masonry {
-  display: grid;
-  grid-column-gap: 16px; /* Gap between columns */
-  grid-row-gap: 16px; /* Gap between rows */
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Adjust minmax as needed */
-  grid-auto-rows: 20px; /* set the default row height */
-}
-
-.masonry > * {
-  break-inside: avoid;
 }
