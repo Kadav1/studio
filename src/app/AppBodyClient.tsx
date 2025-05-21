@@ -9,9 +9,23 @@ import { useEffect, useState } from 'react';
 export default function AppBodyClient({ children }: Readonly<{ children: React.ReactNode }>) {
   const pathname = usePathname();
   const [currentYear, setCurrentYear] = useState<number | null>(null);
+  const [currentTime, setCurrentTime] = useState<string | null>(null);
 
   useEffect(() => {
     setCurrentYear(new Date().getFullYear());
+
+    // Set initial time
+    setCurrentTime(new Date().toLocaleTimeString());
+
+    // Update time every second
+    const timerId = setInterval(() => {
+      setCurrentTime(new Date().toLocaleTimeString());
+    }, 1000);
+
+    // Cleanup interval on component unmount
+    return () => {
+      clearInterval(timerId);
+    };
   }, []);
 
   let themeSpecificClass = 'theme-projects'; // Default to projects theme
@@ -33,11 +47,20 @@ export default function AppBodyClient({ children }: Readonly<{ children: React.R
       </main>
       <Toaster />
       <footer className="py-4 px-4 sm:px-8 md:px-12 text-center text-muted-foreground text-sm font-mono border-t-2 border-border">
-        {currentYear !== null ? (
-          <p>&copy; {currentYear} Alex Zewebrand. All rights reserved.</p>
-        ) : (
-          <p>&copy; Alex Zewebrand. All rights reserved.</p> 
-        )}
+        <div className="flex flex-col sm:flex-row justify-between items-center">
+          <p>
+            {currentYear !== null ? (
+              <span>&copy; {currentYear} Alex Zewebrand. All rights reserved.</span>
+            ) : (
+              <span>&copy; Alex Zewebrand. All rights reserved.</span>
+            )}
+          </p>
+          {currentTime !== null ? (
+            <p className="mt-2 sm:mt-0">Local Time: {currentTime}</p>
+          ) : (
+            <p className="mt-2 sm:mt-0">Loading time...</p>
+          )}
+        </div>
       </footer>
     </body>
   );
