@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { MdHome, MdWork, MdWidgets } from 'react-icons/md'; // Material Design Icons
 import { cn } from '@/lib/utils';
+import { useEffect, useState } from 'react';
 
 const navItems = [
   { href: '/', label: 'Home', icon: MdHome, ariaLabel: 'Go to Home page' },
@@ -12,6 +13,16 @@ const navItems = [
 
 export default function TopNavbar() {
   const pathname = usePathname();
+  const [currentTime, setCurrentTime] = useState<string | null>(null);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentTime(new Date().toLocaleTimeString());
+    }, 1000);
+    // Set initial time
+    setCurrentTime(new Date().toLocaleTimeString());
+    return () => clearInterval(timer); // Cleanup interval on component unmount
+  }, []);
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background text-foreground border-b-2 border-border shadow-md">
@@ -41,8 +52,19 @@ export default function TopNavbar() {
               <span className="hidden sm:inline">{item.label}</span>
             </Link>
           ))}
+          {currentTime !== null && (
+            <div className="ml-2 sm:ml-4 text-xs sm:text-sm font-mono text-muted-foreground hidden md:block">
+              {currentTime}
+            </div>
+          )}
         </div>
       </nav>
+      {/* Mobile time display, below main nav items for smaller screens if needed, or integrated differently */}
+      {currentTime !== null && (
+        <div className="md:hidden text-center text-xs font-mono text-muted-foreground pb-1 border-t border-border">
+          {currentTime}
+        </div>
+      )}
     </header>
   );
 }

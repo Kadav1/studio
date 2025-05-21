@@ -9,12 +9,21 @@ import { useEffect, useState } from 'react';
 export default function AppBodyClient({ children }: Readonly<{ children: React.ReactNode }>) {
   const pathname = usePathname();
   const [currentYear, setCurrentYear] = useState<number | null>(null);
+  // Time display has been moved to TopNavbar, remove from here if it was duplicated
+  // const [currentTime, setCurrentTime] = useState<string | null>(null);
 
   useEffect(() => {
     setCurrentYear(new Date().getFullYear());
+    // Time update logic is now in TopNavbar
+    // const timer = setInterval(() => {
+    //   setCurrentTime(new Date().toLocaleTimeString());
+    // }, 1000);
+    // // Set initial time
+    // setCurrentTime(new Date().toLocaleTimeString());
+    // return () => clearInterval(timer);
   }, []);
 
-  let themeSpecificClass = 'theme-projects'; // Default to projects theme
+  let themeSpecificClass = ''; // Default to projects theme
 
   if (pathname === '/') {
     themeSpecificClass = 'theme-home';
@@ -23,21 +32,26 @@ export default function AppBodyClient({ children }: Readonly<{ children: React.R
   }
   // Add more conditions if other top-level pages need specific themes
 
+  // Adjusted padding-top to account for taller navbar on mobile due to time display
   const bodyClassName = `antialiased bg-background text-foreground ${themeSpecificClass} flex flex-col min-h-screen`;
+  const mainContentPaddingTop = "pt-24 md:pt-20"; // Increased mobile top padding
 
   return (
     <body className={bodyClassName}>
       <TopNavbar />
-      <main className="flex-1 p-4 sm:p-8 md:p-12 overflow-y-auto pt-20 md:pt-24">
+      <main className={`flex-1 p-4 sm:p-8 md:p-12 overflow-y-auto ${mainContentPaddingTop}`}>
           {children}
       </main>
       <Toaster />
       <footer className="py-4 px-4 sm:px-8 md:px-12 text-center text-muted-foreground text-sm font-mono border-t-2 border-border">
-        {currentYear !== null ? (
-          <p>&copy; {currentYear} Alex Zewebrand. All rights reserved.</p>
-        ) : (
-          <p>&copy; Alex Zewebrand. All rights reserved.</p> 
-        )}
+        <div className="flex flex-col sm:flex-row justify-center items-center sm:space-x-4">
+            {currentYear !== null ? (
+              <p>&copy; {currentYear} Alex Zewebrand. All rights reserved.</p>
+            ) : (
+              <p>&copy; Alex Zewebrand. All rights reserved.</p> 
+            )}
+            {/* Time display removed from here as it's in TopNavbar now */}
+        </div>
       </footer>
     </body>
   );
