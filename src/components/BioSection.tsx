@@ -1,3 +1,4 @@
+
 import { generateBio } from '@/ai/flows/generate-bio';
 import { MdCodeOff } from 'react-icons/md'; // Material Design Icons
 import componentsConfig from '@/../components.json';
@@ -10,8 +11,29 @@ export default async function BioSection() {
   try {
     const bioResult = await generateBio({ keywords });
     bioText = bioResult.bio;
-  } catch (error) {
-    console.error("Failed to generate bio:", error);
+  } catch (error: any) {
+    let errorMessage = "An unknown error occurred during bio generation.";
+    if (error instanceof Error) {
+      errorMessage = error.message;
+      if (error.stack) {
+        errorMessage += `\nStack: ${error.stack}`;
+      }
+    } else if (typeof error === 'string') {
+      errorMessage = error;
+    } else if (error && typeof error === 'object') {
+      try {
+        const errorString = JSON.stringify(error);
+        if (errorString !== '{}') {
+          errorMessage = `Object: ${errorString}`;
+        } else if (error.toString && error.toString() !== '[object Object]') {
+          errorMessage = `Object.toString(): ${error.toString()}`;
+        }
+      } catch (e) {
+        // Fallback if stringify or toString fails
+        errorMessage = "Could not stringify or get a meaningful representation of the error object."
+      }
+    }
+    console.error("Failed to generate bio. Details:", errorMessage, "Raw error object:", error);
     bioText = "Hello! I'm a passionate creator exploring the intersection of design and technology. Welcome to my brutalist-inspired portfolio.";
     errorOccurred = true;
   }
@@ -32,7 +54,7 @@ export default async function BioSection() {
       </p>
       {errorOccurred && (
         <p className="mt-4 text-sm text-muted-foreground font-mono">
-          (AI bio generation failed, showing default.)
+          (AI bio generation failed, showing default. Please check server logs and ensure your GEMINI_API_KEY is correctly configured in the .env file.)
         </p>
       )}
       <p className="mt-8 text-lg md:text-xl leading-relaxed font-mono">
