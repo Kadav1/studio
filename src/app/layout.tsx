@@ -57,7 +57,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.className} ${robotoMono.className}`}>
+    <html lang="en" className={`${inter.className} ${robotoMono.className}`} suppressHydrationWarning>
       <AppBodyClient>{children}</AppBodyClient>
     </html>
   );
