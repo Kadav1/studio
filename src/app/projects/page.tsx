@@ -1,5 +1,6 @@
+
 import ProjectCard from '@/components/ProjectCard';
-import { projects } from '@/lib/projects';
+import { getProjects } from '@/lib/projects';
 import { MdGridView } from 'react-icons/md'; // Material Design Icons
 import type { Metadata } from 'next';
 
@@ -16,7 +17,9 @@ export const metadata: Metadata = {
   }
 };
 
-export default function ProjectsPage() {
+export default async function ProjectsPage() {
+  const allProjects = await getProjects();
+
   return (
     <div className="space-y-12">
       <header className="text-center md:text-left border-b-2 border-foreground pb-6 mb-10 md:mb-12">
@@ -31,11 +34,11 @@ export default function ProjectsPage() {
         </p>
       </header>
 
-      {projects.length === 0 ? (
+      {allProjects.length === 0 ? (
         <p className="text-center text-muted-foreground font-mono text-lg">No projects to display yet. Check back soon!</p>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-4 masonry">
-          {projects.map((project) => (
+          {allProjects.map((project) => (
             <ProjectCard key={project.slug} project={project} />
           ))}
         </div>

@@ -2,7 +2,7 @@
 import BioSection from '@/components/BioSection';
 import SocialLinks from '@/components/SocialLinks';
 import ProjectCard from '@/components/ProjectCard';
-import { projects } from '@/lib/projects';
+import { getProjects } from '@/lib/projects';
 import { MdGridView, MdArrowForward } from 'react-icons/md'; // Material Design Icons
 import Link from 'next/link';
 import type { Metadata } from 'next';
@@ -22,8 +22,9 @@ export const metadata: Metadata = {
   }
 };
 
-export default function HomePage() {
-  const featuredProjects = projects.slice(0, 3); // Show first 3 projects
+export default async function HomePage() {
+  const allProjects = await getProjects();
+  const featuredProjects = allProjects.slice(0, 3); // Show first 3 projects
 
   return (
     <div className="space-y-16 md:space-y-24 py-8">
@@ -54,7 +55,7 @@ export default function HomePage() {
               ))}
             </div>
 
-            {projects.length > 3 && (
+            {allProjects.length > 3 && (
               <div className="mt-10 md:mt-12 text-center">
                 <Link href="/projects" className="btn-brutalist group inline-flex items-center">
                   View All Projects
