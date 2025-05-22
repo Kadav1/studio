@@ -1,44 +1,32 @@
 import type { Project } from '@/types';
+import fs from 'fs/promises';
+import path from 'path';
 
-export const projects: Project[] = [
-  {
-    slug: 'project-alpha',
-    title: 'Project Alpha',
-    shortDescription: 'A revolutionary take on data visualization.',
-    description: 'Project Alpha redefines how users interact with complex datasets. Using cutting-edge D3.js and React, this platform offers an intuitive and visually striking interface for data exploration. The backend is powered by Node.js and PostgreSQL, ensuring scalability and performance.',
-    thumbnailUrl: 'https://placehold.co/600x400.png',
-    imageUrl: 'https://placehold.co/1200x800.png',
-    technologies: ['React', 'D3.js', 'Node.js', 'PostgreSQL'],
-  },
-  {
-    slug: 'project-beta',
-    title: 'Project Beta',
-    shortDescription: 'E-commerce platform with a brutalist twist.',
-    description: 'Project Beta is an e-commerce solution that challenges conventional design paradigms. Built with Next.js, Tailwind CSS, and Stripe for payments, it provides a seamless shopping experience wrapped in a bold, unforgettable brutalist aesthetic.',
-    thumbnailUrl: 'https://placehold.co/600x400.png',
-    imageUrl: 'https://placehold.co/1200x800.png',
-    technologies: ['Next.js', 'Tailwind CSS', 'Stripe', 'Firebase'],
-  },
-  {
-    slug: 'project-gamma',
-    title: 'Project Gamma',
-    shortDescription: 'Interactive art installation powered by AI.',
-    description: 'Project Gamma is an immersive art experience where generative AI creates evolving visuals in real-time. The installation uses Python for the AI backend, TouchDesigner for visuals, and OSC for communication between components.',
-    thumbnailUrl: 'https://placehold.co/600x400.png',
-    imageUrl: 'https://placehold.co/1200x800.png',
-    technologies: ['Python', 'TensorFlow', 'TouchDesigner', 'OSC'],
-  },
-  {
-    slug: 'project-delta',
-    title: 'Project Delta',
-    shortDescription: 'Mobile app for urban exploration.',
-    description: 'Project Delta encourages users to discover hidden gems in their city. Developed with React Native and integrated with Mapbox for mapping, it features user-generated content and offline capabilities for seamless exploration.',
-    thumbnailUrl: 'https://placehold.co/600x400.png',
-    imageUrl: 'https://placehold.co/1200x800.png',
-    technologies: ['React Native', 'Mapbox', 'Firebase Firestore', 'GraphQL'],
-  },
-];
+const projectsFilePath = path.join(process.cwd(), 'public', 'projects.json');
 
-export const getProjectBySlug = (slug: string): Project | undefined => {
-  return projects.find(project => project.slug === slug);
+async function readProjectsFile(): Promise<Project[]> {
+  try {
+    const jsonData = await fs.readFile(projectsFilePath, 'utf-8');
+    return JSON.parse(jsonData) as Project[];
+  } catch (error) {
+    console.error('Failed to read projects.json:', error);
+    if ((error as NodeJS.ErrnoException).code === 'ENOENT') {
+      // If the file doesn't exist, create it with an empty array
+      await fs.writeFile(projectsFilePath, JSON.stringify([], null, 2), 'utf-8');
+      return [];
+    }
+    // For other errors, re-throw or handle as appropriate
+    // For simplicity, we'll return an empty array for other read errors too,
+    // but in a real app, you might want more robust error handling.
+    return [];
+  }
+}
+
+export const getProjects = async (): Promise<Project[]> => {
+  return await readProjectsFile();
+};
+
+export const getProjectBySlug = async (slug: string): Promise<Project | undefined> => {
+  const allProjects = await getProjects();
+  return allProjects.find(project => project.slug === slug);
 };

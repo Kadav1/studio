@@ -1,4 +1,4 @@
-import { getProjectBySlug, projects as allProjects } from '@/lib/projects';
+import { getProjectBySlug, getProjects } from '@/lib/projects';
 import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
@@ -12,13 +12,14 @@ type ProjectDetailPageProps = {
 };
 
 export async function generateStaticParams() {
-  return allProjects.map((project) => ({
+  const projects = await getProjects();
+  return projects.map((project) => ({
     slug: project.slug,
   }));
 }
 
 export async function generateMetadata({ params }: ProjectDetailPageProps): Promise<Metadata> {
-  const project = getProjectBySlug(params.slug);
+  const project = await getProjectBySlug(params.slug);
   if (!project) {
     return { 
       title: 'Project Not Found',
@@ -29,7 +30,7 @@ export async function generateMetadata({ params }: ProjectDetailPageProps): Prom
     title: project.title, // Will be combined with title.template from layout
     description: project.shortDescription,
     openGraph: {
-      title: `${project.title} - BruteFolio`,
+      title: `${project.title} - måsstaden`,
       description: project.shortDescription,
       type: 'article',
       url: `https://alexzewebrand.com/projects/${project.slug}`, // Replace with your actual domain
@@ -44,15 +45,15 @@ export async function generateMetadata({ params }: ProjectDetailPageProps): Prom
     },
     twitter: {
       card: 'summary_large_image',
-      title: `${project.title} - BruteFolio`,
+      title: `${project.title} - måsstaden`,
       description: project.shortDescription,
       images: [project.imageUrl], // Assuming imageUrl is absolute or will be prefixed
     },
   };
 }
 
-export default function ProjectDetailPage({ params }: ProjectDetailPageProps) {
-  const project = getProjectBySlug(params.slug);
+export default async function ProjectDetailPage({ params }: ProjectDetailPageProps) {
+  const project = await getProjectBySlug(params.slug);
 
   if (!project) {
     notFound();
@@ -65,7 +66,7 @@ export default function ProjectDetailPage({ params }: ProjectDetailPageProps) {
           <MdArrowBack className="h-5 w-5 mr-2 group-hover:-translate-x-1 transition-transform" aria-hidden="true" />
           Back to Projects
         </Link>
-        <h1 className="text-4xl sm:text-5xl md:text-7xl font-black uppercase tracking-tighter break-words">
+        <h1 className="text-4xl sm:text-5xl md:text-7xl font-black uppercase tracking-tighter break-words font-heading">
           {project.title}
         </h1>
       </header>
@@ -84,7 +85,7 @@ export default function ProjectDetailPage({ params }: ProjectDetailPageProps) {
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
         <div className="md:col-span-2">
-          <h2 className="text-3xl md:text-4xl font-bold uppercase tracking-tight mb-4 border-b-2 border-accent pb-2">
+          <h2 className="text-3xl md:text-4xl font-bold uppercase tracking-tight mb-4 border-b-2 border-accent pb-2 font-heading">
             Description
           </h2>
           <p className="text-base md:text-lg leading-relaxed font-mono whitespace-pre-line">
@@ -92,7 +93,7 @@ export default function ProjectDetailPage({ params }: ProjectDetailPageProps) {
           </p>
         </div>
         <div>
-          <h2 className="text-3xl md:text-4xl font-bold uppercase tracking-tight mb-4 border-b-2 border-accent pb-2">
+          <h2 className="text-3xl md:text-4xl font-bold uppercase tracking-tight mb-4 border-b-2 border-accent pb-2 font-heading">
             Tech Stack
           </h2>
           <ul className="space-y-2">
