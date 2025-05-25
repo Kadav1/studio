@@ -11,7 +11,7 @@ export default async function BioSection() {
   try {
     const bioResult = await generateBio({ keywords });
     bioText = bioResult.bio;
-  } catch (error: any) {
+  } catch (error: unknown) {
     let errorMessage = "An unknown error occurred during bio generation.";
     if (error instanceof Error) {
       errorMessage = error.message;
@@ -28,7 +28,7 @@ export default async function BioSection() {
         } else if (error.toString && error.toString() !== '[object Object]') {
           errorMessage = `Object.toString(): ${error.toString()}`;
         }
-      } catch (e) {
+      } catch (_ignored) {
         // Fallback if stringify or toString fails
         errorMessage = "Could not stringify or get a meaningful representation of the error object."
       }
@@ -46,7 +46,7 @@ export default async function BioSection() {
       <div className="flex items-center mb-6">
         <MdCodeOff className="h-12 w-12 text-accent mr-4" aria-hidden="true" />
         <h2 id="about-me-heading" className="text-4xl md:text-6xl font-black uppercase tracking-tighter">
-          About Me
+          Ab<span className="text-accent">Ø</span>ut Me
         </h2>
       </div>
       <p className="text-lg md:text-xl leading-relaxed font-mono">
@@ -54,7 +54,7 @@ export default async function BioSection() {
       </p>
       {errorOccurred && (
         <p className="mt-4 text-sm text-muted-foreground font-mono">
-          (AI bio generation failed, showing default. Please check server logs and ensure your GEMINI_API_KEY is correctly configured in the .env file.)
+          (AI bio generation failed, showing default. Please ensure your GEMINI_API_KEY is correctly configured. For local development, check the .env file. For deployed environments, verify the API key is set in your hosting provider's settings. You may need to restart your server after changes.)
         </p>
       )}
       <p className="mt-8 text-lg md:text-xl leading-relaxed font-mono">
