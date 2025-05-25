@@ -41,7 +41,7 @@ export default async function HomePage() {
               <div className="flex flex-col md:flex-row items-center justify-center md:justify-start">
                 <MdGridView className="h-10 w-10 md:h-12 md:w-12 text-accent mr-0 md:mr-4 mb-2 md:mb-0" aria-hidden="true" />
                 <h2 id="featured-projects-heading" className="text-4xl md:text-5xl font-black uppercase tracking-tighter">
-                  Featured Projects
+                  Featured Pr<span className="text-accent">Ø</span>ject
                 </h2>
               </div>
               <p className="mt-3 md:mt-4 text-base md:text-lg text-muted-foreground font-mono text-center md:text-left">
@@ -55,10 +55,14 @@ export default async function HomePage() {
               ))}
             </div>
 
-            {allProjects.length > 3 && (
+            {allProjects.length > featuredProjects.length && (
               <div className="mt-10 md:mt-12 text-center">
                 <Link href="/projects" className="btn-brutalist group inline-flex items-center">
-                  View All Projects
+                  View All Pr
+                  <span className="text-accent group-hover:text-[hsl(var(--accent-projects-values))]">
+                    Ø
+                  </span>
+                  jects
                   <MdArrowForward className="h-5 w-5 ml-2 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
                 </Link>
               </div>

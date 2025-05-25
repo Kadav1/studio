@@ -18,17 +18,30 @@ export default function ProjectCard({ project }: ProjectCardProps) {
             fill
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             className="object-cover group-hover:scale-105 transition-transform duration-300"
-            data-ai-hint="abstract technology"
+            data-ai-hint={project.dataAiHint || "abstract technology"}
           />
         </div>
         <h3 className="text-2xl md:text-3xl font-black uppercase tracking-tight mb-2 group-hover:text-accent transition-colors">
-          {project.title}
+          {project.title.split('').map((char, index) =>
+            char.toLowerCase() === 'o' ? (
+              <span key={index} className="text-accent group-hover:text-[hsl(var(--accent-projects-values))]">
+                Ø
+              </span>
+            ) : (
+              char
+            )
+          )}
         </h3>
         <p className="text-sm md:text-base text-muted-foreground font-mono mb-3 line-clamp-2">
           {project.shortDescription}
         </p>
-        <div className="flex items-center text-accent font-bold uppercase text-sm tracking-wider">
-          View Project <MdArrowOutward className="h-5 w-5 ml-1 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+        <div className="flex items-center text-accent font-bold uppercase text-sm tracking-wider group-hover:text-[hsl(var(--accent-projects-values))]">
+          View Pr
+          <span className="text-accent group-hover:text-[hsl(var(--accent-projects-values))]">
+            Ø
+          </span>
+          ject{' '}
+          <MdArrowOutward className="h-5 w-5 ml-1 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform group-hover:text-[hsl(var(--accent-projects-values))]" />
         </div>
       </div>
     </Link>
