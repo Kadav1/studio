@@ -10,14 +10,19 @@ export default async function BioSection() {
 
   try {
     const bioResult = await generateBio({ keywords });
+    if (!bioResult || !bioResult.bio) {
+      throw new Error('AI response did not contain a bio.');
+    }
     bioText = bioResult.bio;
   } catch (error: unknown) {
     let errorMessage = "An unknown error occurred during bio generation.";
     if (error instanceof Error) {
       errorMessage = error.message;
-      if (error.stack) {
-        errorMessage += `\nStack: ${error.stack}`;
-      }
+      // Avoid logging full stack in production browser console for security/verbosity,
+      // but server logs would have it.
+      // if (error.stack) {
+      //   errorMessage += `\nStack: ${error.stack}`;
+      // }
     } else if (typeof error === 'string') {
       errorMessage = error;
     } else if (error && typeof error === 'object') {
@@ -54,7 +59,7 @@ export default async function BioSection() {
       </p>
       {errorOccurred && (
         <p className="mt-4 text-sm text-muted-foreground font-mono">
-          (AI bio generation failed, showing default. Please ensure your GEMINI_API_KEY is correctly configured. For local development, check the .env file. For deployed environments, verify the API key is set in your hosting provider's settings. You may need to restart your server after changes.)
+          (AI bio generation failed, showing default. **IMPORTANT FOR LIVE SITE:** The `GEMINI_API_KEY` environment variable is likely missing or incorrect in your hosting provider's settings. This must be configured on your deployment platform. For local testing, check your `.env` file. You may need to redeploy after setting the API key.)
         </p>
       )}
       <p className="mt-8 text-lg md:text-xl leading-relaxed font-mono">
