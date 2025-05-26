@@ -1,17 +1,22 @@
 
-import { getProjectBySlug, getProjects } from '@/lib/projects';
+import type { Metadata, ResolvingMetadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { MdArrowBack, MdLocalOffer } from 'react-icons/md'; // Material Design Icons
-import type { Metadata, ResolvingMetadata } from 'next';
+import { MdArrowBack, MdLocalOffer } from 'react-icons/md'; 
 import type { Project } from '@/types';
+import { getProjectBySlug, getProjects } from '@/lib/projects';
 
 interface PageParams {
   slug: string;
 }
 
-interface PageProps {
+interface GenerateMetadataProps {
+  params: PageParams;
+  searchParams?: { [key: string]: string | string[] | undefined };
+}
+
+interface ProjectDetailPageProps {
   params: PageParams;
   searchParams?: { [key: string]: string | string[] | undefined };
 }
@@ -27,13 +32,11 @@ export async function generateStaticParams(): Promise<PageParams[]> {
 }
 
 export async function generateMetadata(
-  { params, searchParams }: PageProps,
+  { params, searchParams }: GenerateMetadataProps,
   parent: ResolvingMetadata
 ): Promise<Metadata> {
   const project = await getProjectBySlug(params.slug);
-
-  // Optionally use parent metadata
-  // const previousImages = (await parent).openGraph?.images || []
+  const _parentResult = await parent; // "Use" parent to satisfy linters if not merging
 
   if (!project) {
     return { 
@@ -42,33 +45,32 @@ export async function generateMetadata(
     };
   }
   return {
-    title: project.title, // Will be combined with title.template from layout
+    title: project.title, 
     description: project.shortDescription,
     openGraph: {
       title: `${project.title} - måsstaden`,
       description: project.shortDescription,
       type: 'article',
-      url: `https://alexzewebrand.com/projects/${project.slug}`, // Replace with your actual domain
+      url: `https://alexzewebrand.com/projects/${project.slug}`, 
       images: [
         {
-          url: project.imageUrl, // Assuming imageUrl is absolute or will be prefixed
-          width: 1200, // Adjust if your images have different dimensions
-          height: 800, // Adjust if your images have different dimensions
+          url: project.imageUrl, 
+          width: 1200, 
+          height: 800, 
           alt: `Showcase image for ${project.title}`,
         },
-        // ...previousImages, // Example of merging parent images
       ],
     },
     twitter: {
       card: 'summary_large_image',
       title: `${project.title} - måsstaden`,
       description: project.shortDescription,
-      images: [project.imageUrl], // Assuming imageUrl is absolute or will be prefixed
+      images: [project.imageUrl], 
     },
   };
 }
 
-export default async function ProjectDetailPage({ params }: PageProps) {
+export default async function ProjectDetailPage({ params, searchParams }: ProjectDetailPageProps) {
   const project = await getProjectBySlug(params.slug);
 
   if (!project) {
@@ -99,7 +101,12 @@ export default async function ProjectDetailPage({ params }: PageProps) {
         </h1>
       </header>
 
-      <div className="relative w-full aspect-[16/9] md:aspect-[2/1] border-2 border-foreground mb-8 md:mb-12 overflow-hidden shadow-[8px_8px_0px_0px_hsl(var(--foreground))] hover:shadow-[10px_10px_0px_0px_hsl(var(--foreground))] transition-shadow duration-200">
+      <div className="relative w-full aspect-[16/9] md:aspect-[2/1] border-2 border-foreground mb-8 md:mb-12 overflow-hidden 
+                     shadow-[4px_4px_0px_0px_hsl(var(--foreground))] 
+                     hover:shadow-[6px_6px_0px_0px_hsl(var(--foreground))] 
+                     md:shadow-[8px_8px_0px_0px_hsl(var(--foreground))] 
+                     md:hover:shadow-[10px_10px_0px_0px_hsl(var(--foreground))] 
+                     transition-shadow duration-200">
         <Image
           src={project.imageUrl}
           alt={`Showcase image for ${project.title}`}

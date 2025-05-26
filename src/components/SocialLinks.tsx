@@ -22,7 +22,11 @@ export default function SocialLinks() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label={social.ariaLabel}
-            className="p-3 border-2 border-foreground text-foreground hover:bg-accent hover:text-accent-foreground hover:border-accent transition-colors duration-150 shadow-brutalist-sm hover:shadow-brutalist-accent-sm"
+            className="p-2 md:p-3 border-2 border-foreground text-foreground 
+                       hover:bg-accent hover:text-accent-foreground hover:border-accent 
+                       transition-colors duration-150 
+                       shadow-brutalist-sm md:shadow-brutalist-md 
+                       hover:shadow-brutalist-accent-sm md:hover:shadow-brutalist-accent-md"
           >
             <social.icon className="h-6 w-6 md:h-8 md:w-8" />
           </Link>

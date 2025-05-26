@@ -18,25 +18,17 @@ export default async function BioSection() {
     let errorMessage = "An unknown error occurred during bio generation.";
     if (error instanceof Error) {
       errorMessage = error.message;
-      // Avoid logging full stack in production browser console for security/verbosity,
-      // but server logs would have it.
-      // if (error.stack) {
-      //   errorMessage += `\nStack: ${error.stack}`;
-      // }
     } else if (typeof error === 'string') {
       errorMessage = error;
-    } else if (error && typeof error === 'object') {
+    } else if (error && typeof error === 'object' && Object.keys(error).length > 0) {
       try {
         const errorString = JSON.stringify(error);
-        if (errorString !== '{}') {
-          errorMessage = `Object: ${errorString}`;
-        } else if (error.toString && error.toString() !== '[object Object]') {
-          errorMessage = `Object.toString(): ${error.toString()}`;
-        }
+        errorMessage = `Object: ${errorString}`;
       } catch (_ignored) {
-        // Fallback if stringify or toString fails
-        errorMessage = "Could not stringify or get a meaningful representation of the error object."
+        errorMessage = "Could not stringify the error object."
       }
+    } else if (error && typeof error === 'object' && error.toString && error.toString() !== '[object Object]') {
+        errorMessage = `Error: ${error.toString()}`;
     }
     console.error("Failed to generate bio. Details:", errorMessage, "Raw error object:", error);
     bioText = "Hello! I'm a passionate creator exploring the intersection of design and technology. Welcome to my brutalist-inspired portfolio.";
@@ -46,7 +38,12 @@ export default async function BioSection() {
   return (
     <section
       aria-labelledby="about-me-heading"
-      className="py-16 md:py-24 border-2 border-foreground p-8 md:p-12 bg-card shadow-[8px_8px_0px_0px_hsl(var(--accent))] hover:shadow-[10px_10px_0px_0px_hsl(var(--accent))] transition-shadow duration-200"
+      className="py-16 md:py-24 border-2 border-foreground p-8 md:p-12 bg-card 
+                 shadow-[4px_4px_0px_0px_hsl(var(--accent))] 
+                 hover:shadow-[6px_6px_0px_0px_hsl(var(--accent))] 
+                 md:shadow-[8px_8px_0px_0px_hsl(var(--accent))] 
+                 md:hover:shadow-[10px_10px_0px_0px_hsl(var(--accent))] 
+                 transition-shadow duration-200"
     >
       <div className="flex items-center mb-6">
         <MdCodeOff className="h-12 w-12 text-accent mr-4" aria-hidden="true" />
@@ -59,7 +56,7 @@ export default async function BioSection() {
       </p>
       {errorOccurred && (
         <p className="mt-4 text-sm text-muted-foreground font-mono">
-          (AI bio generation failed, showing default. **IMPORTANT FOR LIVE SITE:** The `GEMINI_API_KEY` environment variable is likely missing or incorrect in your hosting provider's settings. This must be configured on your deployment platform. For local testing, check your `.env` file. You may need to redeploy after setting the API key.)
+          (AI bio generation failed, showing default. **IMPORTANT FOR LIVE SITE:** The `GEMINI_API_KEY` environment variable is likely missing or incorrect in your hosting provider's settings. This must be configured on your deployment platform. For local testing, check your `.env` file. You may need to restart your development server or redeploy after setting the API key.)
         </p>
       )}
       <p className="mt-8 text-lg md:text-xl leading-relaxed font-mono">
