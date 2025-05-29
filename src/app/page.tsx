@@ -24,7 +24,7 @@ export const metadata: Metadata = {
 
 export default async function HomePage() {
   const allProjects = await getProjects();
-  const featuredProjects = allProjects.slice(0, 4); // Show first 4 projects
+  const featuredProjects = allProjects.slice(0, 3); // Show first 3 projects
 
   return (
     <div className="space-y-16 md:space-y-24 py-8">
