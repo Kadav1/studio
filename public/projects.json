@@ -1,95 +1,38 @@
-
 [
   {
-    "slug": "portfolio-v1",
-    "title": "Portfolio V1",
-    "shortDescription": "My first portfolio website, built with HTML, CSS, and JavaScript. A humble beginning to my web development journey.",
-    "description": "This was my inaugural attempt at creating a personal portfolio. It featured a simple, clean design and showcased my early projects and skills. Built entirely with vanilla HTML, CSS, and JavaScript, it served as a great learning experience in front-end fundamentals and responsive design.",
+    "slug": "project-alpha",
+    "title": "Project Alpha",
+    "shortDescription": "A revolutionary take on data visualization.",
+    "description": "Project Alpha redefines how users interact with complex datasets. Using cutting-edge D3.js and React, this platform offers an intuitive and visually striking interface for data exploration. The backend is powered by Node.js and PostgreSQL, ensuring scalability and performance.",
     "thumbnailUrl": "https://placehold.co/600x400.png",
     "imageUrl": "https://placehold.co/1200x800.png",
-    "technologies": [
-      "HTML",
-      "CSS",
-      "JavaScript"
-    ],
-    "dataAiHint": "web design"
+    "technologies": ["React", "D3.js", "Node.js", "PostgreSQL"]
   },
   {
-    "slug": "ecoleta",
-    "title": "Ecoleta - Recycling Points",
-    "shortDescription": "A platform connecting people with waste collection points, developed during Next Level Week by Rocketseat.",
-    "description": "Ecoleta is an application designed to facilitate the connection between individuals or companies seeking to dispose of waste and collection points that handle specific types of residues. The project was part of Rocketseat's Next Level Week, an intensive coding event. It includes a web interface for registering collection points and a mobile app for users to find them. The backend API handles data management and geolocation features.",
+    "slug": "project-beta",
+    "title": "Project Beta",
+    "shortDescription": "E-commerce platform with a brutalist twist.",
+    "description": "Project Beta is an e-commerce solution that challenges conventional design paradigms. Built with Next.js, Tailwind CSS, and Stripe for payments, it provides a seamless shopping experience wrapped in a bold, unforgettable brutalist aesthetic.",
     "thumbnailUrl": "https://placehold.co/600x400.png",
     "imageUrl": "https://placehold.co/1200x800.png",
-    "technologies": [
-      "Node.js",
-      "React",
-      "React Native",
-      "TypeScript",
-      "SQLite"
-    ],
-    "dataAiHint": "recycling app"
+    "technologies": ["Next.js", "Tailwind CSS", "Stripe", "Firebase"]
   },
   {
-    "slug": "devfinances",
-    "title": "DevFinances - Personal Finance Control",
-    "shortDescription": "A personal finance control application using HTML, CSS, and JavaScript, focusing on local storage for data persistence.",
-    "description": "DevFinances is a simple yet effective web application for managing personal finances. Users can add income and expense transactions, view their balance, and see a summary of their financial activity. All data is stored locally in the browser using Local Storage, making it a client-side only application. The project was a great exercise in DOM manipulation and basic financial logic implementation.",
+    "slug": "project-gamma",
+    "title": "Project Gamma",
+    "shortDescription": "Interactive art installation powered by AI.",
+    "description": "Project Gamma is an immersive art experience where generative AI creates evolving visuals in real-time. The installation uses Python for the AI backend, TouchDesigner for visuals, and OSC for communication between components.",
     "thumbnailUrl": "https://placehold.co/600x400.png",
     "imageUrl": "https://placehold.co/1200x800.png",
-    "technologies": [
-      "HTML",
-      "CSS",
-      "JavaScript",
-      "Local Storage"
-    ],
-    "dataAiHint": "finance app"
+    "technologies": ["Python", "TensorFlow", "TouchDesigner", "OSC"]
   },
   {
-    "slug": "proffy",
-    "title": "Proffy - Online Teaching Platform",
-    "shortDescription": "A platform connecting students with teachers for online classes. Built with Node.js, React, and React Native.",
-    "description": "Proffy is an online study platform that aims to connect students with teachers. Teachers can register their subjects, availability, and hourly rates, while students can search for available teachers based on subject, day, and time. The project includes a web interface for teachers and students, and a mobile app for students. It was developed during a Next Level Week event by Rocketseat, focusing on full-stack development with modern JavaScript technologies.",
+    "slug": "project-delta",
+    "title": "Project Delta",
+    "shortDescription": "Mobile app for urban exploration.",
+    "description": "Project Delta encourages users to discover hidden gems in their city. Developed with React Native and integrated with Mapbox for mapping, it features user-generated content and offline capabilities for seamless exploration.",
     "thumbnailUrl": "https://placehold.co/600x400.png",
     "imageUrl": "https://placehold.co/1200x800.png",
-    "technologies": [
-      "Node.js",
-      "React",
-      "React Native",
-      "TypeScript",
-      "SQLite"
-    ],
-    "dataAiHint": "online teaching"
-  },
-  {
-    "slug": "letmeask",
-    "title": "Letmeask - Live Q&A Platform",
-    "shortDescription": "A real-time Q&A platform for content creators to interact with their audience during live streams. Built with React and Firebase.",
-    "description": "Letmeask allows content creators to create Q&A rooms where their audience can ask questions. The creator can then highlight questions, mark them as answered, or delete them. It features real-time updates using Firebase Realtime Database and authentication with Google. This project was part of a Rocketseat event, focusing on React and Firebase integration for building interactive applications.",
-    "thumbnailUrl": "https://placehold.co/600x400.png",
-    "imageUrl": "https://placehold.co/1200x800.png",
-    "technologies": [
-      "React",
-      "TypeScript",
-      "Firebase",
-      "SCSS"
-    ],
-    "dataAiHint": "live qa"
-  },
-  {
-    "slug": "be-the-hero",
-    "title": "Be The Hero - Connecting NGOs with Donors",
-    "shortDescription": "An application that connects NGOs with people willing to help financially with specific cases. Developed with Node.js, React, and React Native.",
-    "description": "Be The Hero is a platform designed to help NGOs publicize cases that need financial support and connect them with potential donors. NGOs can register cases detailing the issue and the amount needed, and donors can choose which cases to support. The project includes a web interface for NGOs and a mobile app for donors. It was developed during a Rocketseat event, emphasizing full-stack JavaScript development and social impact.",
-    "thumbnailUrl": "https://placehold.co/600x400.png",
-    "imageUrl": "https://placehold.co/1200x800.png",
-    "technologies": [
-      "Node.js",
-      "React",
-      "React Native",
-      "SQLite",
-      "Express"
-    ],
-    "dataAiHint": "charity app"
+    "technologies": ["React Native", "Mapbox", "Firebase Firestore", "GraphQL"]
   }
 ]
