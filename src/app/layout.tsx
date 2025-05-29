@@ -15,6 +15,7 @@ const robotoMono = Roboto_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://alexzewebrand.com'), // Ensures correct OG URL resolution
   title: {
     template: '%s | Alex Zewebrand',
     default: 'Alex Zewebrand - A måsstaden Portfolio',
@@ -28,13 +29,13 @@ export const metadata: Metadata = {
     description: 'A unique brutalist-inspired portfolio showcasing innovative web projects.',
     type: 'website',
     locale: 'en_EU',
-    url: 'https://alexzewebrand.com', // Replace with your actual domain
+    url: 'https://alexzewebrand.com', 
     siteName: 'Alex Zewebrand',
-    // The opengraph-image.tsx will generate the default image
+    // The opengraph-image.tsx will generate the default image for the site
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Alex Zewebrand - A måsstaden Portfolio', // Consider making this consistent with OG
+    title: 'Alex Zewebrand - A måsstaden Portfolio', 
     description: 'A unique brutalist-inspired portfolio showcasing innovative web projects.',
     // Twitter images can also be specified here or rely on OG image
   },
@@ -62,3 +63,4 @@ export default function RootLayout({
     </html>
   );
 }
+
