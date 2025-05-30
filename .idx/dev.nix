@@ -14,7 +14,7 @@
   # a firebase.json file is written into the user's directory
   services.firebase.emulators = {
     detect = true;
-    projectId = "demo-app";
+    projectId = "msstaden-studio";
     services = ["auth" "firestore"];
   };
   idx = {
@@ -29,6 +29,13 @@
       "mhutchie.git-graph"
       "pinage404.git-extension-pack"
       "PKief.material-icon-theme"
+      "christian-kohler.npm-intellisense"
+      "donjayamanne.githistory"
+      "dsznajder.es7-react-js-snippets"
+      "ecmel.vscode-html-css"
+      "eg2.vscode-npm-script"
+      "imgildev.vscode-tailwindcss-snippets"
+      "viijay-kr.react-ts-css"
     ];
     workspace = {
       onCreate = {
