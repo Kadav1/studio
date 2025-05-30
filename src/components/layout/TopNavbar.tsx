@@ -30,7 +30,7 @@ export default function TopNavbar() {
         {/* Left: Logo */}
         <Link href="/" className="flex items-center gap-3 group" aria-label="måsstaden - Go to homepage">
           <MdWidgets className="h-8 w-8 text-accent group-hover:animate-pulse" />
-          <h1 className="text-2xl font-black uppercase tracking-tighter text-foreground group-hover:text-accent transition-colors">
+          <h1 className="text-2xl font-black uppercase tracking-tighter text-foreground group-hover:text-accent transition-colors unsettled-text-hover">
             Alex Zewebrand
           </h1>
         </Link>

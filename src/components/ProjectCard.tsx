@@ -10,7 +10,7 @@ interface ProjectCardProps {
 export default function ProjectCard({ project }: ProjectCardProps) {
   return (
     <Link href={`/projects/${project.slug}`} className="block group">
-      <div className="border-2 border-foreground bg-card p-4 hover:bg-secondary transition-colors duration-150 hover:shadow-[6px_6px_0px_0px_hsl(var(--accent))]">
+      <div className="border-2 border-foreground bg-card p-4 group-hover:bg-secondary transition-all duration-200 ease-out group-hover:shadow-[8px_8px_0px_0px_hsl(var(--accent))] group-hover:-translate-y-1">
         <div className="aspect-[3/2] relative mb-4 border-2 border-foreground overflow-hidden">
           <Image
             src={project.thumbnailUrl}
