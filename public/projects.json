@@ -2,8 +2,8 @@
   {
     "slug": "project-alpha",
     "title": "Project Alpha",
-    "shortDescription": "A revolutionary take on data visualization.",
-    "description": "Project Alpha redefines how users interact with complex datasets. Using cutting-edge D3.js and React, this platform offers an intuitive and visually striking interface for data exploration. The backend is powered by Node.js and PostgreSQL, ensuring scalability and performance.",
+    "shortDescription": "Lorem ipsum dolor sit amet consectetur adipiscing elit.",
+    "description": "In incidunt dolorem aut magnam libero cum eveniet error qui unde earum id rerum praesentium et quibusdam reprehenderit in aperiam impedit. Eos atque incidunt non tempore expedita At sapiente consectetur id labore galisum.",
     "thumbnailUrl": "https://placehold.co/600x400.png",
     "imageUrl": "https://placehold.co/1200x800.png",
     "technologies": ["React", "D3.js", "Node.js", "PostgreSQL"]
@@ -11,8 +11,8 @@
   {
     "slug": "project-beta",
     "title": "Project Beta",
-    "shortDescription": "E-commerce platform with a brutalist twist.",
-    "description": "Project Beta is an e-commerce solution that challenges conventional design paradigms. Built with Next.js, Tailwind CSS, and Stripe for payments, it provides a seamless shopping experience wrapped in a bold, unforgettable brutalist aesthetic.",
+    "shortDescription": "Lorem ipsum dolor sit amet, consectetuer",
+    "description": "In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus.",
     "thumbnailUrl": "https://placehold.co/600x400.png",
     "imageUrl": "https://placehold.co/1200x800.png",
     "technologies": ["Next.js", "Tailwind CSS", "Stripe", "Firebase"]
@@ -20,8 +20,8 @@
   {
     "slug": "project-gamma",
     "title": "Project Gamma",
-    "shortDescription": "Interactive art installation powered by AI.",
-    "description": "Project Gamma is an immersive art experience where generative AI creates evolving visuals in real-time. The installation uses Python for the AI backend, TouchDesigner for visuals, and OSC for communication between components.",
+    "shortDescription": "Lorem ipsum dolor sit amet, consectetuer",
+    "description": "Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.",
     "thumbnailUrl": "https://placehold.co/600x400.png",
     "imageUrl": "https://placehold.co/1200x800.png",
     "technologies": ["Python", "TensorFlow", "TouchDesigner", "OSC"]
@@ -29,8 +29,8 @@
   {
     "slug": "project-delta",
     "title": "Project Delta",
-    "shortDescription": "Mobile app for urban exploration.",
-    "description": "Project Delta encourages users to discover hidden gems in their city. Developed with React Native and integrated with Mapbox for mapping, it features user-generated content and offline capabilities for seamless exploration.",
+    "shortDescription": "Lorem ipsum dolor sit amet, consectetuer",
+    "description": "Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus.",
     "thumbnailUrl": "https://placehold.co/600x400.png",
     "imageUrl": "https://placehold.co/1200x800.png",
     "technologies": ["React Native", "Mapbox", "Firebase Firestore", "GraphQL"]
