@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { MdHome, MdWork, MdWidgets } from 'react-icons/md'; // Material Design Icons
 import { cn } from '@/lib/utils';
-import { useEffect, useState } from 'react';
+// Removed useState and useEffect as currentTime is no longer needed
 
 const navItems = [
   { href: '/', label: 'Home', icon: MdHome, ariaLabel: 'Go to Home page' },
@@ -13,30 +13,21 @@ const navItems = [
 
 export default function TopNavbar() {
   const pathname = usePathname();
-  const [currentTime, setCurrentTime] = useState<string | null>(null);
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentTime(new Date().toLocaleTimeString());
-    }, 1000);
-    // Set initial time
-    setCurrentTime(new Date().toLocaleTimeString());
-    return () => clearInterval(timer); // Cleanup interval on component unmount
-  }, []);
+  // Removed currentTime state and useEffect for clock
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background text-foreground border-b-2 border-border shadow-md">
-      <nav className="relative container mx-auto flex items-center justify-between h-16 px-4 sm:px-6 lg:px-8" aria-label="Main navigation">
-        {/* Left: Logo */}
-        <Link href="/" className="flex items-center gap-3 group" aria-label="måsstaden - Go to homepage">
-          <MdWidgets className="h-8 w-8 text-accent group-hover:animate-pulse" />
-          <h1 className="text-2xl font-black uppercase tracking-tighter text-foreground group-hover:text-accent transition-colors unsettled-text-hover">
-            Alex Zewebrand
-          </h1>
-        </Link>
+      <nav className="container mx-auto flex items-center justify-start h-16 px-4 sm:px-6 lg:px-8" aria-label="Main navigation">
+        {/* Left: Logo and Nav Links */}
+        <div className="flex items-center gap-x-4 sm:gap-x-6">
+          <Link href="/" className="flex items-center gap-3 group" aria-label="måsstaden - Go to homepage">
+            <MdWidgets className="h-8 w-8 text-accent group-hover:animate-pulse" />
+            <h1 className="text-2xl font-black uppercase tracking-tighter text-foreground group-hover:text-accent transition-colors unsettled-text-hover">
+              Alex Zewebrand
+            </h1>
+          </Link>
 
-        {/* Center: Nav Links (Absolutely Positioned) */}
-        <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2">
+          {/* Nav Links (Moved here) */}
           <div className="flex items-center space-x-1 sm:space-x-2">
             {navItems.map((item) => (
               <Link
@@ -59,20 +50,10 @@ export default function TopNavbar() {
           </div>
         </div>
 
-        {/* Right: Time Display (Desktop) */}
-        {currentTime !== null && (
-          <div className="text-xs sm:text-sm font-mono text-muted-foreground hidden md:block">
-            {currentTime}
-          </div>
-        )}
+        {/* Centered nav links div and Right: Time Display (Desktop) have been removed */}
       </nav>
       
-      {/* Mobile time display, below main nav items */}
-      {currentTime !== null && (
-        <div className="md:hidden text-center text-xs font-mono text-muted-foreground pb-1 border-t border-border">
-          {currentTime}
-        </div>
-      )}
+      {/* Mobile time display has been removed */}
     </header>
   );
 }

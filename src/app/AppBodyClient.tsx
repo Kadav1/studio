@@ -23,9 +23,9 @@ export default function AppBodyClient({ children }: Readonly<{ children: React.R
   }
   // Add more conditions if other top-level pages need specific themes
 
-  // Adjusted padding-top to account for taller navbar on mobile due to time display
   const bodyClassName = `antialiased bg-background text-foreground ${themeSpecificClass} flex flex-col min-h-screen`;
-  const mainContentPaddingTop = "pt-24 md:pt-20"; // Increased mobile top padding
+  // Adjusted mainContentPaddingTop as mobile navbar is no longer taller due to time display
+  const mainContentPaddingTop = "pt-20"; 
 
   return (
     <body className={bodyClassName}>
