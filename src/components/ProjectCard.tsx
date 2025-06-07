@@ -2,7 +2,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import type { Project } from '@/types';
-// MdArrowOutward import is no longer needed
 import BorderTrailCard from '@/components/ui/BorderTrailCard';
 import { cn } from '@/lib/utils';
 
@@ -13,7 +12,15 @@ interface ProjectCardProps {
 export default function ProjectCard({ project }: ProjectCardProps) {
   return (
     <BorderTrailCard
-      className="block group h-full transition-all duration-200 ease-out group-hover:shadow-[8px_8px_0px_0px_hsl(var(--accent))] group-hover:-translate-y-1"
+      className={cn(
+        "block group h-full transition-shadow duration-200",
+        "shadow-[4px_4px_0px_0px_hsl(var(--accent))]",
+        "hover:shadow-[6px_6px_0px_0px_hsl(var(--accent))]",
+        "sm:shadow-[6px_6px_0px_0px_hsl(var(--accent))]",
+        "sm:hover:shadow-[8px_8px_0px_0px_hsl(var(--accent))]",
+        "md:shadow-[8px_8px_0px_0px_hsl(var(--accent))]",
+        "md:hover:shadow-[10px_10px_0px_0px_hsl(var(--accent))]"
+      )}
     >
       <Link
         href={`/projects/${project.slug}`}
@@ -46,9 +53,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
         <p className="text-sm md:text-base text-muted-foreground font-mono mb-3 line-clamp-2 flex-grow">
           {project.shortDescription}
         </p>
-        {/* "View Project" text and icon removed from here. The mt-auto spacing is also removed as description is now flex-grow */}
       </Link>
     </BorderTrailCard>
   );
 }
-
