@@ -1,90 +1,94 @@
 
+import { getProjectBySlug, getProjects } from '@/lib/projects';
 import type { Metadata, ResolvingMetadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { MdArrowBack, MdLocalOffer } from 'react-icons/md'; 
-import type { Project } from '@/types';
-import { getProjectBySlug, getProjects } from '@/lib/projects';
+import { MdArrowBack, MdLayers } from 'react-icons/md';
 
-interface PageParams {
-  slug: string;
-}
+type Props = {
+  params: { slug: string };
+};
 
-interface GenerateMetadataProps {
-  params: PageParams;
-  searchParams?: { [key: string]: string | string[] | undefined };
-}
-
-interface ProjectDetailPageProps {
-  params: PageParams;
-  searchParams?: { [key: string]: string | string[] | undefined };
-}
-
-export async function generateStaticParams(): Promise<PageParams[]> {
+// Generate static paths for all projects at build time
+export async function generateStaticParams() {
   const projects = await getProjects();
   if (!Array.isArray(projects)) {
     return [];
   }
-  return projects.map((project: Project) => ({
+  return projects.map((project) => ({
     slug: project.slug,
   }));
 }
 
 export async function generateMetadata(
-  { params, searchParams }: GenerateMetadataProps,
+  { params }: Props,
   parent: ResolvingMetadata
 ): Promise<Metadata> {
   const project = await getProjectBySlug(params.slug);
-  const _parentResult = await parent; // "Use" parent to satisfy linters if not merging
 
   if (!project) {
-    return { 
-      title: 'Project Not Found',
+    // Optionally, you could return specific metadata for a "not found" project page
+    // or rely on the notFound() call in the page component to handle it.
+    // For now, we'll let notFound() in the page component handle the 404.
+    // If generateStaticParams is exhaustive, this path might not be hit during build for known slugs.
+    return {
+      title: 'Project Not Found | Alex Zewebrand',
       description: 'The project you are looking for does not exist.',
     };
   }
+
   return {
-    title: project.title, 
+    title: `${project.title} | Project Details - Alex Zewebrand`,
     description: project.shortDescription,
     openGraph: {
-      title: `${project.title} - måsstaden`,
+      title: `${project.title} - Project Details`,
       description: project.shortDescription,
-      type: 'article',
-      url: `https://alexzewebrand.com/projects/${project.slug}`, 
       images: [
         {
-          url: project.imageUrl, 
-          width: 1200, 
-          height: 800, 
-          alt: `Showcase image for ${project.title}`,
+          url: project.imageUrl,
+          width: 1200, // Standard OG image width
+          height: 630, // Standard OG image height
+          alt: project.title,
         },
       ],
+      type: 'article', // More specific for project pages
     },
     twitter: {
       card: 'summary_large_image',
-      title: `${project.title} - måsstaden`,
+      title: `${project.title} - Project Details`,
       description: project.shortDescription,
-      images: [project.imageUrl], 
+      images: [project.imageUrl],
     },
   };
 }
 
-export default async function ProjectDetailPage({ params, searchParams }: ProjectDetailPageProps) {
+export default async function ProjectDetailPage({ params }: Props) {
   const project = await getProjectBySlug(params.slug);
 
   if (!project) {
-    notFound();
+    notFound(); // This is crucial. If project is not found, call notFound().
   }
 
+  // Ensure project.technologies is an array before mapping.
+  // If project.technologies is undefined, null, or not an array, default to an empty array.
+  const technologies =
+    project.technologies && Array.isArray(project.technologies)
+      ? project.technologies
+      : [];
+
   return (
-    <div className="min-h-[calc(100vh-8rem)] flex flex-col">
-      <header className="mb-8 md:mb-12">
-        <Link href="/" className="inline-flex items-center btn-brutalist-sm mb-8 group">
-          <MdArrowBack className="h-5 w-5 mr-2 group-hover:-translate-x-1 transition-transform" aria-hidden="true" />
-          Back to Home
-        </Link>
-        <h1 className="text-4xl sm:text-5xl md:text-7xl font-black uppercase tracking-tighter break-words">
+    <div className="container mx-auto px-4 py-8 md:py-12">
+      <Link
+        href="/"
+        className="btn-brutalist-sm mb-8 inline-flex items-center group"
+      >
+        <MdArrowBack className="mr-2 h-5 w-5 transition-transform group-hover:-translate-x-1" />
+        Back t<span className="text-accent group-hover:text-[hsl(var(--accent-projects-values))]">Ø</span> H<span className="text-accent group-hover:text-[hsl(var(--accent-projects-values))]">Ø</span>me
+      </Link>
+
+      <article className="bg-card border-2 border-foreground p-6 md:p-8 shadow-[8px_8px_0px_0px_hsl(var(--accent))]">
+        <h1 className="text-4xl md:text-6xl font-black uppercase tracking-tighter mb-6 md:mb-8">
           {project.title.split('').map((char, index) =>
             char.toLowerCase() === 'o' ? (
               <span key={index} className="text-accent">
@@ -95,48 +99,45 @@ export default async function ProjectDetailPage({ params, searchParams }: Projec
             )
           )}
         </h1>
-      </header>
 
-      <div className="relative w-full aspect-[16/9] md:aspect-[2/1] border-2 border-foreground mb-8 md:mb-12 overflow-hidden 
-                     shadow-[4px_4px_0px_0px_hsl(var(--foreground))] 
-                     hover:shadow-[6px_6px_0px_0px_hsl(var(--foreground))] 
-                     md:shadow-[8px_8px_0px_0px_hsl(var(--foreground))] 
-                     md:hover:shadow-[10px_10px_0px_0px_hsl(var(--foreground))] 
-                     transition-shadow duration-200">
-        <Image
-          src={project.imageUrl}
-          alt={`Showcase image for ${project.title}`}
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover"
-          data-ai-hint={project.dataAiHint || "project main image"}
-        />
-      </div>
+        <div className="aspect-[16/9] relative mb-6 md:mb-8 border-2 border-foreground overflow-hidden">
+          <Image
+            src={project.imageUrl}
+            alt={`Showcase image for ${project.title}`}
+            fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1000px"
+            className="object-cover"
+            priority // Prioritize loading LCP image for better performance
+            data-ai-hint={project.dataAiHint || "project showcase"}
+          />
+        </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
-        <div className="md:col-span-2">
-          <h2 className="text-3xl md:text-4xl font-bold uppercase tracking-tight mb-4 border-b-2 border-accent pb-2">
-            Description
-          </h2>
-          <p className="text-base md:text-lg leading-relaxed font-mono whitespace-pre-line">
-            {project.description}
-          </p>
+        {/* Using prose for better default styling of long-form text */}
+        <div className="prose prose-invert prose-lg max-w-none mb-6 md:mb-8 font-mono text-foreground">
+          <p>{project.description}</p>
         </div>
-        <div>
-          <h2 className="text-3xl md:text-4xl font-bold uppercase tracking-tight mb-4 border-b-2 border-accent pb-2">
-            Tech Stack
-          </h2>
-          <ul className="space-y-2">
-            {project.technologies.map((tech) => (
-              <li key={tech} className="flex items-center font-mono text-base md:text-lg">
-                <MdLocalOffer className="h-5 w-5 mr-3 text-accent" aria-hidden="true" />
-                {tech}
-              </li>
-            ))}
-          </ul>
-        </div>
-      </div>
+
+        {technologies.length > 0 && (
+          <section aria-labelledby="technologies-heading">
+            <div className="flex items-center mb-4">
+              <MdLayers className="h-6 w-6 text-accent mr-3" aria-hidden="true" />
+              <h2 id="technologies-heading" className="text-2xl md:text-3xl font-black uppercase tracking-tight">
+                Tech Stack
+              </h2>
+            </div>
+            <ul className="flex flex-wrap gap-2">
+              {technologies.map((tech) => (
+                <li
+                  key={tech}
+                  className="bg-background border-2 border-foreground text-foreground px-3 py-1 text-sm md:text-base font-mono"
+                >
+                  {tech}
+                </li>
+              ))}
+            </ul>
+          </section>
+        )}
+      </article>
     </div>
   );
 }
