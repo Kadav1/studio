@@ -5,8 +5,7 @@
     "shortDescription": "Lorem ipsum dolor sit amet consectetur adipiscing elit.",
     "description": "In incidunt dolorem aut magnam libero cum eveniet error qui unde earum id rerum praesentium et quibusdam reprehenderit in aperiam impedit. Eos atque incidunt non tempore expedita At sapiente consectetur id labore galisum.",
     "thumbnailUrl": "https://placehold.co/600x400.png",
-    "imageUrl": "https://placehold.co/1200x800.png",
-    "technologies": ["React", "D3.js", "Node.js", "PostgreSQL"]
+    "imageUrl": "https://placehold.co/1200x800.png"
   },
   {
     "slug": "project-beta",
@@ -14,8 +13,7 @@
     "shortDescription": "Lorem ipsum dolor sit amet, consectetuer",
     "description": "In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus.",
     "thumbnailUrl": "https://placehold.co/600x400.png",
-    "imageUrl": "https://placehold.co/1200x800.png",
-    "technologies": ["Next.js", "Tailwind CSS", "Stripe", "Firebase"]
+    "imageUrl": "https://placehold.co/1200x800.png"
   },
   {
     "slug": "project-gamma",
@@ -23,8 +21,7 @@
     "shortDescription": "Lorem ipsum dolor sit amet, consectetuer",
     "description": "Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.",
     "thumbnailUrl": "https://placehold.co/600x400.png",
-    "imageUrl": "https://placehold.co/1200x800.png",
-    "technologies": ["Python", "TensorFlow", "TouchDesigner", "OSC"]
+    "imageUrl": "https://placehold.co/1200x800.png"
   },
   {
     "slug": "project-delta",
@@ -32,7 +29,22 @@
     "shortDescription": "Lorem ipsum dolor sit amet, consectetuer",
     "description": "Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus.",
     "thumbnailUrl": "https://placehold.co/600x400.png",
-    "imageUrl": "https://placehold.co/1200x800.png",
-    "technologies": ["React Native", "Mapbox", "Firebase Firestore", "GraphQL"]
+    "imageUrl": "https://placehold.co/1200x800.png"
+  },
+  {
+    "slug": "project-charlie",
+    "title": "Project Charlie",
+    "shortDescription": "Lorem ipsum dolor sit amet, consectetuer",
+    "description": "Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus.",
+    "thumbnailUrl": "https://placehold.co/600x400.png",
+    "imageUrl": "https://placehold.co/1200x800.png"
+  },
+  {
+    "slug": "project-Lima",
+    "title": "Project Lima",
+    "shortDescription": "Lorem ipsum dolor sit amet, consectetuer",
+    "description": "Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus.",
+    "thumbnailUrl": "https://placehold.co/600x400.png",
+    "imageUrl": "https://placehold.co/1200x800.png"
   }
 ]

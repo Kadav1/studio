@@ -5,8 +5,8 @@ import { useState } from 'react';
 import type { Project } from '@/types';
 import ProjectCard from '@/components/ProjectCard';
 
-const INITIAL_PROJECT_COUNT = 3; // Number of projects to show initially (changed from 6)
-const PROJECTS_PER_LOAD = 3;     // Number of projects to load each time "Load More" is clicked
+const INITIAL_PROJECT_COUNT = 6; // Number of projects to show initially (changed from 6)
+const PROJECTS_PER_LOAD = 4;     // Number of projects to load each time "Load More" is clicked
 
 interface FeaturedProjectsClientProps {
   allProjects: Project[];
