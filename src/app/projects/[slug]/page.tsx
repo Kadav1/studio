@@ -80,13 +80,9 @@ export default async function ProjectDetailPage({ params, searchParams }: Projec
   return (
     <div className="min-h-[calc(100vh-8rem)] flex flex-col">
       <header className="mb-8 md:mb-12">
-        <Link href="/projects" className="inline-flex items-center btn-brutalist-sm mb-8 group">
+        <Link href="/" className="inline-flex items-center btn-brutalist-sm mb-8 group">
           <MdArrowBack className="h-5 w-5 mr-2 group-hover:-translate-x-1 transition-transform" aria-hidden="true" />
-          Back to Pr
-          <span className="text-accent group-hover:text-[hsl(var(--accent-projects-values))]">
-            Ø
-          </span>
-          jects
+          Back to Home
         </Link>
         <h1 className="text-4xl sm:text-5xl md:text-7xl font-black uppercase tracking-tighter break-words">
           {project.title.split('').map((char, index) =>

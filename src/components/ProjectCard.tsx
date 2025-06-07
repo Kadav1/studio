@@ -1,7 +1,10 @@
+
 import Link from 'next/link';
 import Image from 'next/image';
 import type { Project } from '@/types';
-import { MdArrowOutward } from 'react-icons/md'; // Material Design Icons
+import { MdArrowOutward } from 'react-icons/md'; 
+import BorderTrailCard from '@/components/ui/BorderTrailCard';
+import { cn } from '@/lib/utils';
 
 interface ProjectCardProps {
   project: Project;
@@ -9,8 +12,17 @@ interface ProjectCardProps {
 
 export default function ProjectCard({ project }: ProjectCardProps) {
   return (
-    <Link href={`/projects/${project.slug}`} className="block group">
-      <div className="border-2 border-foreground bg-card p-4 group-hover:bg-secondary transition-all duration-200 ease-out group-hover:shadow-[8px_8px_0px_0px_hsl(var(--accent))] group-hover:-translate-y-1">
+    <BorderTrailCard 
+      className="block group h-full transition-all duration-200 ease-out group-hover:shadow-[8px_8px_0px_0px_hsl(var(--accent))] group-hover:-translate-y-1"
+    >
+      <Link 
+        href={`/projects/${project.slug}`} 
+        className={cn(
+          "flex flex-col h-full",
+          "bg-card p-4 rounded-[var(--radius)]" // Content background, padding, and rounding
+                                               // Since var(--radius) is 0rem, rounded-none is effectively applied.
+        )}
+      >
         <div className="aspect-[3/2] relative mb-4 border-2 border-foreground overflow-hidden">
           <Image
             src={project.thumbnailUrl}
@@ -35,7 +47,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
         <p className="text-sm md:text-base text-muted-foreground font-mono mb-3 line-clamp-2">
           {project.shortDescription}
         </p>
-        <div className="flex items-center text-accent font-bold uppercase text-sm tracking-wider group-hover:text-[hsl(var(--accent-projects-values))]">
+        <div className="mt-auto flex items-center text-accent font-bold uppercase text-sm tracking-wider group-hover:text-[hsl(var(--accent-projects-values))]">
           View Pr
           <span className="text-accent group-hover:text-[hsl(var(--accent-projects-values))]">
             Ø
@@ -43,7 +55,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
           ject{' '}
           <MdArrowOutward className="h-5 w-5 ml-1 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform group-hover:text-[hsl(var(--accent-projects-values))]" />
         </div>
-      </div>
-    </Link>
+      </Link>
+    </BorderTrailCard>
   );
 }

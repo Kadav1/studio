@@ -2,12 +2,12 @@
 "use client";
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { MdHome, MdWork, MdWidgets } from 'react-icons/md'; // Material Design Icons
+import { MdHome, MdWidgets } from 'react-icons/md'; // MdWork removed
 import { cn } from '@/lib/utils';
 
 const navItems = [
   { href: '/', label: 'Home', icon: MdHome, ariaLabel: 'Go to Home page' },
-  { href: '/projects', label: 'Projects', icon: MdWork, ariaLabel: 'Go to Projects page' },
+  // { href: '/projects', label: 'Projects', icon: MdWork, ariaLabel: 'Go to Projects page' }, // Removed Projects link
 ];
 
 export default function TopNavbar() {
