@@ -1,10 +1,10 @@
 
 import BioSection from '@/components/BioSection';
 import SocialLinks from '@/components/SocialLinks';
-import ProjectCard from '@/components/ProjectCard'; // Changed from BorderTrailCard
 import { getProjects } from '@/lib/projects';
-import { MdGridView } from 'react-icons/md'; 
+import { MdGridView } from 'react-icons/md';
 import type { Metadata } from 'next';
+import FeaturedProjectsClient from '@/components/FeaturedProjectsClient'; // Import the new client component
 
 export const metadata: Metadata = {
   title: 'Home - Alex Zewebrand',
@@ -21,7 +21,6 @@ export const metadata: Metadata = {
 
 export default async function HomePage() {
   const allProjects = await getProjects();
-  const featuredProjects = allProjects.slice(0, 4); 
 
   return (
     <div className="space-y-16 md:space-y-24 py-8">
@@ -29,7 +28,7 @@ export default async function HomePage() {
         <BioSection />
       </div>
 
-      {featuredProjects.length > 0 && (
+      {allProjects.length > 0 && (
         <section aria-labelledby="featured-projects-heading">
           <div className="container mx-auto px-4">
             <header className="mb-10 md:mb-12 text-center md:text-left border-b-2 border-foreground pb-6">
@@ -43,12 +42,8 @@ export default async function HomePage() {
                 A selection of my recent work and explorations.
               </p>
             </header>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-              {featuredProjects.map((project) => (
-                <ProjectCard key={project.slug} project={project} />
-              ))}
-            </div>
+            {/* Use the client component to display projects and handle "Load More" */}
+            <FeaturedProjectsClient allProjects={allProjects} />
           </div>
         </section>
       )}

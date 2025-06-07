@@ -2,7 +2,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import type { Project } from '@/types';
-import { MdArrowOutward } from 'react-icons/md'; 
+// MdArrowOutward import is no longer needed
 import BorderTrailCard from '@/components/ui/BorderTrailCard';
 import { cn } from '@/lib/utils';
 
@@ -12,15 +12,14 @@ interface ProjectCardProps {
 
 export default function ProjectCard({ project }: ProjectCardProps) {
   return (
-    <BorderTrailCard 
+    <BorderTrailCard
       className="block group h-full transition-all duration-200 ease-out group-hover:shadow-[8px_8px_0px_0px_hsl(var(--accent))] group-hover:-translate-y-1"
     >
-      <Link 
-        href={`/projects/${project.slug}`} 
+      <Link
+        href={`/projects/${project.slug}`}
         className={cn(
           "flex flex-col h-full",
           "bg-card p-4 rounded-[var(--radius)]" // Content background, padding, and rounding
-                                               // Since var(--radius) is 0rem, rounded-none is effectively applied.
         )}
       >
         <div className="aspect-[3/2] relative mb-4 border-2 border-foreground overflow-hidden">
@@ -44,18 +43,12 @@ export default function ProjectCard({ project }: ProjectCardProps) {
             )
           )}
         </h3>
-        <p className="text-sm md:text-base text-muted-foreground font-mono mb-3 line-clamp-2">
+        <p className="text-sm md:text-base text-muted-foreground font-mono mb-3 line-clamp-2 flex-grow">
           {project.shortDescription}
         </p>
-        <div className="mt-auto flex items-center text-accent font-bold uppercase text-sm tracking-wider group-hover:text-[hsl(var(--accent-projects-values))]">
-          View Pr
-          <span className="text-accent group-hover:text-[hsl(var(--accent-projects-values))]">
-            Ø
-          </span>
-          ject{' '}
-          <MdArrowOutward className="h-5 w-5 ml-1 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform group-hover:text-[hsl(var(--accent-projects-values))]" />
-        </div>
+        {/* "View Project" text and icon removed from here. The mt-auto spacing is also removed as description is now flex-grow */}
       </Link>
     </BorderTrailCard>
   );
 }
+
