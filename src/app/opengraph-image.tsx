@@ -1,3 +1,4 @@
+
 import { ImageResponse } from 'next/og';
 
 export const runtime = 'edge';
@@ -11,8 +12,8 @@ export const contentType = 'image/png';
 
 export default async function OpenGraphImage() {
   const siteName = "måsstaden";
-  // Description from src/app/layout.tsx openGraph.description
-  const siteDescription = "A unique brutalist-inspired portfolio showcasing innovative web projects.";
+  // Description consistent with src/app/layout.tsx openGraph.description
+  const siteDescription = "Explore måsstaden, a brutalist-inspired portfolio by Alex Zewebrand featuring innovative web projects.";
 
   return new ImageResponse(
     (
@@ -33,7 +34,7 @@ export default async function OpenGraphImage() {
           style={{
             fontSize: '96px',
             fontWeight: 900, // Corresponds to font-black
-            color: '#ceda4a', // Theme accent color
+            color: '#ceda4a', // Theme accent color (using projects accent as a default for OG)
             marginBottom: '40px',
             textAlign: 'center',
             textTransform: 'uppercase', // Matches logo style in TopNavbar
