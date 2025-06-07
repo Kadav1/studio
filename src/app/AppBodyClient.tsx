@@ -36,11 +36,44 @@ export default function AppBodyClient({ children }: Readonly<{ children: React.R
       <Toaster />
       <footer className="py-4 px-4 sm:px-8 md:px-12 text-center text-muted-foreground text-sm font-mono border-t-2 border-border">
         <div className="flex flex-col sm:flex-row justify-center items-center sm:space-x-4">
-            {currentYear !== null ? (
-              <p>&copy; {currentYear} Alex Zewebrand. All rights reserved.</p>
-            ) : (
-              <p>&copy; Alex Zewebrand. All rights reserved.</p> 
-            )}
+           <p>
+            <a 
+              href="https://github.com/Kadav1/studio" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="hover:text-accent transition-colors"
+            >
+              måsstaden
+            </a>
+            {' © '}{currentYear || '2025'}{' by '}
+            <a 
+              href="https://creativecommons.org" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="hover:text-accent transition-colors"
+            >
+              Alexander Zewebrand
+            </a>
+            {' is licensed under '}
+            <a 
+              href="https://creativecommons.org/licenses/by/4.0/" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="hover:text-accent transition-colors"
+            >
+              Creative Commons Attribution 4.0 International
+            </a>
+            <img
+              src="https://mirrors.creativecommons.org/presskit/icons/cc.svg"
+              alt="Creative Commons License icon"
+              style={{ display: 'inline-block', verticalAlign: 'middle', maxWidth: '1em', maxHeight: '1em', marginLeft: '.2em' }}
+            />
+            <img
+              src="https://mirrors.creativecommons.org/presskit/icons/by.svg"
+              alt="Attribution icon"
+              style={{ display: 'inline-block', verticalAlign: 'middle', maxWidth: '1em', maxHeight: '1em', marginLeft: '.2em' }}
+            />
+          </p>
         </div>
       </footer>
     </body>

@@ -103,9 +103,7 @@ Contributions, issues, and feature requests are welcome! Feel free to check the 
 
 ## 📄 License
 
-
-    måsstaden  © 2025 by Alexander Zewebrand is licensed under CC BY 4.0. To view a copy of this license, visit https://creativecommons.org/licenses/by/4.0/
-
+[måsstaden](https://github.com/Kadav1/studio) © 2025 by [Alexander Zewebrand](https://creativecommons.org) is licensed under <a href="https://creativecommons.org/licenses/by/4.0/" rel="license noopener noreferrer" style="display:inline-block;" target="_blank">Creative Commons Attribution 4.0 International<img src="https://mirrors.creativecommons.org/presskit/icons/cc.svg" style="height:1em;margin-left:3px;vertical-align:text-bottom;width:1em" alt="Creative Commons icon"><img src="https://mirrors.creativecommons.org/presskit/icons/by.svg" style="height:1em;margin-left:3px;vertical-align:text-bottom;width:1em" alt="Attribution icon"></a>.
 
 ---
 
