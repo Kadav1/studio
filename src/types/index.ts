@@ -7,4 +7,5 @@ export type Project = {
   thumbnailUrl: string;
   imageUrl: string;
   technologies: string[];
+  dataAiHint?: string; // Added optional property for AI hints
 };
