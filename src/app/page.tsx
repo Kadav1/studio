@@ -31,14 +31,14 @@ export default async function HomePage() {
       {allProjects.length > 0 && (
         <section aria-labelledby="featured-projects-heading">
           <div className="container mx-auto px-4">
-            <header className="mb-10 md:mb-12 text-center md:text-left border-b-2 border-foreground pb-6">
+            <header className="mb-10 md:mb-12 text-center border-b-2 border-foreground pb-6">
               <div className="flex flex-col md:flex-row items-center justify-center">
                 <MdGridView className="h-10 w-10 md:h-12 md:w-12 text-accent mr-0 md:mr-4 mb-2 md:mb-0" aria-hidden="true" />
                 <h2 id="featured-projects-heading" className="text-4xl md:text-5xl font-black uppercase tracking-tighter">
                   Featured Pr<span className="text-accent">Ø</span>jects
                 </h2>
               </div>
-              <p className="mt-3 md:mt-4 text-base md:text-lg text-muted-foreground font-mono text-center md:text-left">
+              <p className="mt-3 md:mt-4 text-base md:text-lg text-muted-foreground font-mono text-center">
                 A selection of my recent work and explorations.
               </p>
             </header>
