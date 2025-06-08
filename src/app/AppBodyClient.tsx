@@ -38,7 +38,7 @@ export default function AppBodyClient({ children }: Readonly<{ children: React.R
         <div className="flex flex-col sm:flex-row justify-center items-center sm:space-x-4">
            <p>
             <a 
-              href="https://github.com/Kadav1/studio" 
+              href="https://github.com/Kadav1/masstaden" 
               target="_blank" 
               rel="noopener noreferrer" 
               className="hover:text-accent transition-colors"
