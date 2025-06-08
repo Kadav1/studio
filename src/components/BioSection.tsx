@@ -2,10 +2,11 @@
 import { generateBio } from '@/ai/flows/generate-bio';
 import { MdCodeOff } from 'react-icons/md'; // Material Design Icons
 import componentsConfig from '@/../components.json';
+import { Skeleton } from '@/components/ui/skeleton';
 
 export default async function BioSection() {
   const keywords = componentsConfig.bioSection?.keywords || "innovative designer, brutalist enthusiast, graffiti connoisseur";
-  let bioText = "Loading bio...";
+  let bioText = ""; // Initialize empty, will be filled by AI or error handling
   let errorOccurred = false;
   let userVisibleErrorHint: string | null = null;
 
@@ -17,6 +18,9 @@ export default async function BioSection() {
     bioText = bioResult.bio;
   } catch (error: unknown) {
     let consoleErrorMessage = "An unknown error occurred during bio generation.";
+    // Default bio text is no longer set here, as skeletons will be shown.
+    // errorOccurred will trigger skeleton display.
+    errorOccurred = true;
 
     if (error instanceof Error) {
       consoleErrorMessage = error.message;
@@ -46,8 +50,7 @@ export default async function BioSection() {
     }
 
     console.error("Failed to generate bio. Details:", consoleErrorMessage, "Raw error object:", error);
-    bioText = "Hello! I'm a passionate creator exploring the intersection of design and technology. Welcome to my brutalist-inspired portfolio.";
-    errorOccurred = true;
+    // bioText is intentionally not set to a default string here if errorOccurred, skeletons will show.
   }
 
   return (
@@ -65,14 +68,25 @@ export default async function BioSection() {
           Ab<span className="text-accent">Ø</span>ut Me
         </h2>
       </div>
-      <p className="text-lg md:text-xl leading-relaxed font-mono">
-        {bioText}
-      </p>
+
+      {errorOccurred ? (
+        <div className="space-y-3 my-4"> {/* Added my-4 for spacing similar to a paragraph */}
+          <Skeleton className="h-5 w-full" />
+          <Skeleton className="h-5 w-11/12" />
+          <Skeleton className="h-5 w-4/5" />
+        </div>
+      ) : (
+        <p className="text-lg md:text-xl leading-relaxed font-mono">
+          {bioText}
+        </p>
+      )}
+
       {errorOccurred && userVisibleErrorHint && (
         <p className="mt-4 text-sm text-muted-foreground font-mono">
           {userVisibleErrorHint}
         </p>
       )}
+      
       <p className="mt-8 text-lg md:text-xl leading-relaxed font-mono">
         This portfolio showcases my journey and experiments in the world of digital creation, with a strong inclination towards bold, unconventional aesthetics. Explore my projects to see how I blend functionality with a stark, impactful design philosophy.
       </p>
