@@ -28,36 +28,36 @@ export async function generateMetadata(
   const project = await getProjectBySlug(params.slug);
 
   if (!project) {
-    // Optionally, you could return specific metadata for a "not found" project page
-    // or rely on the notFound() call in the page component to handle it.
-    // For now, we'll let notFound() in the page component handle the 404.
-    // If generateStaticParams is exhaustive, this path might not be hit during build for known slugs.
     return {
       title: 'Project Not Found | Alex Zewebrand',
       description: 'The project you are looking for does not exist.',
     };
   }
 
+  const pageTitle = typeof project.title === 'string' && project.title ? project.title : 'Project Details';
+  const pageDescription = typeof project.shortDescription === 'string' && project.shortDescription ? project.shortDescription : 'View details about this project.';
+
+
   return {
-    title: `${project.title} | Project Details - Alex Zewebrand`,
-    description: project.shortDescription,
+    title: `${pageTitle} | Project Details - Alex Zewebrand`,
+    description: pageDescription,
     openGraph: {
-      title: `${project.title} - Project Details`,
-      description: project.shortDescription,
+      title: `${pageTitle} - Project Details`,
+      description: pageDescription,
       images: [
         {
           url: project.imageUrl,
           width: 1200, // Standard OG image width
           height: 630, // Standard OG image height
-          alt: project.title,
+          alt: pageTitle,
         },
       ],
       type: 'article', // More specific for project pages
     },
     twitter: {
       card: 'summary_large_image',
-      title: `${project.title} - Project Details`,
-      description: project.shortDescription,
+      title: `${pageTitle} - Project Details`,
+      description: pageDescription,
       images: [project.imageUrl],
     },
   };
@@ -67,15 +67,15 @@ export default async function ProjectDetailPage({ params }: Props) {
   const project = await getProjectBySlug(params.slug);
 
   if (!project) {
-    notFound(); // This is crucial. If project is not found, call notFound().
+    notFound(); 
   }
 
-  // Ensure project.technologies is an array before mapping.
-  // If project.technologies is undefined, null, or not an array, default to an empty array.
   const technologies =
     project.technologies && Array.isArray(project.technologies)
       ? project.technologies
       : [];
+      
+  const displayTitle = typeof project.title === 'string' && project.title ? project.title : 'Untitled PrØject';
 
   return (
     <div className="container mx-auto px-4 py-8 md:py-12">
@@ -89,7 +89,7 @@ export default async function ProjectDetailPage({ params }: Props) {
 
       <article className="bg-card border-2 border-foreground p-6 md:p-8 shadow-[8px_8px_0px_0px_hsl(var(--accent))]">
         <h1 className="text-4xl md:text-6xl font-black uppercase tracking-tighter mb-6 md:mb-8">
-          {project.title.split('').map((char, index) =>
+          {displayTitle.split('').map((char, index) =>
             char.toLowerCase() === 'o' ? (
               <span key={index} className="text-accent">
                 Ø
@@ -103,7 +103,7 @@ export default async function ProjectDetailPage({ params }: Props) {
         <div className="aspect-[16/9] relative mb-6 md:mb-8 border-2 border-foreground overflow-hidden">
           <Image
             src={project.imageUrl}
-            alt={`Showcase image for ${project.title}`}
+            alt={`Showcase image for ${displayTitle}`}
             fill
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1000px"
             className="object-cover"
@@ -112,9 +112,9 @@ export default async function ProjectDetailPage({ params }: Props) {
           />
         </div>
 
-        {/* Using prose for better default styling of long-form text */}
+        
         <div className="prose prose-invert prose-lg max-w-none mb-6 md:mb-8 font-mono text-foreground">
-          <p>{project.description}</p>
+          <p>{typeof project.description === 'string' ? project.description : 'No description available.'}</p>
         </div>
 
         {technologies.length > 0 && (

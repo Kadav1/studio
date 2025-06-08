@@ -10,6 +10,8 @@ interface ProjectCardProps {
 }
 
 export default function ProjectCard({ project }: ProjectCardProps) {
+  const displayTitle = typeof project.title === 'string' && project.title ? project.title : 'Untitled PrØject';
+
   return (
     <BorderTrailCard
       className={cn(
@@ -32,7 +34,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
         <div className="aspect-[3/2] relative mb-4 border-2 border-foreground overflow-hidden">
           <Image
             src={project.thumbnailUrl}
-            alt={project.title}
+            alt={project.title || 'Project image'} // Add fallback for alt text
             fill
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             className="object-cover group-hover:scale-105 transition-transform duration-300"
@@ -40,7 +42,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
           />
         </div>
         <h3 className="text-2xl md:text-3xl font-black uppercase tracking-tight mb-2 group-hover:text-accent transition-colors">
-          {project.title.split('').map((char, index) =>
+          {displayTitle.split('').map((char, index) =>
             char.toLowerCase() === 'o' ? (
               <span key={index} className="text-accent group-hover:text-[hsl(var(--accent-projects-values))]">
                 Ø
