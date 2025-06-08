@@ -36,6 +36,8 @@
       "eg2.vscode-npm-script"
       "imgildev.vscode-tailwindcss-snippets"
       "viijay-kr.react-ts-css"
+      "redhat.java"
+      "redhat.vscode-yaml"
     ];
     workspace = {
       onCreate = {
