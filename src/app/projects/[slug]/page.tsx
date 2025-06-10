@@ -4,13 +4,13 @@ import type { Metadata, ResolvingMetadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { MdArrowBack, MdLayers } from 'react-icons/md';
+import { MdArrowBack, MdLayers, MdChevronLeft, MdChevronRight } from 'react-icons/md';
+import type { Project } from '@/types';
 
 type Props = {
   params: { slug: string };
 };
 
-// Generate static paths for all projects at build time
 export async function generateStaticParams() {
   const projects = await getProjects();
   if (!Array.isArray(projects)) {
@@ -47,12 +47,12 @@ export async function generateMetadata(
       images: [
         {
           url: project.imageUrl,
-          width: 1200, // Standard OG image width
-          height: 630, // Standard OG image height
+          width: 1200,
+          height: 630,
           alt: pageTitle,
         },
       ],
-      type: 'article', // More specific for project pages
+      type: 'article',
     },
     twitter: {
       card: 'summary_large_image',
@@ -70,12 +70,28 @@ export default async function ProjectDetailPage({ params }: Props) {
     notFound(); 
   }
 
+  const allProjects = await getProjects();
+  let previousProject: Project | null = null;
+  let nextProject: Project | null = null;
+
+  if (Array.isArray(allProjects) && allProjects.length > 0) {
+    const currentIndex = allProjects.findIndex(p => p.slug === project.slug);
+    if (currentIndex > 0) {
+      previousProject = allProjects[currentIndex - 1];
+    }
+    if (currentIndex !== -1 && currentIndex < allProjects.length - 1) {
+      nextProject = allProjects[currentIndex + 1];
+    }
+  }
+
   const technologies =
     project.technologies && Array.isArray(project.technologies)
       ? project.technologies
       : [];
       
   const displayTitle = typeof project.title === 'string' && project.title ? project.title : 'Untitled PrØject';
+  const projectDescription = typeof project.description === 'string' ? project.description : 'No detailed description available for this prØject.';
+  const projectImageAlt = `Showcase image for ${displayTitle}`;
 
   return (
     <div className="container mx-auto px-4 py-8 md:py-12">
@@ -103,22 +119,22 @@ export default async function ProjectDetailPage({ params }: Props) {
         <div className="aspect-[16/9] relative mb-6 md:mb-8 border-2 border-foreground overflow-hidden">
           <Image
             src={project.imageUrl}
-            alt={`Showcase image for ${displayTitle}`}
+            alt={projectImageAlt}
             fill
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 1000px"
             className="object-cover"
-            priority // Prioritize loading LCP image for better performance
+            priority
             data-ai-hint={project.dataAiHint || "project showcase"}
           />
         </div>
 
         
         <div className="prose prose-invert prose-lg max-w-none mb-6 md:mb-8 font-mono text-foreground">
-          <p>{typeof project.description === 'string' ? project.description : 'No description available.'}</p>
+          <p>{projectDescription}</p>
         </div>
 
         {technologies.length > 0 && (
-          <section aria-labelledby="technologies-heading">
+          <section aria-labelledby="technologies-heading" className="mb-8 md:mb-10">
             <div className="flex items-center mb-4">
               <MdLayers className="h-6 w-6 text-accent mr-3" aria-hidden="true" />
               <h2 id="technologies-heading" className="text-2xl md:text-3xl font-black uppercase tracking-tight">
@@ -138,6 +154,31 @@ export default async function ProjectDetailPage({ params }: Props) {
           </section>
         )}
       </article>
+
+      {(previousProject || nextProject) && (
+        <nav className="mt-10 md:mt-12 flex flex-col sm:flex-row justify-between items-center gap-4" aria-label="Project navigation">
+          {previousProject ? (
+            <Link
+              href={`/projects/${previousProject.slug}`}
+              className="btn-brutalist-sm inline-flex items-center group order-1 sm:order-none"
+              aria-label={`Previous project: ${previousProject.title}`}
+            >
+              <MdChevronLeft className="mr-2 h-5 w-5 transition-transform group-hover:-translate-x-1" />
+              Prev Pr<span className="text-accent group-hover:text-[hsl(var(--accent-projects-values))]">Ø</span>ject
+            </Link>
+          ) : <div className="order-1 sm:order-none"></div> /* Placeholder for spacing */}
+          {nextProject ? (
+            <Link
+              href={`/projects/${nextProject.slug}`}
+              className="btn-brutalist-sm inline-flex items-center group order-2 sm:order-none"
+              aria-label={`Next project: ${nextProject.title}`}
+            >
+              Next Pr<span className="text-accent group-hover:text-[hsl(var(--accent-projects-values))]">Ø</span>ject
+              <MdChevronRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+            </Link>
+          ) : <div className="order-2 sm:order-none"></div> /* Placeholder for spacing */}
+        </nav>
+      )}
     </div>
   );
 }

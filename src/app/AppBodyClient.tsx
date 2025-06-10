@@ -4,6 +4,7 @@
 import { usePathname } from 'next/navigation';
 import TopNavbar from '@/components/layout/TopNavbar';
 import { Toaster } from "@/components/ui/toaster";
+import ScrollToTopButton from '@/components/ScrollToTopButton'; // Import the new component
 import { useEffect, useState } from 'react';
 
 export default function AppBodyClient({ children }: Readonly<{ children: React.ReactNode }>) {
@@ -14,17 +15,17 @@ export default function AppBodyClient({ children }: Readonly<{ children: React.R
     setCurrentYear(new Date().getFullYear());
   }, []);
 
-  let themeSpecificClass = ''; // Default to projects theme
+  let themeSpecificClass = ''; 
 
   if (pathname === '/') {
     themeSpecificClass = 'theme-home';
   } else if (pathname.startsWith('/projects')) {
     themeSpecificClass = 'theme-projects';
   }
-  // Add more conditions if other top-level pages need specific themes
+  
 
   const bodyClassName = `antialiased bg-background text-foreground ${themeSpecificClass} flex flex-col min-h-screen`;
-  // Adjusted mainContentPaddingTop as mobile navbar is no longer taller due to time display
+  
   const mainContentPaddingTop = "pt-20"; 
 
   return (
@@ -34,7 +35,8 @@ export default function AppBodyClient({ children }: Readonly<{ children: React.R
           {children}
       </main>
       <Toaster />
-      <footer className="py-4 px-4 sm:px-8 md:px-12 text-center text-muted-foreground text-sm font-mono border-t-2 border-border">
+      <ScrollToTopButton /> {/* Add the scroll to top button here */}
+      <footer className="py-4 px-4 sm:px-8 md:px-12 text-center text-muted-foreground text-sm font-mono border-t-2 border-border print:hidden">
         <div className="flex flex-col sm:flex-row justify-center items-center sm:space-x-4">
            <p>
             <a 
@@ -60,19 +62,20 @@ export default function AppBodyClient({ children }: Readonly<{ children: React.R
               target="_blank" 
               rel="noopener noreferrer" 
               className="hover:text-accent transition-colors"
+              style={{display: 'inline-block'}}
             >
               Creative Commons Attribution 4.0 International
+              <img
+                src="https://mirrors.creativecommons.org/presskit/icons/cc.svg"
+                alt="Creative Commons License icon"
+                style={{ display: 'inline-block', verticalAlign: 'middle', height: '1em', marginLeft: '3px', width: '1em' }}
+              />
+              <img
+                src="https://mirrors.creativecommons.org/presskit/icons/by.svg"
+                alt="Attribution icon"
+                style={{ display: 'inline-block', verticalAlign: 'middle', height: '1em', marginLeft: '3px', width: '1em' }}
+              />
             </a>
-            <img
-              src="https://mirrors.creativecommons.org/presskit/icons/cc.svg"
-              alt="Creative Commons License icon"
-              style={{ display: 'inline-block', verticalAlign: 'middle', maxWidth: '1em', maxHeight: '1em', marginLeft: '.2em' }}
-            />
-            <img
-              src="https://mirrors.creativecommons.org/presskit/icons/by.svg"
-              alt="Attribution icon"
-              style={{ display: 'inline-block', verticalAlign: 'middle', maxWidth: '1em', maxHeight: '1em', marginLeft: '.2em' }}
-            />
           </p>
         </div>
       </footer>
