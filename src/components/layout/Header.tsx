@@ -8,7 +8,7 @@ import { Menu, Briefcase, Code, Feather, MessageSquare, Brain, X } from "lucide-
 
 const navItems = [
   { href: "#home", label: "Home", icon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-5 w-5"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg> },
-  { href: "#work-history", label: "Work", icon: <Briefcase className="h-5 w-5" /> },
+  // { href: "#work-history", label: "Work", icon: <Briefcase className="h-5 w-5" /> },
   { href: "#projects", label: "Projects", icon: <Code className="h-5 w-5" /> },
   { href: "#blog", label: "Blog", icon: <Feather className="h-5 w-5" /> },
   { href: "#ai-enhancer", label: "AI Enhancer", icon: <Brain className="h-5 w-5" /> },

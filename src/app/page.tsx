@@ -10,8 +10,8 @@ export default function Home() {
   return (
     <>
       <HeroSection />
-      <WorkHistorySection />
-      <Separator className="my-0"/>
+      {/* <WorkHistorySection /> */}
+      {/* <Separator className="my-0"/> */}
       <ProjectShowcaseSection />
       <Separator className="my-0"/>
       <BlogSection />
