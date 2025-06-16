@@ -22,7 +22,7 @@ export default function HeroSection() {
               Hi, I&apos;m <span className="text-primary">Alex Zewebrand</span>
             </h1>
             <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-xl">
-              A passionate Full-Stack Developer with a knack for creating elegant and efficient solutions. I specialize in modern web technologies and love bringing ideas to life with clean code and intuitive design.
+              A passionate Full-Stack Developer and Digital Artist with a knack for creating elegant and efficient solutions. I specialize in modern web technologies and love bringing ideas to life with clean code, intuitive design, and compelling visuals.
             </p>
             <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
               <Button size="lg" asChild className="bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg transition-transform hover:scale-105">
