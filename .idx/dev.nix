@@ -14,13 +14,20 @@
   # a firebase.json file is written into the user's directory
   services.firebase.emulators = {
     detect = true;
-    projectId = "demo-app";
+    projectId = "alex-zewebrand-portfolio";
     services = ["auth" "firestore"];
   };
   idx = {
     # Search for the extensions you want on https://open-vsx.org/ and use "publisher.id"
     extensions = [
       # "vscodevim.vim"
+      "bradlc.vscode-tailwindcss"
+      "christian-kohler.npm-intellisense"
+      "dracula-theme.theme-dracula"
+      "dsznajder.es7-react-js-snippets"
+      "ecmel.vscode-html-css"
+      "esbenp.prettier-vscode"
+      "PKief.material-icon-theme"
     ];
     workspace = {
       onCreate = {
