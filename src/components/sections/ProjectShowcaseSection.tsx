@@ -10,12 +10,12 @@ const projects: Project[] = [
   {
     id: "1",
     title: "Chroma AI",
-    description: "Generate 5-color palettes from images, text prompts, or a single color using AI (Gemini & Genkit). Features include classic color schemes, 'AI Magic' generation, palette display with HEX/RGB/HSL values, copy-to-clipboard, AI-powered accessibility & color psychology analysis, and a real-time UI preview. Utilizes a clean, modern layout with Space Grotesk & Inter fonts, minimalist icons, and subtle animations.",
+    description: "Chroma AI is an intelligent design assistant that empowers users to effortlessly generate captivating 5-color palettes. Leveraging the power of Google's Gemini and Genkit, it offers multiple intuitive methods for color discovery: derive schemes from uploaded images, translate text prompts into vibrant palettes, or expand a single color choice using classic color theory or an 'AI Magic' mode for unique suggestions.\n\nKey features include:\n*   **Versatile Palette Generation:** Create harmonious color schemes from images, text, or a single seed color.\n*   **Interactive Color Exploration:** Clickable swatches display HEX, RGB, and HSL values, with easy copy-to-clipboard functionality.\n*   **AI-Powered Analysis:** Automatically assesses palettes for WCAG accessibility (contrast ratios) and provides insights into color psychology.\n*   **Real-Time UI Preview:** Instantly visualize how generated palettes will appear in a practical UI mockup.\n\nDeveloped with Next.js, TypeScript, and Tailwind CSS, Chroma AI features a clean, modern interface. The user experience is enhanced by carefully selected typography (Space Grotesk and Inter), minimalist iconography, and subtle animations powered by Framer Motion.",
     imageUrl: "https://placehold.co/600x400.png",
     imageHint: "color palette app",
     tags: ["NextJS", "TypeScript", "Tailwind CSS", "Gemini", "Genkit", "AI", "Framer Motion"],
-    projectUrl: "https://studio--chroma-ai-3nasf.us-central1.hosted.app/", 
-    repoUrl: "#",   // Placeholder link
+    projectUrl: "https://studio--chroma-ai-3nasf.us-central1.hosted.app/",
+    repoUrl: "#",
     usesMotionPrimitives: true,
   },
   {
