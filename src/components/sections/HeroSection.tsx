@@ -45,12 +45,12 @@ export default function HeroSection() {
           >
             <div className="relative w-80 h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden shadow-2xl border-4 border-primary">
               <Image
-                src="https://placehold.co/400x400.png"
+                src="https://images.unsplash.com/photo-1574158622682-e40e69881006?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxNHx8Q2F0fGVufDB8fHx8MTc1MDA1MzI4NHww&ixlib=rb-4.1.0&q=80&w=1080"
                 alt="Alex Zewebrand"
                 fill
                 priority
                 sizes="(min-width: 1024px) 384px, 320px"
-                data-ai-hint="professional portrait"
+                data-ai-hint="cat face"
                 className="object-cover transform hover:scale-105 transition-transform duration-500"
               />
             </div>
