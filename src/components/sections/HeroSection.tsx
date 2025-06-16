@@ -5,7 +5,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import AnimatedSection from "@/components/shared/AnimatedSection";
 import { motion } from "framer-motion";
-import { ArrowDown, Download } from "lucide-react";
+import { ArrowDown } from "lucide-react";
 import Image from "next/image";
 
 export default function HeroSection() {
@@ -28,11 +28,6 @@ export default function HeroSection() {
               <Button size="lg" asChild className="bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg transition-transform hover:scale-105">
                 <Link href="#projects">
                   View My Work <ArrowDown className="ml-2 h-5 w-5" />
-                </Link>
-              </Button>
-              <Button variant="outline" size="lg" asChild className="shadow-lg transition-transform hover:scale-105 border-primary text-primary hover:bg-primary/10">
-                <Link href="/alex-zewebrand-resume.pdf" target="_blank" download> {/* Replace with actual resume link */}
-                  Download CV <Download className="ml-2 h-5 w-5" />
                 </Link>
               </Button>
             </div>
