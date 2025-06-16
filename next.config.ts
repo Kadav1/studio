@@ -26,7 +26,7 @@ const nextConfig: NextConfig = {
     ],
   },
   experimental: {
-    trustedTypes: true, // Enable experimental Trusted Types support
+    trustedTypes: true, // Ensure experimental Trusted Types support is enabled
   },
 };
 
