@@ -30,3 +30,12 @@ export interface BlogPost {
   imageUrl?: string;
   imageHint?: string;
 }
+
+export interface Artwork {
+  id: string;
+  title: string;
+  description?: string;
+  imageUrl: string;
+  imageHint: string;
+  medium?: string;
+}

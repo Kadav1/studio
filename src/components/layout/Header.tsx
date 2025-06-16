@@ -5,13 +5,14 @@ import Link from "next/link";
 import { useState, useEffect, type SVGProps } from "react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
-import { Menu, Briefcase, Code, Feather, MessageSquare, Brain, X } from "lucide-react";
+import { Menu, Code, Feather, MessageSquare, Brain, X, Palette } from "lucide-react";
 import { motion } from "framer-motion";
 
 const navItems = [
   { href: "#home", label: "Home", icon: <HomeIcon className="h-5 w-5" /> },
   // { href: "#work-history", label: "Work", icon: <Briefcase className="h-5 w-5" /> },
   { href: "#projects", label: "Projects", icon: <Code className="h-5 w-5" /> },
+  { href: "#artworks", label: "Artworks", icon: <Palette className="h-5 w-5" /> },
   { href: "#blog", label: "Blog", icon: <Feather className="h-5 w-5" /> },
   { href: "#ai-enhancer", label: "AI Enhancer", icon: <Brain className="h-5 w-5" /> },
   { href: "#contact", label: "Contact", icon: <MessageSquare className="h-5 w-5" /> },
@@ -53,11 +54,13 @@ export default function Header() {
 
   useEffect(() => {
     const getActiveHash = () => {
-      let currentHash = window.location.hash;
+      let currentHash = typeof window !== 'undefined' ? window.location.hash : '';
       if (!currentHash || currentHash === "#") {
         currentHash = "#home";
       }
-      return currentHash;
+      // Ensure that navItems exists and is not empty before trying to find an item
+      const itemExists = navItems.some(item => item.href === currentHash);
+      return itemExists ? currentHash : (navItems[0]?.href || "#home");
     };
 
     setActiveTab(getActiveHash());
@@ -78,7 +81,7 @@ export default function Header() {
   };
   
   const handleNavMouseLeave = () => {
-    let currentHash = typeof window !== 'undefined' ? window.location.hash : '#home';
+    let currentHash = typeof window !== 'undefined' ? window.location.hash : '';
     if (!currentHash || currentHash === "#") {
         currentHash = "#home";
     }
@@ -166,4 +169,3 @@ export default function Header() {
     </header>
   );
 }
-

@@ -1,6 +1,7 @@
 import HeroSection from "@/components/sections/HeroSection";
-import WorkHistorySection from "@/components/sections/WorkHistorySection";
+// import WorkHistorySection from "@/components/sections/WorkHistorySection";
 import ProjectShowcaseSection from "@/components/sections/ProjectShowcaseSection";
+import ArtworksSection from "@/components/sections/ArtworksSection";
 import BlogSection from "@/components/sections/BlogSection";
 import PortfolioEnhancementSection from "@/components/sections/PortfolioEnhancementSection";
 import ContactSection from "@/components/sections/ContactSection";
@@ -13,6 +14,8 @@ export default function Home() {
       {/* <WorkHistorySection /> */}
       {/* <Separator className="my-0"/> */}
       <ProjectShowcaseSection />
+      <Separator className="my-0"/>
+      <ArtworksSection />
       <Separator className="my-0"/>
       <BlogSection />
       <Separator className="my-0"/>
