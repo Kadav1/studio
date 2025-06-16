@@ -9,12 +9,12 @@ import { Code2 } from "lucide-react";
 const projects: Project[] = [
   {
     id: "1",
-    title: "App Blueprint: AI Color Palette Generator",
+    title: "Chroma AI",
     description: "Generate 5-color palettes from images, text prompts, or a single color using AI (Gemini & Genkit). Features include classic color schemes, 'AI Magic' generation, palette display with HEX/RGB/HSL values, copy-to-clipboard, AI-powered accessibility & color psychology analysis, and a real-time UI preview. Utilizes a clean, modern layout with Space Grotesk & Inter fonts, minimalist icons, and subtle animations.",
     imageUrl: "https://placehold.co/600x400.png",
     imageHint: "color palette app",
     tags: ["NextJS", "TypeScript", "Tailwind CSS", "Gemini", "Genkit", "AI", "Framer Motion"],
-    projectUrl: "#", // Placeholder link
+    projectUrl: "https://studio--chroma-ai-3nasf.us-central1.hosted.app/", 
     repoUrl: "#",   // Placeholder link
     usesMotionPrimitives: true,
   },
