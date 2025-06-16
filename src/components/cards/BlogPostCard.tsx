@@ -1,3 +1,4 @@
+
 "use client";
 
 import type { BlogPost } from "@/types";
@@ -27,10 +28,10 @@ export default function BlogPostCard({ post, index }: BlogPostCardProps) {
             <Image
               src={post.imageUrl}
               alt={post.title}
-              layout="fill"
-              objectFit="cover"
+              fill
+              sizes="100vw"
               data-ai-hint={post.imageHint || "blog article"}
-              className="transition-transform duration-500 hover:scale-110"
+              className="object-cover transition-transform duration-500 hover:scale-110"
             />
           </div>
         )}

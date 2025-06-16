@@ -1,3 +1,4 @@
+
 "use client";
 
 import Link from "next/link";
@@ -46,10 +47,11 @@ export default function HeroSection() {
               <Image
                 src="https://placehold.co/400x400.png"
                 alt="Alex Zewebrand"
-                layout="fill"
-                objectFit="cover"
+                fill
+                priority
+                sizes="(min-width: 1024px) 384px, 320px"
                 data-ai-hint="professional portrait"
-                className="transform hover:scale-105 transition-transform duration-500"
+                className="object-cover transform hover:scale-105 transition-transform duration-500"
               />
             </div>
           </motion.div>

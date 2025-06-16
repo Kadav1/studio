@@ -1,3 +1,4 @@
+
 "use client";
 
 import type { Project } from "@/types";
@@ -27,10 +28,10 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
           <Image
             src={project.imageUrl}
             alt={project.title}
-            layout="fill"
-            objectFit="cover"
+            fill
+            sizes="100vw"
             data-ai-hint={project.imageHint}
-            className="transition-transform duration-500 hover:scale-110"
+            className="object-cover transition-transform duration-500 hover:scale-110"
           />
           {project.usesMotionPrimitives && (
             <div className="absolute top-2 right-2 bg-accent text-accent-foreground p-1.5 rounded-full shadow-md">
