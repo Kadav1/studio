@@ -6,7 +6,7 @@ import ProjectCard from "@/components/cards/ProjectCard";
 import AnimatedSection from "@/components/shared/AnimatedSection";
 import { AppWindow } from "lucide-react";
 
-const projects: Project[] = [
+const allProjects: Project[] = [
   {
     id: "1",
     title: "Chroma AI",
@@ -48,6 +48,8 @@ const projects: Project[] = [
   },
 ];
 
+const projectsToDisplay = allProjects.filter(project => !["2", "3", "4"].includes(project.id));
+
 export default function ProjectShowcaseSection() {
   return (
     <AnimatedSection id="projects" className="bg-background">
@@ -57,7 +59,7 @@ export default function ProjectShowcaseSection() {
           <h2 className="font-headline text-3xl md:text-4xl font-bold text-primary">Featured Projects</h2>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.map((project, index) => (
+          {projectsToDisplay.map((project, index) => (
             <ProjectCard key={project.id} project={project} index={index} />
           ))}
         </div>
