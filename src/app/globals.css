@@ -8,73 +8,76 @@ body {
 
 @layer base {
   :root {
-    --background: 53 14% 76%; /* Corrected HSL for #CAC8B9 */
-    --foreground: 231 60% 10%; /* Darker shade for text on light gray */
-    --card: 0 0% 100%;
-    --card-foreground: 231 60% 10%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 231 60% 10%;
-    --primary: 203 10% 15%; /* New primary color */
-    --primary-foreground: 0 0% 98%; /* Light foreground for dark primary */
-    --secondary: 0 0% 92%; /* Slightly darker gray for secondary elements */
-    --secondary-foreground: 231 60% 10%;
-    --muted: 0 0% 90%;
-    --muted-foreground: 0 0% 45%;
-    --accent: 65 66% 57%; /* HSL for #ceda4a */
-    --accent-foreground: 0 0% 10%; /* Dark text for light accent */
+    --background: 210 30% 96%; /* #F2F5F8 - Light cool gray/off-white */
+    --foreground: 210 15% 25%; /* #363D45 - Dark desaturated blue-gray */
+    --card: 0 0% 100%; /* White */
+    --card-foreground: 210 15% 25%; /* Dark desaturated blue-gray */
+    --popover: 0 0% 100%; /* White */
+    --popover-foreground: 210 15% 25%; /* Dark desaturated blue-gray */
+    --primary: 210 70% 55%; /* #4D88D4 - Primary Blue */
+    --primary-foreground: 0 0% 100%; /* White */
+    --secondary: 210 25% 90%; /* #DEE4E8 - Light cool gray */
+    --secondary-foreground: 210 15% 30%; /* #424A54 - Darker cool gray */
+    --muted: 210 20% 94%; /* #E9ECF0 - Very light cool gray */
+    --muted-foreground: 210 10% 50%; /* #737C85 - Medium cool gray */
+    --accent: 35 85% 60%; /* #F5AC4C - Accent Orange/Gold */
+    --accent-foreground: 35 60% 15%; /* #4D3313 - Dark brown for accent text */
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 89.8%;
-    --input: 0 0% 89.8%;
-    --ring: 65 66% 57%; /* Ring HSL for #ceda4a */
-    --chart-1: 12 76% 61%;
-    --chart-2: 173 58% 39%;
-    --chart-3: 197 37% 24%;
-    --chart-4: 43 74% 66%;
-    --chart-5: 27 87% 67%;
+    --border: 210 20% 88%; /* #D5DDE3 - Cool gray border */
+    --input: 210 20% 88%; /* Cool gray input */
+    --ring: 210 70% 55%; /* Primary Blue for ring */
+    --chart-1: 210 70% 50%;
+    --chart-2: 25 80% 55%;
+    --chart-3: 160 60% 45%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 50 75% 55%;
     --radius: 0.5rem;
-    --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 240 5.3% 26.1%;
-    --sidebar-primary: 240 5.9% 10%;
-    --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 240 4.8% 95.9%;
-    --sidebar-accent-foreground: 240 5.9% 10%;
-    --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+
+    --sidebar-background: 0 0% 100%; /* White */
+    --sidebar-foreground: 210 15% 30%; /* Darker text */
+    --sidebar-primary: 210 70% 55%; /* Main primary blue */
+    --sidebar-primary-foreground: 0 0% 100%; /* White text on primary */
+    --sidebar-accent: 210 30% 92%; /* Light blue for hover/active */
+    --sidebar-accent-foreground: 210 70% 45%; /* Darker blue text on light blue accent */
+    --sidebar-border: 210 20% 88%; /* Matches main border */
+    --sidebar-ring: 210 70% 55%; /* Matches main primary/ring */
   }
+
   .dark {
-    --background: 231 30% 10%; /* Dark Navy for dark mode background */
-    --foreground: 0 0% 90%; 
-    --card: 231 30% 15%;
-    --card-foreground: 0 0% 90%;
-    --popover: 231 30% 15%;
-    --popover-foreground: 0 0% 90%;
-    --primary: 203 10% 60%; /* Lighter version of new primary for dark mode */
-    --primary-foreground: 203 10% 10%; /* Dark foreground for light primary in dark mode */
-    --secondary: 231 30% 20%;
-    --secondary-foreground: 0 0% 90%;
-    --muted: 231 30% 20%;
-    --muted-foreground: 0 0% 60%;
-    --accent: 65 66% 57%; /* HSL for #ceda4a */
-    --accent-foreground: 0 0% 10%; /* Dark text for light accent */
+    --background: 210 20% 12%; /* #1A2026 - Dark blue-gray */
+    --foreground: 210 25% 90%; /* #DEE4E8 - Light gray */
+    --card: 210 20% 16%; /* #222A33 */
+    --card-foreground: 210 25% 90%;
+    --popover: 210 20% 16%;
+    --popover-foreground: 210 25% 90%;
+    --primary: 210 70% 65%; /* #6BA2E0 - Lighter Primary Blue */
+    --primary-foreground: 210 50% 15%; /* #192A3D - Darker for contrast */
+    --secondary: 210 15% 25%; /* #363D45 */
+    --secondary-foreground: 210 25% 85%; /* #D0D7DE */
+    --muted: 210 15% 25%;
+    --muted-foreground: 210 15% 60%; /* #8C96A1 */
+    --accent: 35 85% 65%; /* #F7B660 - Lighter Accent Orange/Gold */
+    --accent-foreground: 35 60% 15%; /* #4D3313 */
     --destructive: 0 70% 50%;
     --destructive-foreground: 0 0% 98%;
-    --border: 231 30% 25%;
-    --input: 231 30% 25%;
-    --ring: 65 66% 57%; /* Ring HSL for #ceda4a */
-    --chart-1: 220 70% 50%;
-    --chart-2: 160 60% 45%;
-    --chart-3: 30 80% 55%;
-    --chart-4: 280 65% 60%;
-    --chart-5: 340 75% 55%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --border: 210 15% 30%; /* #424A54 */
+    --input: 210 15% 30%;
+    --ring: 210 70% 65%; /* Lighter Primary Blue for ring */
+    --chart-1: 210 70% 60%;
+    --chart-2: 25 80% 60%;
+    --chart-3: 160 60% 50%;
+    --chart-4: 280 65% 65%;
+    --chart-5: 50 75% 60%;
+
+    --sidebar-background: 210 20% 12%; /* Same as main dark bg */
+    --sidebar-foreground: 210 25% 85%; /* Light text */
+    --sidebar-primary: 210 70% 65%; /* Dark mode primary blue */
+    --sidebar-primary-foreground: 210 50% 15%; /* Dark text on primary */
+    --sidebar-accent: 210 20% 20%; /* Darker blue gray for hover/active */
+    --sidebar-accent-foreground: 210 70% 75%; /* Lighter blue text on accent */
+    --sidebar-border: 210 15% 25%; /* Matches main dark border */
+    --sidebar-ring: 210 70% 65%; /* Matches dark primary/ring */
   }
 }
 
