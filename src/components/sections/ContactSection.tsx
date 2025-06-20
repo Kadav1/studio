@@ -38,8 +38,8 @@ export default function ContactSection() {
                   <Mail className="h-6 w-6 text-accent mr-4" />
                   <div>
                     <h4 className="font-semibold text-foreground">Email</h4>
-                    <a href="mailto:alex.zewebrand@example.com" className="text-muted-foreground hover:text-accent transition-colors">
-                      alex.zewebrand@example.com
+                    <a href="mailto:blndsft@proton.me" className="text-muted-foreground hover:text-accent transition-colors">
+                      blndsft@proton.me
                     </a>
                   </div>
                 </div>
@@ -56,7 +56,7 @@ export default function ContactSection() {
                   <MapPin className="h-6 w-6 text-accent mr-4" />
                   <div>
                     <h4 className="font-semibold text-foreground">Location</h4>
-                    <p className="text-muted-foreground">New York, USA (Remote)</p> {/* Placeholder */}
+                    <p className="text-muted-foreground">Sweden (Remote)</p> {/* Placeholder */}
                   </div>
                 </div>
                 <div className="flex space-x-4 pt-4 border-t">
