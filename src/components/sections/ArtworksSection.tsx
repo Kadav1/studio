@@ -10,8 +10,8 @@ const artworksData: Artwork[] = [
   {
     id: "art1",
     title: "Cosmic Dreamscape",
-    description: "A vibrant digital painting exploring the depths of an alien nebula.",
-    imageUrl: "https://placehold.co/600x450.png",
+    description: "",
+    imageUrl: "https://images.unsplash.com/photo-1704587645178-0ef80a093dc0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxuZWJ1bGEgc3BhY2V8ZW58MHx8fHwxNzUwNTI2NDQ1fDA&ixlib=rb-4.1.0&q=80&w=1080",
     imageHint: "nebula space",
     medium: "Digital Painting",
   },
