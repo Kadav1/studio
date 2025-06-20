@@ -1,3 +1,4 @@
+
 "use client";
 
 import { Linkedin, Github, Mail } from "lucide-react";
@@ -20,9 +21,13 @@ export default function Footer() {
             <Mail className="h-6 w-6" />
           </Link>
         </div>
-        <p className="text-sm">
-          &copy; {currentYear} Alex Zewebrand. All rights reserved.
-        </p>
+        <div className="text-sm space-x-4 mb-2">
+          <span>&copy; {currentYear} Alex Zewebrand. All rights reserved.</span>
+          <span className="text-muted-foreground">|</span>
+          <Link href="/privacy-policy" className="hover:text-accent transition-colors">
+            Privacy Policy
+          </Link>
+        </div>
         <p className="text-xs mt-2 text-muted-foreground">
           Designed with passion and coded with Next.js & Tailwind CSS.
         </p>
