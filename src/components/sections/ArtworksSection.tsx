@@ -10,7 +10,7 @@ const artworksData: Artwork[] = [
   {
     id: "art1",
     title: "Cosmic Dreamscape",
-    description: "",
+    description: "A vibrant digital painting exploring the depths of an alien nebula.",
     imageUrl: "/images/artworks/cosmic-dreamscape.png",
     imageHint: "nebula space",
     medium: "Digital Painting",
@@ -74,3 +74,4 @@ export default function ArtworksSection() {
     </AnimatedSection>
   );
 }
+
