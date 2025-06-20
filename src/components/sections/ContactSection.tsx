@@ -1,9 +1,10 @@
+
 "use client";
 
 import ContactForm from "@/components/forms/ContactForm";
 import AnimatedSection from "@/components/shared/AnimatedSection";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Mail, Phone, MapPin, MessageSquare, Linkedin, Github } from "lucide-react";
+import { Mail, Phone, MapPin, MessageSquare, Linkedin, Github, Instagram, Facebook } from "lucide-react";
 import Link from "next/link";
 
 export default function ContactSection() {
@@ -64,6 +65,12 @@ export default function ContactSection() {
                   </Link>
                   <Link href="#" aria-label="GitHub" className="text-muted-foreground hover:text-accent transition-colors">
                       <Github className="h-7 w-7" />
+                  </Link>
+                  <Link href="#" aria-label="Instagram" className="text-muted-foreground hover:text-accent transition-colors">
+                      <Instagram className="h-7 w-7" />
+                  </Link>
+                  <Link href="#" aria-label="Facebook" className="text-muted-foreground hover:text-accent transition-colors">
+                      <Facebook className="h-7 w-7" />
                   </Link>
                 </div>
               </CardContent>

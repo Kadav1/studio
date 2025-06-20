@@ -1,7 +1,7 @@
 
 "use client";
 
-import { Linkedin, Github, Mail } from "lucide-react";
+import { Linkedin, Github, Mail, Instagram, Facebook } from "lucide-react";
 import Link from "next/link";
 
 export default function Footer() {
@@ -16,6 +16,12 @@ export default function Footer() {
           </Link>
           <Link href="#" aria-label="GitHub" className="text-secondary-foreground hover:text-accent transition-colors">
             <Github className="h-6 w-6" />
+          </Link>
+          <Link href="#" aria-label="Instagram" className="text-secondary-foreground hover:text-accent transition-colors">
+            <Instagram className="h-6 w-6" />
+          </Link>
+          <Link href="#" aria-label="Facebook" className="text-secondary-foreground hover:text-accent transition-colors">
+            <Facebook className="h-6 w-6" />
           </Link>
           <Link href="mailto:alex.zewebrand@example.com" aria-label="Email" className="text-secondary-foreground hover:text-accent transition-colors">
             <Mail className="h-6 w-6" />
