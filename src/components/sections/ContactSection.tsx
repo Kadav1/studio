@@ -6,6 +6,7 @@ import AnimatedSection from "@/components/shared/AnimatedSection";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Mail, Phone, MapPin, MessageSquare, Linkedin, Github, Instagram, Facebook } from "lucide-react";
 import Link from "next/link";
+import { motion } from "framer-motion";
 
 export default function ContactSection() {
   return (
@@ -97,6 +98,3 @@ export default function ContactSection() {
     </AnimatedSection>
   );
 }
-
-// Need to ensure motion is imported if used directly
-import { motion } from "framer-motion";
