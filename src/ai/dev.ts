@@ -1,4 +1,4 @@
 import { config } from 'dotenv';
 config();
 
-import '@/ai/flows/portfolio-enhancement.ts';
+// Removed: import '@/ai/flows/portfolio-enhancement.ts';

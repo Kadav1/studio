@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useState, useEffect, type SVGProps } from "react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
-import { Menu, Code, Feather, MessageSquare, Brain, X, Palette } from "lucide-react";
+import { Menu, Code, Feather, MessageSquare, X, Palette } from "lucide-react"; // Removed Brain
 import { motion } from "framer-motion";
 
 const navItems = [
@@ -14,7 +14,7 @@ const navItems = [
   { href: "#projects", label: "Projects", icon: <Code className="h-5 w-5" /> },
   { href: "#artworks", label: "Artworks", icon: <Palette className="h-5 w-5" /> },
   { href: "#blog", label: "Blog", icon: <Feather className="h-5 w-5" /> },
-  { href: "#ai-enhancer", label: "AI Enhancer", icon: <Brain className="h-5 w-5" /> },
+  // { href: "#ai-enhancer", label: "AI Enhancer", icon: <Brain className="h-5 w-5" /> }, // Removed AI Enhancer
   { href: "#contact", label: "Contact", icon: <MessageSquare className="h-5 w-5" /> },
 ];
 
