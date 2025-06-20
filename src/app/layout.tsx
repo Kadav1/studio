@@ -1,9 +1,11 @@
+
 import type {Metadata} from 'next';
 import { Inter, Space_Grotesk as SpaceGrotesk } from 'next/font/google';
 import './globals.css';
 import { Toaster } from "@/components/ui/toaster";
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
+import CookieConsentBanner from '@/components/shared/CookieConsentBanner';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -42,6 +44,7 @@ export default function RootLayout({
           <Footer />
         </div>
         <Toaster />
+        <CookieConsentBanner />
       </body>
     </html>
   );
