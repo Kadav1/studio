@@ -2,23 +2,21 @@
 "use client";
 
 import Link from "next/link";
-import { useState, useEffect, type SVGProps } from "react";
+import { useState, useEffect, type ReactNode, type SVGProps } from "react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
-import { Menu, Code, Feather, MessageSquare, X, Palette } from "lucide-react"; // Removed Brain
+import { Menu, AppWindow, FileText, MessageSquare, X, Palette } from "lucide-react";
 import { motion } from "framer-motion";
 
-const navItems = [
+const navItems: { href: string; label: string; icon: ReactNode }[] = [
   { href: "#home", label: "Home", icon: <HomeIcon className="h-5 w-5" /> },
-  // { href: "#work-history", label: "Work", icon: <Briefcase className="h-5 w-5" /> },
-  { href: "#projects", label: "Projects", icon: <Code className="h-5 w-5" /> },
+  { href: "#projects", label: "Projects", icon: <AppWindow className="h-5 w-5" /> },
   { href: "#artworks", label: "Artworks", icon: <Palette className="h-5 w-5" /> },
-  { href: "#blog", label: "Blog", icon: <Feather className="h-5 w-5" /> },
-  // { href: "#ai-enhancer", label: "AI Enhancer", icon: <Brain className="h-5 w-5" /> }, // Removed AI Enhancer
+  { href: "#blog", label: "Blog", icon: <FileText className="h-5 w-5" /> },
   { href: "#contact", label: "Contact", icon: <MessageSquare className="h-5 w-5" /> },
 ];
 
-function HomeIcon(props: SVGProps<SVGSVGElement>) {
+function HomeIcon(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg
       {...props}
@@ -58,7 +56,6 @@ export default function Header() {
       if (!currentHash || currentHash === "#") {
         currentHash = "#home";
       }
-      // Ensure that navItems exists and is not empty before trying to find an item
       const itemExists = navItems.some(item => item.href === currentHash);
       return itemExists ? currentHash : (navItems[0]?.href || "#home");
     };
@@ -77,7 +74,7 @@ export default function Header() {
 
   const handleNavLinkClick = (href: string) => {
     setActiveTab(href);
-    setIsMobileMenuOpen(false); // Close mobile menu on click
+    setIsMobileMenuOpen(false); 
   };
   
   const handleNavMouseLeave = () => {
@@ -99,7 +96,6 @@ export default function Header() {
           Alex Zewebrand
         </Link>
 
-        {/* Desktop Navigation */}
         <nav 
           className="hidden md:flex items-center space-x-1 relative"
           onMouseLeave={handleNavMouseLeave}
@@ -127,7 +123,6 @@ export default function Header() {
           ))}
         </nav>
 
-        {/* Mobile Navigation */}
         <div className="md:hidden">
           <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
             <SheetTrigger asChild>

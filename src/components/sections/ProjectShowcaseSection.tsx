@@ -4,7 +4,7 @@
 import type { Project } from "@/types";
 import ProjectCard from "@/components/cards/ProjectCard";
 import AnimatedSection from "@/components/shared/AnimatedSection";
-import { Code2 } from "lucide-react";
+import { AppWindow } from "lucide-react";
 
 const projects: Project[] = [
   {
@@ -20,8 +20,8 @@ const projects: Project[] = [
   },
   {
     id: "2",
-    title: "E-commerce Website",
-    description: "A full-featured e-commerce site built with Next.js and Stripe integration. Includes product listings, shopping cart, and user authentication.",
+    title: "TBA",
+    description: "dolore eu sea dolore ipsum tempor molestie et eos lorem accusam option stet dolores zzril dolor.",
     imageUrl: "https://placehold.co/600x400.png",
     imageHint: "online store",
     tags: ["Next.js", "Stripe", "Tailwind CSS", "Firebase"],
@@ -29,8 +29,8 @@ const projects: Project[] = [
   },
   {
     id: "3",
-    title: "Mobile Task Management App",
-    description: "A cross-platform mobile app developed with React Native for managing daily tasks and team collaboration.",
+    title: "TBA",
+    description: "at diam esse eum dolore ut delenit sit voluptua stet ut sea ea at labore ipsum.",
     imageUrl: "https://placehold.co/600x400.png",
     imageHint: "mobile app interface",
     tags: ["React Native", "Firebase", "Redux"],
@@ -38,8 +38,8 @@ const projects: Project[] = [
   },
   {
     id: "4",
-    title: "AI-Powered Portfolio Reviewer",
-    description: "This very portfolio features a GenAI tool to analyze and suggest improvements for portfolio content, built with Next.js server actions and Google's Gemini.",
+    title: "TBA",
+    description: "et gubergren sit velit dolore in ea quis sit blandit elitr dolor iusto nulla et ut",
     imageUrl: "https://placehold.co/600x400.png",
     imageHint: "ai interface",
     tags: ["Next.js", "GenAI", "Tailwind CSS", "Framer Motion"],
@@ -53,7 +53,7 @@ export default function ProjectShowcaseSection() {
     <AnimatedSection id="projects" className="bg-background">
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex items-center mb-12">
-          <Code2 className="h-10 w-10 text-primary mr-4" />
+          <AppWindow className="h-10 w-10 text-primary mr-4" />
           <h2 className="font-headline text-3xl md:text-4xl font-bold text-primary">Featured Projects</h2>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
