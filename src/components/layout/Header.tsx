@@ -7,6 +7,7 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 import { Menu, AppWindow, FileText, MessageSquare, X, Palette } from "lucide-react";
 import { motion } from "framer-motion";
+import { ThemeToggleButton } from "@/components/shared/ThemeToggleButton";
 
 const navItems: { href: string; label: string; icon: ReactNode }[] = [
   { href: "#home", label: "Home", icon: <HomeIcon className="h-5 w-5" /> },
@@ -96,34 +97,38 @@ export default function Header() {
           Alex Zewebrand
         </Link>
 
-        <nav 
-          className="hidden md:flex items-center space-x-1 relative"
-          onMouseLeave={handleNavMouseLeave}
-        >
-          {navItems.map((item) => (
-            <Link
-              key={item.label}
-              href={item.href}
-              onClick={() => handleNavLinkClick(item.href)}
-              onMouseEnter={() => setActiveTab(item.href)}
-              className="relative px-3 py-2 rounded-md text-sm font-medium text-foreground hover:text-accent transition-colors duration-150 ease-in-out focus:outline-none focus-visible:ring-2 focus-visible:ring-ring"
-            >
-              <span className="flex items-center space-x-2">
-                {item.icon}
-                <span>{item.label}</span>
-              </span>
-              {activeTab === item.href && (
-                <motion.div
-                  className="absolute bottom-[-1px] left-0 right-0 h-[2px] bg-primary"
-                  layoutId="desktop-nav-underline"
-                  transition={{ type: "spring", stiffness: 350, damping: 30 }}
-                />
-              )}
-            </Link>
-          ))}
-        </nav>
+        <div className="hidden md:flex items-center space-x-4"> {/* Increased space for theme button */}
+          <nav 
+            className="flex items-center space-x-1 relative"
+            onMouseLeave={handleNavMouseLeave}
+          >
+            {navItems.map((item) => (
+              <Link
+                key={item.label}
+                href={item.href}
+                onClick={() => handleNavLinkClick(item.href)}
+                onMouseEnter={() => setActiveTab(item.href)}
+                className="relative px-3 py-2 rounded-md text-sm font-medium text-foreground hover:text-accent transition-colors duration-150 ease-in-out focus:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+              >
+                <span className="flex items-center space-x-2">
+                  {item.icon}
+                  <span>{item.label}</span>
+                </span>
+                {activeTab === item.href && (
+                  <motion.div
+                    className="absolute bottom-[-1px] left-0 right-0 h-[2px] bg-primary"
+                    layoutId="desktop-nav-underline"
+                    transition={{ type: "spring", stiffness: 350, damping: 30 }}
+                  />
+                )}
+              </Link>
+            ))}
+          </nav>
+          <ThemeToggleButton />
+        </div>
 
-        <div className="md:hidden">
+        <div className="md:hidden flex items-center space-x-2">
+          <ThemeToggleButton />
           <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
             <SheetTrigger asChild>
               <Button variant="ghost" size="icon">

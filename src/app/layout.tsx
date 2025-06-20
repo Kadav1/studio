@@ -6,6 +6,7 @@ import { Toaster } from "@/components/ui/toaster";
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import CookieConsentBanner from '@/components/shared/CookieConsentBanner';
+import { ThemeProvider } from "next-themes";
 
 const inter = Inter({
   subsets: ['latin'],
@@ -36,15 +37,22 @@ export default function RootLayout({
         {/* Font links are now handled by next/font */}
       </head>
       <body className="font-body antialiased">
-        <div className="flex flex-col min-h-screen">
-          <Header />
-          <main className="flex-grow">
-            {children}
-          </main>
-          <Footer />
-        </div>
-        <Toaster />
-        <CookieConsentBanner />
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <div className="flex flex-col min-h-screen">
+            <Header />
+            <main className="flex-grow">
+              {children}
+            </main>
+            <Footer />
+          </div>
+          <Toaster />
+          <CookieConsentBanner />
+        </ThemeProvider>
       </body>
     </html>
   );
