@@ -14,7 +14,7 @@ const blogPosts: BlogPost[] = [
     date: "July 15, 2024",
     summary: "A deep dive into using Framer Motion to create stunning and interactive user experiences. Learn about key concepts and practical examples.",
     slug: "mastering-motion-primitives",
-    imageUrl: "https://placehold.co/600x400.png",
+    imageUrl: "/images/blog/mastering-motion-primitives.png",
     imageHint: "abstract animation",
   },
   {
@@ -23,7 +23,7 @@ const blogPosts: BlogPost[] = [
     date: "June 28, 2024",
     summary: "Exploring the benefits and best practices of using React Server Components with Next.js for improved performance and developer experience.",
     slug: "server-components-nextjs",
-    imageUrl: "https://placehold.co/600x400.png",
+    imageUrl: "/images/blog/server-components-nextjs.png",
     imageHint: "code server",
   },
   {
@@ -32,7 +32,7 @@ const blogPosts: BlogPost[] = [
     date: "May 10, 2024",
     summary: "How generative AI is transforming web development, from code generation to personalized user experiences. Featuring tools like the Portfolio Enhancer!",
     slug: "ai-in-web-dev",
-    imageUrl: "https://placehold.co/600x400.png",
+    imageUrl: "/images/blog/ai-in-web-dev.png",
     imageHint: "artificial intelligence",
   },
 ];
@@ -61,3 +61,4 @@ export default function BlogSection() {
     </AnimatedSection>
   );
 }
+
