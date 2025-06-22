@@ -40,3 +40,9 @@ export interface Artwork {
   imageHint: string;
   medium?: string;
 }
+
+export interface PortfolioEnhancementOutput {
+  feedback: string;
+  rewrittenDescription: string;
+  suggestedKeywords: string[];
+}

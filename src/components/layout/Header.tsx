@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useState, useEffect, type ReactNode, type SVGProps } from "react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
-import { Menu, AppWindow, FileText, MessageSquare, X, Palette } from "lucide-react";
+import { Menu, AppWindow, FileText, MessageSquare, X, Palette, Sparkles } from "lucide-react";
 import { motion } from "framer-motion";
 import { ThemeToggleButton } from "@/components/shared/ThemeToggleButton";
 
@@ -14,6 +14,7 @@ const navItems: { href: string; label: string; icon: ReactNode }[] = [
   { href: "#projects", label: "Projects", icon: <AppWindow className="h-5 w-5" /> },
   { href: "#artworks", label: "Artworks", icon: <Palette className="h-5 w-5" /> },
   { href: "#blog", label: "Blog", icon: <FileText className="h-5 w-5" /> },
+  { href: "#ai-enhancer", label: "AI Review", icon: <Sparkles className="h-5 w-5" /> },
   { href: "#contact", label: "Contact", icon: <MessageSquare className="h-5 w-5" /> },
 ];
 
