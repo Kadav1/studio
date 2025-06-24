@@ -8,7 +8,7 @@ import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter }
 import { Button } from "@/components/ui/button";
 import { ArrowRight, CalendarDays, BrainCircuit } from "lucide-react";
 import { motion } from "framer-motion";
-import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogTrigger, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { getQuizById } from "@/data/quiz";
 import QuizComponent from "@/components/shared/Quiz";
 
@@ -67,6 +67,10 @@ export default function BlogPostCard({ post, index }: BlogPostCardProps) {
                 </Button>
               </DialogTrigger>
               <DialogContent className="max-w-2xl p-0 bg-transparent border-0">
+                <DialogHeader className="sr-only">
+                    <DialogTitle>{quiz.title}</DialogTitle>
+                    <DialogDescription>A short quiz about the blog post: {post.title}</DialogDescription>
+                </DialogHeader>
                 {/* The QuizComponent contains its own Card for styling */}
                 <QuizComponent quiz={quiz} />
               </DialogContent>

@@ -1,4 +1,3 @@
-
 "use client";
 
 import type { Artwork } from "@/types";
@@ -6,7 +5,7 @@ import Image from "next/image";
 import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/components/ui/card";
 import { motion } from "framer-motion";
 import { Badge } from "@/components/ui/badge";
-import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogTrigger, DialogHeader, DialogTitle, DialogDescription as DialogDesc } from "@/components/ui/dialog";
 import { Maximize } from "lucide-react";
 
 interface ArtworkCardProps {
@@ -79,11 +78,13 @@ export default function ArtworkCard({ artwork, index }: ArtworkCardProps) {
             />
         </div>
         <div className="p-6">
-            <h3 className="font-headline text-2xl text-primary">{artwork.title}</h3>
+            <DialogHeader className="p-0 text-left items-start mb-2">
+                <DialogTitle className="font-headline text-2xl text-primary">{artwork.title}</DialogTitle>
+                {artwork.description && <DialogDesc className="text-muted-foreground pt-2 text-left">{artwork.description}</DialogDesc>}
+            </DialogHeader>
             {artwork.medium && (
                 <Badge variant="secondary" className="my-2 bg-accent/10 text-accent-foreground">{artwork.medium}</Badge>
             )}
-            {artwork.description && <p className="text-muted-foreground mt-2">{artwork.description}</p>}
         </div>
       </DialogContent>
     </Dialog>
