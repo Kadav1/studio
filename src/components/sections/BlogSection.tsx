@@ -1,3 +1,4 @@
+
 "use client";
 
 import type { BlogPost } from "@/types";
@@ -33,6 +34,7 @@ const blogPosts: BlogPost[] = [
     slug: "mastering-motion-primitives",
     imageUrl: "/images/blog/mastering-motion-primitives.png",
     imageHint: "abstract animation",
+    quizId: "motion-primitives-quiz",
   },
   {
     id: "2",

@@ -37,6 +37,7 @@ export interface BlogPost {
   slug: string; // For linking to a full post (not implemented in this version)
   imageUrl?: string;
   imageHint?: string;
+  quizId?: string;
 }
 
 export interface Artwork {
@@ -52,4 +53,22 @@ export interface PortfolioEnhancementOutput {
   feedback: string;
   rewrittenDescription: string;
   suggestedKeywords: string[];
+}
+
+export interface QuizQuestionOption {
+  id: string;
+  text: string;
+}
+
+export interface QuizQuestion {
+  id: string;
+  text: string;
+  options: QuizQuestionOption[];
+  correctOptionId: string;
+}
+
+export interface Quiz {
+  id: string;
+  title: string;
+  questions: QuizQuestion[];
 }

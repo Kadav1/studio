@@ -6,8 +6,11 @@ import Image from "next/image";
 import Link from "next/link";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, CalendarDays } from "lucide-react";
+import { ArrowRight, CalendarDays, BrainCircuit } from "lucide-react";
 import { motion } from "framer-motion";
+import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
+import { getQuizById } from "@/data/quiz";
+import QuizComponent from "@/components/shared/Quiz";
 
 interface BlogPostCardProps {
   post: BlogPost;
@@ -19,6 +22,8 @@ export default function BlogPostCard({ post, index }: BlogPostCardProps) {
     hidden: { opacity: 0, y: 50 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.5, delay: index * 0.1 } },
   };
+
+  const quiz = post.quizId ? getQuizById(post.quizId) : undefined;
 
   return (
     <motion.div variants={cardVariants} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }}>
@@ -45,13 +50,28 @@ export default function BlogPostCard({ post, index }: BlogPostCardProps) {
         <CardContent className="flex-grow">
           <p className="text-foreground/90 leading-relaxed">{post.summary}</p>
         </CardContent>
-        <CardFooter className="pt-4 border-t">
+        <CardFooter className="pt-4 border-t flex justify-between items-center">
           <Button variant="link" asChild className="text-accent p-0 hover:text-accent/80">
             {/* In a real app, this would link to `/blog/${post.slug}` */}
             <Link href={`#blog`}> 
               Read More <ArrowRight className="ml-2 h-4 w-4" />
             </Link>
           </Button>
+
+          {quiz && (
+            <Dialog>
+              <DialogTrigger asChild>
+                <Button variant="outline" size="sm" className="border-primary/50 text-primary hover:bg-primary/10 hover:text-primary">
+                  <BrainCircuit className="mr-2 h-4 w-4" />
+                  Take Quiz
+                </Button>
+              </DialogTrigger>
+              <DialogContent className="max-w-2xl p-0 bg-transparent border-0">
+                {/* The QuizComponent contains its own Card for styling */}
+                <QuizComponent quiz={quiz} />
+              </DialogContent>
+            </Dialog>
+          )}
         </CardFooter>
       </Card>
     </motion.div>
