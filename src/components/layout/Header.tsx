@@ -41,16 +41,7 @@ function HomeIcon(props: React.SVGProps<SVGSVGElement>) {
 
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
   const [activeTab, setActiveTab] = useState<string>(navItems[0]?.href || "#home");
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
   useEffect(() => {
     const getActiveHash = () => {
@@ -92,13 +83,13 @@ export default function Header() {
 
 
   return (
-    <header className={`sticky top-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-background/80 shadow-md backdrop-blur-md' : 'bg-transparent'}`}>
-      <div className="container mx-auto flex h-20 items-center justify-between px-4 md:px-6">
+    <header className="sticky top-0 z-50 p-4">
+      <div className="container mx-auto flex h-16 items-center justify-between rounded-xl bg-background/80 px-4 shadow-lg backdrop-blur-md border border-border/20 md:px-6">
         <Link href="#home" className="text-2xl font-headline font-bold text-primary hover:text-accent transition-colors" onClick={() => handleNavLinkClick("#home")}>
           Alex Zewebrand
         </Link>
 
-        <div className="hidden md:flex items-center space-x-4"> {/* Increased space for theme button */}
+        <div className="hidden md:flex items-center space-x-4">
           <nav 
             className="flex items-center space-x-1 relative"
             onMouseLeave={handleNavMouseLeave}
