@@ -11,7 +11,7 @@ const artworksData: Artwork[] = [
     id: "art1",
     title: "Cosmic Dreamscape",
     description: "A vibrant digital painting exploring the depths of an alien nebula.",
-    imageUrl: "/images/artworks/cosmic-dreamscape.png",
+    imageUrl: "https://placehold.co/600x400.png",
     imageHint: "nebula space",
     medium: "Digital Painting",
   },
@@ -19,7 +19,7 @@ const artworksData: Artwork[] = [
     id: "art2",
     title: "Cybernetic Portrait",
     description: "A futuristic character concept with intricate mechanical details.",
-    imageUrl: "/images/artworks/cybernetic-portrait.png",
+    imageUrl: "https://placehold.co/600x400.png",
     imageHint: "cyborg portrait",
     medium: "3D Render / Photobash",
   },
@@ -27,7 +27,7 @@ const artworksData: Artwork[] = [
     id: "art3",
     title: "Serene Landscape",
     description: "A tranquil scene capturing the essence of a misty morning.",
-    imageUrl: "/images/artworks/serene-landscape.png",
+    imageUrl: "https://placehold.co/600x400.png",
     imageHint: "misty forest",
     medium: "Matte Painting",
   },
@@ -35,7 +35,7 @@ const artworksData: Artwork[] = [
     id: "art4",
     title: "Abstract Flow",
     description: "Dynamic abstract shapes and colors representing energy.",
-    imageUrl: "/images/artworks/abstract-flow.png",
+    imageUrl: "https://placehold.co/600x400.png",
     imageHint: "abstract energy",
     medium: "Generative Art",
   },
@@ -43,7 +43,7 @@ const artworksData: Artwork[] = [
     id: "art5",
     title: "Character Study: Warrior",
     description: "Concept art for a fantasy warrior character.",
-    imageUrl: "/images/artworks/character-study.png",
+    imageUrl: "https://placehold.co/600x400.png",
     imageHint: "fantasy warrior",
     medium: "Digital Sketch",
   },
@@ -51,9 +51,25 @@ const artworksData: Artwork[] = [
     id: "art6",
     title: "Still Life Reimagined",
     description: "A modern take on classic still life, rendered with surreal elements.",
-    imageUrl: "/images/artworks/still-life-reimagined.png",
+    imageUrl: "https://placehold.co/600x400.png",
     imageHint: "surreal still life",
     medium: "Digital Illustration",
+  },
+  {
+    id: "art7",
+    title: "Mechanical Fauna",
+    description: "A detailed 3D model of a robotic fox in a natural environment.",
+    imageUrl: "https://placehold.co/600x400.png",
+    imageHint: "robotic fox",
+    medium: "3D Modeling",
+  },
+  {
+    id: "art8",
+    title: "City at Dusk",
+    description: "A speed painting of a futuristic cityscape as night falls.",
+    imageUrl: "https://placehold.co/600x400.png",
+    imageHint: "futuristic cityscape",
+    medium: "Digital Painting",
   },
 ];
 
@@ -74,4 +90,3 @@ export default function ArtworksSection() {
     </AnimatedSection>
   );
 }
-

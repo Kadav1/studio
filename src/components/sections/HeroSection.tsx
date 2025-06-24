@@ -40,7 +40,7 @@ export default function HeroSection() {
           >
             <div className="relative w-80 h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden shadow-2xl border-4 border-primary">
               <Image
-                src="/images/hero/alex-zewebrand.png"
+                src="https://placehold.co/400x400.png"
                 alt="Alex Zewebrand"
                 fill
                 priority

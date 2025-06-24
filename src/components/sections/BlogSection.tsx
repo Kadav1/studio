@@ -14,7 +14,7 @@ const blogPosts: BlogPost[] = [
     date: "August 05, 2024",
     summary: "A practical guide to creating a scalable and maintainable design system from scratch using the power of Tailwind CSS and the flexibility of ShadCN UI.",
     slug: "design-system-tailwind-shadcn",
-    imageUrl: "/images/blog/design-system.png",
+    imageUrl: "https://placehold.co/600x400.png",
     imageHint: "design system components",
   },
   {
@@ -23,7 +23,7 @@ const blogPosts: BlogPost[] = [
     date: "July 22, 2024",
     summary: "An inside look at the decisions behind the tech stack for this portfolio, focusing on the advantages of Next.js for performance and developer experience.",
     slug: "why-nextjs",
-    imageUrl: "/images/blog/why-nextjs.png",
+    imageUrl: "https://placehold.co/600x400.png",
     imageHint: "code editor",
   },
   {
@@ -32,7 +32,7 @@ const blogPosts: BlogPost[] = [
     date: "July 15, 2024",
     summary: "A deep dive into using Framer Motion to create stunning and interactive user experiences. Learn about key concepts and practical examples.",
     slug: "mastering-motion-primitives",
-    imageUrl: "/images/blog/mastering-motion-primitives.png",
+    imageUrl: "https://placehold.co/600x400.png",
     imageHint: "abstract animation",
     quizId: "motion-primitives-quiz",
   },
@@ -42,7 +42,7 @@ const blogPosts: BlogPost[] = [
     date: "June 28, 2024",
     summary: "Exploring the benefits and best practices of using React Server Components with Next.js for improved performance and developer experience.",
     slug: "server-components-nextjs",
-    imageUrl: "/images/blog/server-components-nextjs.png",
+    imageUrl: "https://placehold.co/600x400.png",
     imageHint: "code server",
   },
   {
@@ -51,7 +51,7 @@ const blogPosts: BlogPost[] = [
     date: "May 10, 2024",
     summary: "How generative AI is transforming web development, from code generation to personalized user experiences. Featuring tools like the Portfolio Enhancer!",
     slug: "ai-in-web-dev",
-    imageUrl: "/images/blog/ai-in-web-dev.png",
+    imageUrl: "https://placehold.co/600x400.png",
     imageHint: "artificial intelligence",
   },
 ];

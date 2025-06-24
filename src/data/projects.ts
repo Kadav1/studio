@@ -7,7 +7,7 @@ export const allProjects: Project[] = [
     slug: "chroma-ai",
     title: "Chroma AI",
     description: "An intelligent design assistant that generates 5-color palettes from images, text, or a single color using Google's Gemini and Genkit.",
-    imageUrl: "/images/projects/chroma-ai.png",
+    imageUrl: "https://placehold.co/600x400.png",
     imageHint: "color palette app",
     tags: ["NextJS", "TypeScript", "Tailwind CSS", "Gemini", "Genkit", "AI", "Framer Motion"],
     projectUrl: "https://studio--chroma-ai-3nasf.us-central1.hosted.app/",
@@ -61,6 +61,35 @@ export const allProjects: Project[] = [
     tags: ["Next.js", "GenAI", "Tailwind CSS", "Framer Motion"],
     projectUrl: "#ai-enhancer",
     usesMotionPrimitives: true,
+  },
+  {
+    id: "5",
+    slug: "focus-flow",
+    title: "Focus Flow",
+    description: "A sleek and intuitive task management application designed to help users organize their daily tasks and boost productivity through focused work sessions.",
+    imageUrl: "https://placehold.co/600x400.png",
+    imageHint: "task manager app",
+    tags: ["React", "TypeScript", "Node.js", "Express", "PostgreSQL", "Tailwind CSS"],
+    projectUrl: "#",
+    repoUrl: "#",
+    usesMotionPrimitives: false,
+    caseStudy: {
+        problem: "Users often struggle with managing multiple tasks and maintaining focus. Many existing to-do apps are either too simple or overly complex, leading to a cluttered workflow and decreased productivity.",
+        solution: "Focus Flow provides a clean, minimalist interface for task management. It integrates a Pomodoro-style timer to encourage focused work intervals. Users can create projects, add tasks with due dates and priorities, and track their progress. The back-end is a robust REST API built with Node.js and Express, connected to a PostgreSQL database.",
+        outcome: "The application helps users better organize their work and life. The clean design reduces cognitive load, while the integrated focus timer promotes deep work, leading to improved efficiency and a greater sense of accomplishment.",
+        gallery: [
+            {
+                url: "https://placehold.co/600x400.png",
+                hint: "app tasks view",
+                caption: "The main task view, showing a list of tasks organized by project."
+            },
+            {
+                url: "https://placehold.co/600x400.png",
+                hint: "app timer view",
+                caption: "The integrated focus timer helps users work in dedicated, distraction-free intervals."
+            }
+        ]
+    }
   },
 ];
 
