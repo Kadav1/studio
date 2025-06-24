@@ -15,6 +15,7 @@ import { useToast } from "@/hooks/use-toast";
 import { Loader2, Sparkles, Wand2 } from "lucide-react";
 import AnimatedSection from "@/components/shared/AnimatedSection";
 import { motion } from "framer-motion";
+import { Skeleton } from "@/components/ui/skeleton";
 
 const formSchema = z.object({
   description: z.string().min(20, "Please provide at least 20 characters.").max(1000, "Description must be 1000 characters or less."),
@@ -93,22 +94,41 @@ export default function PortfolioEnhancementSection() {
             </form>
 
             {isPending && (
-                <div className="mt-8 space-y-4 pt-6 border-t">
-                    <div className="bg-muted/50 p-4 rounded-lg animate-pulse">
-                        <div className="h-4 bg-muted rounded w-1/4 mb-4"></div>
-                        <div className="h-3 bg-muted rounded w-full mb-2"></div>
-                        <div className="h-3 bg-muted rounded w-5/6"></div>
-                    </div>
-                     <div className="bg-muted/50 p-4 rounded-lg animate-pulse">
-                        <div className="h-4 bg-muted rounded w-1/3 mb-4"></div>
-                        <div className="h-3 bg-muted rounded w-full mb-2"></div>
-                         <div className="h-3 bg-muted rounded w-full mb-2"></div>
-                        <div className="h-3 bg-muted rounded w-3/4"></div>
-                    </div>
+              <div className="mt-8 space-y-6 pt-6 border-t">
+                {/* Skeleton for Feedback */}
+                <div className="space-y-3">
+                  <Skeleton className="h-6 w-1/3 rounded-lg" />
+                  <div className="space-y-2">
+                    <Skeleton className="h-4 w-full rounded-lg" />
+                    <Skeleton className="h-4 w-5/6 rounded-lg" />
+                  </div>
                 </div>
+                
+                {/* Skeleton for Rewrite */}
+                <div className="space-y-3">
+                  <Skeleton className="h-6 w-1/4 rounded-lg" />
+                   <div className="space-y-2">
+                    <Skeleton className="h-4 w-full rounded-lg" />
+                    <Skeleton className="h-4 w-full rounded-lg" />
+                    <Skeleton className="h-4 w-3/4 rounded-lg" />
+                  </div>
+                </div>
+
+                {/* Skeleton for Keywords */}
+                 <div className="space-y-3">
+                  <Skeleton className="h-6 w-1/4 rounded-lg" />
+                  <div className="flex flex-wrap gap-2">
+                    <Skeleton className="h-7 w-24 rounded-full" />
+                    <Skeleton className="h-7 w-20 rounded-full" />
+                    <Skeleton className="h-7 w-28 rounded-full" />
+                    <Skeleton className="h-7 w-16 rounded-full" />
+                    <Skeleton className="h-7 w-24 rounded-full" />
+                  </div>
+                </div>
+              </div>
             )}
 
-            {result && (
+            {result && !isPending && (
               <div className="mt-8 space-y-6 pt-6 border-t">
                 <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}>
                   <h3 className="font-headline text-xl font-semibold text-primary mb-2">Constructive Feedback</h3>
