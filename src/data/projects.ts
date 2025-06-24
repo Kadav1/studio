@@ -7,7 +7,7 @@ export const allProjects: Project[] = [
     slug: "chroma-ai",
     title: "Chroma AI",
     description: "An intelligent design assistant that generates 5-color palettes from images, text, or a single color using Google's Gemini and Genkit.",
-    imageUrl: "https://placehold.co/600x400.png",
+    imageUrl: "/images/projects/chroma-ai.png",
     imageHint: "color palette app",
     tags: ["NextJS", "TypeScript", "Tailwind CSS", "Gemini", "Genkit", "AI", "Framer Motion"],
     projectUrl: "https://studio--chroma-ai-3nasf.us-central1.hosted.app/",
