@@ -1,4 +1,3 @@
-
 "use client";
 
 import type { BlogPost } from "@/types";
@@ -8,6 +7,24 @@ import AnimatedSection from "@/components/shared/AnimatedSection";
 import { FileText } from "lucide-react";
 
 const blogPosts: BlogPost[] = [
+  {
+    id: "4",
+    title: "Building a Design System with Tailwind & ShadCN",
+    date: "August 05, 2024",
+    summary: "A practical guide to creating a scalable and maintainable design system from scratch using the power of Tailwind CSS and the flexibility of ShadCN UI.",
+    slug: "design-system-tailwind-shadcn",
+    imageUrl: "/images/blog/design-system.png",
+    imageHint: "design system components",
+  },
+  {
+    id: "5",
+    title: "Why I Chose Next.js for This Portfolio",
+    date: "July 22, 2024",
+    summary: "An inside look at the decisions behind the tech stack for this portfolio, focusing on the advantages of Next.js for performance and developer experience.",
+    slug: "why-nextjs",
+    imageUrl: "/images/blog/why-nextjs.png",
+    imageHint: "code editor",
+  },
   {
     id: "1",
     title: "Mastering Motion Primitives in Web Design",
@@ -61,4 +78,3 @@ export default function BlogSection() {
     </AnimatedSection>
   );
 }
-
