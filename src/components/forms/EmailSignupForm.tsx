@@ -7,7 +7,7 @@ import * as z from "zod";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
-import { Mail, Loader2 } from "lucide-react";
+import { Mail, Loader2, CheckCircle2 } from "lucide-react";
 
 const emailSignupSchema = z.object({
   email: z.string().email({ message: "Please enter a valid email address." }),
@@ -43,10 +43,10 @@ export default function EmailSignupForm() {
 
   if (isSuccess) {
     return (
-      <div className="text-center p-6 bg-green-100 border border-green-300 rounded-lg">
-        <Mail className="h-12 w-12 text-green-600 mx-auto mb-4" />
-        <p className="text-lg font-medium text-green-700">Thanks for subscribing!</p>
-        <p className="text-sm text-green-600">You&apos;re all set. Keep an eye on your inbox.</p>
+      <div className="text-center p-6 bg-accent/10 border border-accent/20 rounded-lg">
+        <CheckCircle2 className="h-12 w-12 text-accent mx-auto mb-4" />
+        <p className="text-lg font-medium text-primary">Thanks for subscribing!</p>
+        <p className="text-sm text-muted-foreground">You&apos;re all set. Keep an eye on your inbox.</p>
       </div>
     );
   }

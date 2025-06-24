@@ -6,7 +6,7 @@ import ProjectCard from "@/components/cards/ProjectCard";
 import AnimatedSection from "@/components/shared/AnimatedSection";
 import { AppWindow } from "lucide-react";
 
-const projectsToDisplay = allProjects.filter(project => ["1", "5"].includes(project.id));
+const projectsToDisplay = allProjects.filter(project => ["1", "5", "4"].includes(project.id));
 
 export default function ProjectShowcaseSection() {
   return (
