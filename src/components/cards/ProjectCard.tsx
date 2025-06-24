@@ -29,7 +29,7 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
             src={project.imageUrl}
             alt={project.title}
             fill
-                  sizes="(max-width: 768px) 100vw, 600px"
+            sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
             data-ai-hint={project.imageHint}
             className="object-cover transition-transform duration-500 group-hover:scale-110"
           />

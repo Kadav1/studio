@@ -34,7 +34,7 @@ export default function BlogPostCard({ post, index }: BlogPostCardProps) {
               src={post.imageUrl}
               alt={post.title}
               fill
-              sizes="100vw"
+              sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
               data-ai-hint={post.imageHint || "blog article"}
               className="object-cover transition-transform duration-500 group-hover:scale-110"
             />
