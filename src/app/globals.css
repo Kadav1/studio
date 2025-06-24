@@ -8,76 +8,76 @@ body {
 
 @layer base {
   :root {
-    --background: 210 30% 96%; /* #F2F5F8 - Light cool gray/off-white */
-    --foreground: 210 15% 25%; /* #363D45 - Dark desaturated blue-gray */
+    --background: 220 20% 97%; /* #F5F7FA - Very light cool gray */
+    --foreground: 220 15% 25%; /* #3A3F4B - Dark slate gray */
     --card: 0 0% 100%; /* White */
-    --card-foreground: 210 15% 25%; /* Dark desaturated blue-gray */
+    --card-foreground: 220 15% 25%; /* Dark slate gray */
     --popover: 0 0% 100%; /* White */
-    --popover-foreground: 210 15% 25%; /* Dark desaturated blue-gray */
-    --primary: 210 70% 55%; /* #4D88D4 - Primary Blue */
+    --popover-foreground: 220 15% 25%; /* Dark slate gray */
+    --primary: 250 60% 55%; /* #5247C3 - Professional Indigo */
     --primary-foreground: 0 0% 100%; /* White */
-    --secondary: 210 25% 90%; /* #DEE4E8 - Light cool gray */
-    --secondary-foreground: 210 15% 30%; /* #424A54 - Darker cool gray */
-    --muted: 210 20% 94%; /* #E9ECF0 - Very light cool gray */
-    --muted-foreground: 210 10% 50%; /* #737C85 - Medium cool gray */
-    --accent: 35 85% 60%; /* #F5AC4C - Accent Orange/Gold */
-    --accent-foreground: 35 60% 15%; /* #4D3313 - Dark brown for accent text */
+    --secondary: 220 15% 92%; /* #E6E8ED - Light gray */
+    --secondary-foreground: 220 10% 40%; /* #5C6270 - Medium slate gray */
+    --muted: 220 15% 92%; /* Light gray */
+    --muted-foreground: 220 10% 50%; /* #757B8A - Muted slate gray */
+    --accent: 320 80% 60%; /* #E64DAD - Vibrant Orchid/Magenta */
+    --accent-foreground: 320 50% 15%; /* #4D213D - Dark magenta */
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
-    --border: 210 20% 88%; /* #D5DDE3 - Cool gray border */
-    --input: 210 20% 88%; /* Cool gray input */
-    --ring: 210 70% 55%; /* Primary Blue for ring */
-    --chart-1: 210 70% 50%;
-    --chart-2: 25 80% 55%;
-    --chart-3: 160 60% 45%;
+    --border: 220 15% 88%; /* #D9DCE3 - Cool gray border */
+    --input: 220 15% 88%; /* Cool gray input */
+    --ring: 320 80% 60%; /* Vibrant Orchid for ring */
+    --chart-1: 250 60% 55%;
+    --chart-2: 320 80% 60%;
+    --chart-3: 180 70% 45%;
     --chart-4: 280 65% 60%;
-    --chart-5: 50 75% 55%;
+    --chart-5: 40 85% 60%;
     --radius: 0.5rem;
 
-    --sidebar-background: 0 0% 100%; /* White */
-    --sidebar-foreground: 210 15% 30%; /* Darker text */
-    --sidebar-primary: 210 70% 55%; /* Main primary blue */
+    --sidebar-background: 220 20% 98%; /* Slightly different from main bg */
+    --sidebar-foreground: 220 15% 30%; /* Darker text */
+    --sidebar-primary: 250 60% 55%; /* Indigo */
     --sidebar-primary-foreground: 0 0% 100%; /* White text on primary */
-    --sidebar-accent: 210 30% 92%; /* Light blue for hover/active */
-    --sidebar-accent-foreground: 210 70% 45%; /* Darker blue text on light blue accent */
-    --sidebar-border: 210 20% 88%; /* Matches main border */
-    --sidebar-ring: 210 70% 55%; /* Matches main primary/ring */
+    --sidebar-accent: 320 80% 94%; /* Very light orchid for hover/active */
+    --sidebar-accent-foreground: 320 80% 50%; /* Darker orchid text on accent */
+    --sidebar-border: 220 15% 90%; /* Matches border tones */
+    --sidebar-ring: 320 80% 60%; /* Matches main accent/ring */
   }
 
   .dark {
-    --background: 210 20% 12%; /* #1A2026 - Dark blue-gray */
-    --foreground: 210 25% 90%; /* #DEE4E8 - Light gray */
-    --card: 210 20% 16%; /* #222A33 */
-    --card-foreground: 210 25% 90%;
-    --popover: 210 20% 16%;
-    --popover-foreground: 210 25% 90%;
-    --primary: 210 70% 65%; /* #6BA2E0 - Lighter Primary Blue */
-    --primary-foreground: 210 50% 15%; /* #192A3D - Darker for contrast */
-    --secondary: 210 15% 25%; /* #363D45 */
-    --secondary-foreground: 210 25% 85%; /* #D0D7DE */
-    --muted: 210 15% 25%;
-    --muted-foreground: 210 15% 60%; /* #8C96A1 */
-    --accent: 35 85% 65%; /* #F7B660 - Lighter Accent Orange/Gold */
-    --accent-foreground: 35 60% 15%; /* #4D3313 */
+    --background: 225 25% 10%; /* #131826 - Very dark desaturated indigo */
+    --foreground: 225 15% 88%; /* #D9DCE3 - Light gray */
+    --card: 225 20% 14%; /* #1C2130 */
+    --card-foreground: 225 15% 88%;
+    --popover: 225 20% 14%;
+    --popover-foreground: 225 15% 88%;
+    --primary: 250 70% 70%; /* #8A7FF0 - Lighter Indigo */
+    --primary-foreground: 250 50% 15%; /* #241D4D - Darker for contrast */
+    --secondary: 225 20% 20%; /* #293040 */
+    --secondary-foreground: 225 10% 75%; /* #B4B9C4 */
+    --muted: 225 20% 20%;
+    --muted-foreground: 225 10% 55%; /* #828795 */
+    --accent: 320 90% 75%; /* #F593E1 - Brighter Orchid */
+    --accent-foreground: 320 50% 15%; /* #4D213D */
     --destructive: 0 70% 50%;
     --destructive-foreground: 0 0% 98%;
-    --border: 210 15% 30%; /* #424A54 */
-    --input: 210 15% 30%;
-    --ring: 210 70% 65%; /* Lighter Primary Blue for ring */
-    --chart-1: 210 70% 60%;
-    --chart-2: 25 80% 60%;
-    --chart-3: 160 60% 50%;
-    --chart-4: 280 65% 65%;
-    --chart-5: 50 75% 60%;
+    --border: 225 15% 25%; /* #3A3F4B */
+    --input: 225 15% 25%;
+    --ring: 320 90% 75%; /* Brighter Orchid for ring */
+    --chart-1: 250 70% 70%;
+    --chart-2: 320 90% 75%;
+    --chart-3: 180 70% 55%;
+    --chart-4: 280 65% 70%;
+    --chart-5: 40 85% 70%;
 
-    --sidebar-background: 210 20% 12%; /* Same as main dark bg */
-    --sidebar-foreground: 210 25% 85%; /* Light text */
-    --sidebar-primary: 210 70% 65%; /* Dark mode primary blue */
-    --sidebar-primary-foreground: 210 50% 15%; /* Dark text on primary */
-    --sidebar-accent: 210 20% 20%; /* Darker blue gray for hover/active */
-    --sidebar-accent-foreground: 210 70% 75%; /* Lighter blue text on accent */
-    --sidebar-border: 210 15% 25%; /* Matches main dark border */
-    --sidebar-ring: 210 70% 65%; /* Matches dark primary/ring */
+    --sidebar-background: 225 25% 10%; /* Same as main dark bg */
+    --sidebar-foreground: 225 15% 85%; /* Light text */
+    --sidebar-primary: 250 70% 70%; /* Dark mode primary */
+    --sidebar-primary-foreground: 250 50% 15%; /* Dark text on primary */
+    --sidebar-accent: 225 20% 18%; /* Darker for hover/active */
+    --sidebar-accent-foreground: 320 90% 80%; /* Lighter orchid text on accent */
+    --sidebar-border: 225 15% 25%; /* Matches main dark border */
+    --sidebar-ring: 320 90% 75%; /* Matches dark accent/ring */
   }
 }
 
