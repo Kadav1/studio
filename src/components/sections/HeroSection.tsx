@@ -5,12 +5,15 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import AnimatedSection from "@/components/shared/AnimatedSection";
 import { motion } from "framer-motion";
-import { ArrowDown } from "lucide-react";
+import { ArrowDown, Mail } from "lucide-react";
 import Image from "next/image";
+import { Badge } from "@/components/ui/badge";
+
+const coreTechnologies = ["Next.js", "TypeScript", "Tailwind CSS", "Genkit", "Framer Motion", "Firebase"];
 
 export default function HeroSection() {
   return (
-    <AnimatedSection id="home" className="bg-background text-foreground min-h-[calc(100vh-5rem)] flex items-center">
+    <AnimatedSection id="home" className="bg-background text-foreground py-24 md:py-32 flex items-center">
       <div className="container mx-auto px-4 md:px-6">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <motion.div
@@ -24,12 +27,28 @@ export default function HeroSection() {
             <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-xl">
               A passionate Full-Stack Developer and Digital Artist with a knack for creating elegant and efficient solutions. I specialize in modern web technologies and love bringing ideas to life with clean code, intuitive design, and compelling visuals.
             </p>
-            <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+            <div className="flex flex-col sm:flex-row gap-4 mb-10">
               <Button size="lg" asChild className="bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg transition-transform hover:scale-105 group">
                 <Link href="#projects">
                   View My Work <ArrowDown className="ml-2 h-5 w-5 transition-transform group-hover:translate-y-1" />
                 </Link>
               </Button>
+               <Button size="lg" variant="outline" asChild className="shadow-lg transition-transform hover:scale-105 group">
+                <Link href="#contact">
+                  Get In Touch <Mail className="ml-2 h-5 w-5" />
+                </Link>
+              </Button>
+            </div>
+
+            <div className="space-y-4">
+               <p className="text-sm font-medium text-muted-foreground tracking-widest">CORE TECHNOLOGIES</p>
+               <div className="flex flex-wrap gap-3">
+                {coreTechnologies.map(tech => (
+                   <Badge key={tech} variant="secondary" className="text-sm py-1 px-3 bg-primary/10 text-primary border-primary/20">
+                    {tech}
+                  </Badge>
+                ))}
+              </div>
             </div>
           </motion.div>
           <motion.div

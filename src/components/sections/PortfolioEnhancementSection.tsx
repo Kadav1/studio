@@ -146,7 +146,7 @@ export default function PortfolioEnhancementSection() {
                   <h3 className="font-headline text-xl font-semibold text-primary mb-3">Suggested Keywords</h3>
                   <div className="flex flex-wrap gap-2">
                     {result.suggestedKeywords.map((keyword) => (
-                      <Badge key={keyword} variant="secondary" className="bg-primary/10 text-primary-foreground text-sm py-1 px-3">
+                      <Badge key={keyword} variant="secondary" className="bg-primary/10 text-primary text-sm py-1 px-3">
                         {keyword}
                       </Badge>
                     ))}
