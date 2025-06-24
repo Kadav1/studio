@@ -12,6 +12,7 @@ export interface WorkExperience {
 
 export interface Project {
   id: string;
+  slug: string;
   title: string;
   description: string;
   imageUrl: string;
@@ -20,6 +21,12 @@ export interface Project {
   projectUrl?: string;
   repoUrl?: string;
   usesMotionPrimitives?: boolean;
+  caseStudy?: {
+    problem: string;
+    solution: string;
+    outcome: string;
+    gallery?: { url: string; hint: string; caption?: string }[];
+  };
 }
 
 export interface BlogPost {

@@ -7,7 +7,7 @@ import Link from "next/link";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { ExternalLink, Github, Zap } from "lucide-react";
+import { ArrowRight, Zap } from "lucide-react";
 import { motion } from "framer-motion";
 
 interface ProjectCardProps {
@@ -23,7 +23,7 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
 
   return (
     <motion.div variants={cardVariants} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }}>
-      <Card className="h-full flex flex-col overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 border-accent/30 border-2 rounded-xl">
+      <Card className="h-full flex flex-col overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 border-accent/30 border-2 rounded-xl group">
         <div className="relative w-full h-48 overflow-hidden">
           <Image
             src={project.imageUrl}
@@ -31,7 +31,7 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
             fill
                   sizes="(max-width: 768px) 100vw, 600px"
             data-ai-hint={project.imageHint}
-            className="object-cover transition-transform duration-500 hover:scale-110"
+            className="object-cover transition-transform duration-500 group-hover:scale-110"
           />
           {project.usesMotionPrimitives && (
             <div className="absolute top-2 right-2 bg-accent text-accent-foreground p-1.5 rounded-full shadow-md">
@@ -52,21 +52,12 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
             ))}
           </div>
         </CardContent>
-        <CardFooter className="flex justify-end space-x-2 pt-4 border-t">
-          {project.projectUrl && (
-            <Button variant="outline" size="sm" asChild className="text-accent border-accent hover:bg-accent hover:text-accent-foreground">
-              <Link href={project.projectUrl} target="_blank" rel="noopener noreferrer">
-                <ExternalLink className="mr-2 h-4 w-4" /> Live Demo
-              </Link>
-            </Button>
-          )}
-          {project.repoUrl && (
-            <Button variant="ghost" size="sm" asChild className="text-foreground hover:text-accent hover:bg-accent/10">
-              <Link href={project.repoUrl} target="_blank" rel="noopener noreferrer">
-                <Github className="mr-2 h-4 w-4" /> Source
-              </Link>
-            </Button>
-          )}
+        <CardFooter className="pt-4 border-t">
+          <Button asChild className="w-full bg-accent hover:bg-accent/90 text-accent-foreground transition-transform group-hover:scale-105">
+            <Link href={`/projects/${project.slug}`}>
+              View Case Study <ArrowRight className="ml-2 h-4 w-4" />
+            </Link>
+          </Button>
         </CardFooter>
       </Card>
     </motion.div>
