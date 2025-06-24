@@ -27,7 +27,7 @@ export default function BlogPostCard({ post, index }: BlogPostCardProps) {
 
   return (
     <motion.div variants={cardVariants} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }}>
-      <Card className="h-full flex flex-col overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 rounded-xl">
+      <Card className="h-full flex flex-col overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 rounded-xl group">
         {post.imageUrl && (
           <div className="relative w-full h-48 overflow-hidden">
             <Image
@@ -36,7 +36,7 @@ export default function BlogPostCard({ post, index }: BlogPostCardProps) {
               fill
               sizes="100vw"
               data-ai-hint={post.imageHint || "blog article"}
-              className="object-cover transition-transform duration-500 hover:scale-110"
+              className="object-cover transition-transform duration-500 group-hover:scale-110"
             />
           </div>
         )}
@@ -51,10 +51,10 @@ export default function BlogPostCard({ post, index }: BlogPostCardProps) {
           <p className="text-foreground/90 leading-relaxed">{post.summary}</p>
         </CardContent>
         <CardFooter className="pt-4 border-t flex justify-between items-center">
-          <Button variant="link" asChild className="text-accent p-0 hover:text-accent/80">
+          <Button variant="link" asChild className="text-accent p-0 hover:text-accent/80 group/link">
             {/* In a real app, this would link to `/blog/${post.slug}` */}
             <Link href={`#blog`}> 
-              Read More <ArrowRight className="ml-2 h-4 w-4" />
+              Read More <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover/link:translate-x-1" />
             </Link>
           </Button>
 

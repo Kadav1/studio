@@ -25,9 +25,9 @@ export default function HeroSection() {
               A passionate Full-Stack Developer and Digital Artist with a knack for creating elegant and efficient solutions. I specialize in modern web technologies and love bringing ideas to life with clean code, intuitive design, and compelling visuals.
             </p>
             <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
-              <Button size="lg" asChild className="bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg transition-transform hover:scale-105">
+              <Button size="lg" asChild className="bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg transition-transform hover:scale-105 group">
                 <Link href="#projects">
-                  View My Work <ArrowDown className="ml-2 h-5 w-5" />
+                  View My Work <ArrowDown className="ml-2 h-5 w-5 transition-transform group-hover:translate-y-1" />
                 </Link>
               </Button>
             </div>
