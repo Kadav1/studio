@@ -59,7 +59,7 @@ export default function ProjectPage({ params }: { params: { slug: string } }) {
   }
 
   return (
-    <AnimatedSection className="py-12 md:py-20 bg-secondary/50">
+    <AnimatedSection className="bg-secondary/50">
       <div className="container mx-auto px-4 md:px-6">
         <div className="mb-8">
           <Button variant="ghost" asChild className="text-foreground hover:bg-accent/10 hover:text-accent">

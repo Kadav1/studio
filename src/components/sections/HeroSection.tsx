@@ -13,21 +13,22 @@ const coreTechnologies = ["Next.js", "TypeScript", "Tailwind CSS", "Genkit", "Fr
 
 export default function HeroSection() {
   return (
-    <AnimatedSection id="home" className="bg-background text-foreground py-24 md:py-32 flex items-center">
+    <AnimatedSection id="home" className="bg-background text-foreground py-20 md:py-28 flex items-center">
       <div className="container mx-auto px-4 md:px-6">
-        <div className="grid md:grid-cols-2 gap-12 items-center">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
+            className="text-center md:text-left"
           >
             <h1 className="font-headline text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">
               Hi, I&apos;m <span className="text-primary">Alex Zewebrand</span>
             </h1>
-            <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-xl">
+            <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-xl mx-auto md:mx-0">
               A passionate Full-Stack Developer and Digital Artist with a knack for creating elegant and efficient solutions. I specialize in modern web technologies and love bringing ideas to life with clean code, intuitive design, and compelling visuals.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 mb-10">
+            <div className="flex flex-col sm:flex-row gap-4 mb-10 justify-center md:justify-start">
               <Button size="lg" asChild className="bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg transition-transform hover:scale-105 group">
                 <Link href="#projects">
                   View My Work <ArrowDown className="ml-2 h-5 w-5 transition-transform group-hover:translate-y-1" />
@@ -42,7 +43,7 @@ export default function HeroSection() {
 
             <div className="space-y-4">
                <p className="text-sm font-medium text-muted-foreground tracking-widest">CORE TECHNOLOGIES</p>
-               <div className="flex flex-wrap gap-3">
+               <div className="flex flex-wrap gap-3 justify-center md:justify-start">
                 {coreTechnologies.map(tech => (
                    <Badge key={tech} variant="secondary" className="text-sm py-1 px-3 bg-primary/10 text-primary border-primary/20">
                     {tech}
@@ -55,7 +56,7 @@ export default function HeroSection() {
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="hidden md:flex justify-center items-center"
+            className="flex justify-center items-center order-first md:order-last"
           >
             <div className="relative group">
               <div className="absolute -inset-0.5 bg-gradient-to-r from-primary via-accent to-primary rounded-full blur-xl opacity-30 group-hover:opacity-70 transition duration-1000 animate-pulse-slow -z-10"></div>

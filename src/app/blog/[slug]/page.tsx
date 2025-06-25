@@ -18,7 +18,7 @@ export async function generateStaticParams() {
   }));
 }
 
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
+export async function generateMetadata({ params }: { params: { slug:string } }): Promise<Metadata> {
   const postData = await getPostData(params.slug);
   if (!postData) {
     return {
@@ -71,7 +71,7 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
   const { frontmatter, content } = postData;
 
   return (
-    <AnimatedSection className="py-12 md:py-20 bg-background">
+    <AnimatedSection className="bg-background">
       <div className="container mx-auto px-4 md:px-6">
         <div className="mb-8">
             <Button variant="ghost" asChild className="text-foreground hover:bg-accent/10 hover:text-accent">

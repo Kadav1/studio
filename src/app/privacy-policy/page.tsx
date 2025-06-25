@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 
 export default function PrivacyPolicyPage() {
   return (
-    <AnimatedSection id="privacy-policy" className="py-12 md:py-16 bg-background">
+    <AnimatedSection id="privacy-policy" className="bg-background">
       <div className="container mx-auto px-4 md:px-6">
         <Card className="max-w-3xl mx-auto shadow-lg">
           <CardHeader className="border-b">

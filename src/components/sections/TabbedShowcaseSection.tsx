@@ -28,7 +28,7 @@ function TabbedShowcaseComponent({ posts }: TabbedShowcaseSectionProps) {
   };
 
   return (
-    <section id="showcase" className="bg-secondary py-16 md:py-24">
+    <AnimatedSection id="showcase" className="bg-secondary">
       <Tabs
         defaultValue={tab}
         onValueChange={handleTabChange}
@@ -64,7 +64,7 @@ function TabbedShowcaseComponent({ posts }: TabbedShowcaseSectionProps) {
           </AnimatedSection>
         </TabsContent>
       </Tabs>
-    </section>
+    </AnimatedSection>
   );
 }
 
