@@ -7,6 +7,7 @@ import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import CookieConsentBanner from '@/components/shared/CookieConsentBanner';
 import { ThemeProvider } from "next-themes";
+import ScrollToTopButton from '@/components/shared/ScrollToTopButton';
 
 const inter = Inter({
   subsets: ['latin'],
@@ -52,6 +53,7 @@ export default function RootLayout({
           </div>
           <Toaster />
           <CookieConsentBanner />
+          <ScrollToTopButton />
         </ThemeProvider>
       </body>
     </html>
