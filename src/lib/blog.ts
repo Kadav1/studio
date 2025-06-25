@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
-import type { BlogPost } from '@/types';
+import type { BlogPost, PostData, DetailedPostFrontmatter } from '@/types';
 import { format, parseISO } from 'date-fns';
 
 const postsDirectory = path.join(process.cwd(), 'src/content/blog');
@@ -55,7 +55,7 @@ export function getAllPostSlugs() {
     });
 }
 
-export async function getPostData(slug: string) {
+export async function getPostData(slug: string): Promise<PostData | null> {
   try {
     const fullPath = path.join(postsDirectory, `${slug}.mdx`);
     if (!fs.existsSync(fullPath)) {
@@ -64,12 +64,19 @@ export async function getPostData(slug: string) {
     const fileContents = fs.readFileSync(fullPath, 'utf8');
     const { data, content } = matter(fileContents);
 
+    const frontmatter: DetailedPostFrontmatter = {
+      title: data.title,
+      summary: data.summary,
+      imageUrl: data.imageUrl,
+      imageHint: data.imageHint,
+      quizId: data.quizId,
+      date: format(parseISO(data.date), 'MMMM dd, yyyy'),
+      rawDate: data.date,
+    };
+
     return {
       slug,
-      frontmatter: {
-        ...data,
-        date: format(parseISO(data.date), 'MMMM dd, yyyy'),
-      },
+      frontmatter,
       content,
     };
   } catch (error) {

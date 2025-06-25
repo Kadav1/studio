@@ -57,7 +57,7 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
               <h1 className="font-headline text-4xl md:text-5xl font-bold text-primary mb-4">{frontmatter.title}</h1>
               <div className="flex items-center justify-center text-muted-foreground">
                 <CalendarDays className="h-4 w-4 mr-2" />
-                <time dateTime={frontmatter.date}>{frontmatter.date}</time>
+                <time dateTime={frontmatter.rawDate}>{frontmatter.date}</time>
               </div>
             </header>
 

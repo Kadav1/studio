@@ -72,3 +72,19 @@ export interface Quiz {
   title: string;
   questions: QuizQuestion[];
 }
+
+export interface DetailedPostFrontmatter {
+  title: string;
+  date: string; // The formatted date string for display
+  rawDate: string; // The original date string (e.g., YYYY-MM-DD) for machine reading
+  summary: string;
+  imageUrl?: string;
+  imageHint?: string;
+  quizId?: string;
+}
+
+export interface PostData {
+  slug: string;
+  frontmatter: DetailedPostFrontmatter;
+  content: string;
+}
