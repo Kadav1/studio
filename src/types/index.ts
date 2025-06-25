@@ -31,7 +31,7 @@ export interface Project {
 
 export interface BlogPost {
   id:string;
-  title: string;
+  title: string; 
   date: string;
   summary: string;
   slug: string; // For linking to a full post (not implemented in this version)
