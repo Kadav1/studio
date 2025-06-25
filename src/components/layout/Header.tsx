@@ -68,12 +68,12 @@ export default function Header() {
 
   return (
     <motion.header
-        className="fixed bottom-4 left-1/2 z-50 -translate-x-1/2"
+        className="fixed bottom-4 left-0 right-0 z-50 flex justify-center"
         initial={{ y: 100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ type: "spring", stiffness: 100, damping: 20, delay: 0.5 }}
     >
-      <div className="container mx-auto flex h-auto items-center justify-center rounded-full bg-background/80 px-3 py-2 shadow-lg backdrop-blur-md border border-border/20 md:px-4">
+      <div className="flex h-auto items-center justify-center rounded-full bg-background/80 px-3 py-2 shadow-lg backdrop-blur-md border border-border/20 md:px-4">
         
         {/* Desktop Nav */}
         <div className="hidden md:flex items-center space-x-2">
