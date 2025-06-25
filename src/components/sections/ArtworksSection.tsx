@@ -81,14 +81,14 @@ function HorizontalScrollGallery() {
   const targetRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: targetRef,
-    offset: ["start start", "end end"],
+    offset: ["start end", "end start"],
   });
 
   const x = useTransform(scrollYProgress, [0, 1], ["5%", "-80%"]);
 
   return (
-    <div ref={targetRef} className="relative h-[250vh]">
-      <div className="sticky top-0 flex h-screen items-center overflow-hidden">
+    <div ref={targetRef} className="relative h-[200vh]">
+      <div className="sticky top-1/4 flex h-screen items-start overflow-hidden">
         <motion.div style={{ x }} className="flex gap-8">
           {artworksData.map((artwork, index) => (
             <div key={artwork.id} className="w-[80vw] max-w-md shrink-0 md:w-[40vw]">
@@ -104,7 +104,7 @@ function HorizontalScrollGallery() {
 // Mobile-specific component for the vertical grid
 function VerticalGridGallery() {
   return (
-    <div className="container mx-auto px-4 md:px-6 pb-16 md:pb-24">
+    <div className="container mx-auto px-4 md:px-6">
       <div className="grid grid-cols-1 gap-8 sm:grid-cols-2">
         {artworksData.map((artwork, index) => (
           <ArtworkCard key={artwork.id} artwork={artwork} index={index} />
@@ -117,7 +117,7 @@ function VerticalGridGallery() {
 // Skeleton loader to prevent layout shift during hydration
 function GallerySkeleton() {
   return (
-    <div className="container mx-auto grid grid-cols-1 gap-8 px-4 pb-16 sm:grid-cols-2 md:px-6 md:pb-24">
+    <div className="container mx-auto grid grid-cols-1 gap-8 px-4 sm:grid-cols-2 md:px-6">
       {artworksData.slice(0, 4).map((_, index) => (
         <div key={index} className="space-y-3">
           <Skeleton className="aspect-[4/3] w-full rounded-xl" />
@@ -139,8 +139,8 @@ export default function ArtworksSection() {
   }, []);
 
   return (
-    <section id="artworks" className="bg-secondary">
-      <div className="container mx-auto px-4 md:px-6 pt-16 md:pt-24">
+    <>
+      <div className="container mx-auto px-4 md:px-6">
         <div className="mb-12 flex items-center">
           <Palette className="h-10 w-10 text-primary mr-4" />
           <h2 className="font-headline text-3xl font-bold text-primary md:text-4xl">My Artworks</h2>
@@ -148,6 +148,6 @@ export default function ArtworksSection() {
       </div>
 
       {!isMounted ? <GallerySkeleton /> : isMobile ? <VerticalGridGallery /> : <HorizontalScrollGallery />}
-    </section>
+    </>
   );
 }
