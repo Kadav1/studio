@@ -25,9 +25,39 @@ export async function generateMetadata({ params }: { params: { slug: string } })
       title: "Post Not Found",
     };
   }
+
+  const { frontmatter } = postData;
+  const pageTitle = `${frontmatter.title} - Blog`;
+  const pageDescription = frontmatter.summary;
+  // Using a placeholder base URL. In a real project, this should come from an environment variable.
+  const baseUrl = 'https://alexzewebrand.com';
+  
+  const openGraphImages = frontmatter.imageUrl ? [
+    {
+      url: `${baseUrl}${frontmatter.imageUrl}`,
+      width: 1200,
+      height: 630,
+      alt: `Preview image for the blog post: ${frontmatter.title}`,
+    },
+  ] : [];
+
   return {
-    title: `${postData.frontmatter.title} - Blog`,
-    description: postData.frontmatter.summary,
+    title: pageTitle,
+    description: pageDescription,
+    openGraph: {
+      title: pageTitle,
+      description: pageDescription,
+      url: `${baseUrl}/blog/${postData.slug}`,
+      images: openGraphImages,
+      type: 'article',
+      publishedTime: frontmatter.rawDate,
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: pageTitle,
+      description: pageDescription,
+      images: openGraphImages.length > 0 ? [openGraphImages[0].url] : [],
+    },
   };
 }
 

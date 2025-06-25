@@ -62,7 +62,7 @@ export default function HeroSection() {
               <div className="relative w-80 h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden shadow-2xl border-2 border-secondary">
                 <Image
                   src="/images/hero/Alex-zewebrand-1.png"
-                  alt="Alex Zewebrand"
+                  alt="A professional portrait of Alex Zewebrand"
                   fill
                   priority
                   sizes="(min-width: 1024px) 384px, 320px"

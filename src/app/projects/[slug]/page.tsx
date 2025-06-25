@@ -18,9 +18,36 @@ export async function generateMetadata({ params }: { params: { slug:string } }):
         description: "The project you are looking for does not exist.",
     }
   }
+
+  const pageTitle = `${project.title} - Project Case Study`;
+  const pageDescription = `An in-depth look at the ${project.title} project. ${project.description}`;
+  // Using a placeholder base URL. In a real project, this should come from an environment variable.
+  const baseUrl = 'https://alexzewebrand.com';
+  const imageUrl = `${baseUrl}${project.imageUrl}`;
+
   return {
-    title: `${project.title} - Project Case Study`,
-    description: `An in-depth look at the ${project.title} project. ${project.description}`,
+    title: pageTitle,
+    description: pageDescription,
+    openGraph: {
+      title: pageTitle,
+      description: pageDescription,
+      url: `${baseUrl}/projects/${project.slug}`,
+      images: [
+        {
+          url: imageUrl,
+          width: 1200,
+          height: 630,
+          alt: `Preview image for the ${project.title} project`,
+        },
+      ],
+      type: 'article',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: pageTitle,
+      description: pageDescription,
+      images: [imageUrl],
+    },
   };
 }
 

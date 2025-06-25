@@ -23,8 +23,35 @@ const spaceGrotesk = SpaceGrotesk({
 });
 
 export const metadata: Metadata = {
-  title: 'Alex Zewebrand Portfolio',
-  description: 'Portfolio of Alex Zewebrand, showcasing work, projects, and skills.',
+  title: {
+    default: 'Alex Zewebrand - Full-Stack Developer & Digital Artist',
+    template: '%s | Alex Zewebrand Portfolio',
+  },
+  description: 'The personal portfolio of Alex Zewebrand, a full-stack developer and digital artist specializing in Next.js, Genkit AI, and Framer Motion. Explore projects, artwork, and blog posts.',
+  openGraph: {
+    title: 'Alex Zewebrand - Full-Stack Developer & Digital Artist',
+    description: 'Explore the portfolio of Alex Zewebrand, showcasing web development projects, digital art, and technical blog posts.',
+    type: 'website',
+    locale: 'en_US',
+    url: 'https://alexzewebrand.com',
+    siteName: 'Alex Zewebrand Portfolio',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Alex Zewebrand - Full-Stack Developer & Digital Artist',
+    description: 'The personal portfolio of Alex Zewebrand, a full-stack developer and digital artist specializing in Next.js, Genkit AI, and Framer Motion.',
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
 };
 
 export default function RootLayout({

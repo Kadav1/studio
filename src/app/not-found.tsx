@@ -4,6 +4,11 @@ import { Button } from '@/components/ui/button';
 import { ArrowLeft, Frown } from 'lucide-react';
 import AnimatedSection from '@/components/shared/AnimatedSection';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: '404 - Page Not Found',
+};
 
 export default function NotFound() {
   return (
