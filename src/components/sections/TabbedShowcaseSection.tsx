@@ -68,10 +68,36 @@ function TabbedShowcaseComponent({ posts }: TabbedShowcaseSectionProps) {
   );
 }
 
+function ShowcaseSkeleton() {
+  return (
+     <section className="bg-secondary py-16 md:py-24">
+        <div className="container mx-auto px-4 md:px-6">
+            <div className="grid w-full max-w-md mx-auto grid-cols-3 mb-12 h-12">
+                <Skeleton className="h-full w-full" />
+            </div>
+            <div className="flex items-center mb-12">
+                <Skeleton className="h-10 w-10 mr-4 rounded-md" />
+                <Skeleton className="h-10 w-64 rounded-md" />
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {[...Array(3)].map((_, i) => (
+                <div key={i} className="space-y-4">
+                    <Skeleton className="h-48 w-full rounded-xl" />
+                    <Skeleton className="h-6 w-3/4" />
+                    <Skeleton className="h-4 w-full" />
+                    <Skeleton className="h-10 w-full" />
+                </div>
+                ))}
+            </div>
+        </div>
+     </section>
+  );
+}
+
 
 export default function TabbedShowcaseSection(props: TabbedShowcaseSectionProps) {
     return (
-        <Suspense fallback={<div className="h-[500px] w-full"><Skeleton className="h-full w-full"/></div>}>
+        <Suspense fallback={<ShowcaseSkeleton />}>
             <TabbedShowcaseComponent {...props} />
         </Suspense>
     )
