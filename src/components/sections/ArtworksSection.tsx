@@ -1,10 +1,10 @@
-
 "use client";
 
+import { useRef } from "react";
 import type { Artwork } from "@/types";
 import ArtworkCard from "@/components/cards/ArtworkCard";
-import AnimatedSection from "@/components/shared/AnimatedSection";
-import { Palette } from "lucide-react"; // Or Paintbrush, ImageSquare etc.
+import { Palette } from "lucide-react";
+import { motion, useScroll, useTransform } from "framer-motion";
 
 const artworksData: Artwork[] = [
   {
@@ -74,19 +74,44 @@ const artworksData: Artwork[] = [
 ];
 
 export default function ArtworksSection() {
+  const targetRef = useRef<HTMLDivElement>(null);
+
+  // We are tracking the scroll progress of `targetRef`
+  // The animation starts when the top of the target hits the center of the viewport,
+  // and ends when the bottom of the target hits the center of the viewport.
+  const { scrollYProgress } = useScroll({
+    target: targetRef,
+    offset: ["start center", "end center"]
+  });
+
+  // We map the vertical scroll progress to a horizontal translation.
+  const x = useTransform(scrollYProgress, [0, 1], ["5%", "-70%"]);
+
   return (
-    <AnimatedSection id="artworks" className="bg-secondary">
-      <div className="container mx-auto px-4 md:px-6">
+    <section id="artworks" className="bg-secondary">
+      <div className="container mx-auto px-4 md:px-6 pt-16 md:pt-24">
         <div className="flex items-center mb-12">
           <Palette className="h-10 w-10 text-primary mr-4" />
           <h2 className="font-headline text-3xl md:text-4xl font-bold text-primary">My Artworks</h2>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-          {artworksData.map((artwork, index) => (
-            <ArtworkCard key={artwork.id} artwork={artwork} index={index} />
-          ))}
+      </div>
+      
+      {/* The scrollable container that defines the animation duration */}
+      <div ref={targetRef} className="relative h-[250vh]">
+        {/* The pinned container that holds the horizontal scroll animation */}
+        <div className="sticky top-0 h-screen flex items-center overflow-x-hidden">
+          {/* The horizontally moving track */}
+          <motion.div style={{ x }} className="flex items-center gap-8 pl-4">
+            {artworksData.map((artwork, index) => (
+              // Each artwork card is a flex item with a defined width
+              <div key={artwork.id} className="w-[80vw] max-w-sm md:w-[45vw] md:max-w-md shrink-0">
+                <ArtworkCard artwork={artwork} index={index} />
+              </div>
+            ))}
+          </motion.div>
         </div>
       </div>
-    </AnimatedSection>
+       <div className="h-24 bg-secondary" /> {/* Spacer at the bottom to prevent content overlap */}
+    </section>
   );
 }
