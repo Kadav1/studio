@@ -32,9 +32,10 @@ export default function ArtworkCard({ artwork, index }: ArtworkCardProps) {
           initial="hidden" 
           whileInView="visible" 
           viewport={{ once: true, amount: 0.2 }}
+          whileHover={{ y: -8, boxShadow: "0 10px 20px -5px hsl(var(--accent) / 0.2)" }}
           className="h-full cursor-pointer"
         >
-          <Card className="h-full flex flex-col overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 rounded-xl border-primary/20 hover:border-primary/40 group">
+          <Card className="h-full flex flex-col overflow-hidden transition-shadow duration-300 rounded-xl border-primary/20 hover:border-primary/40 group">
             <div className="relative w-full aspect-[4/3] overflow-hidden">
               <Image
                 src={artwork.imageUrl}

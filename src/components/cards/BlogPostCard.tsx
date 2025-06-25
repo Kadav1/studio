@@ -26,8 +26,15 @@ export default function BlogPostCard({ post, index }: BlogPostCardProps) {
   const quiz = post.quizId ? getQuizById(post.quizId) : undefined;
 
   return (
-    <motion.div variants={cardVariants} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }}>
-      <Card className="h-full flex flex-col overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 rounded-xl group">
+    <motion.div 
+      variants={cardVariants} 
+      initial="hidden" 
+      whileInView="visible" 
+      viewport={{ once: true, amount: 0.2 }}
+      whileHover={{ y: -8, boxShadow: "0 10px 20px -5px hsl(var(--primary) / 0.2)" }}
+      className="h-full"
+    >
+      <Card className="h-full flex flex-col overflow-hidden transition-shadow duration-300 rounded-xl group border">
         {post.imageUrl && (
           <div className="relative w-full h-48 overflow-hidden">
             <Image
