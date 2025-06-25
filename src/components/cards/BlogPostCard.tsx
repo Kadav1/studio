@@ -35,7 +35,6 @@ export default function BlogPostCard({ post, index }: BlogPostCardProps) {
               alt={post.title}
               fill
               sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-              data-ai-hint={post.imageHint || "blog article"}
               className="object-cover transition-transform duration-500 group-hover:scale-110"
             />
           </div>
@@ -52,8 +51,7 @@ export default function BlogPostCard({ post, index }: BlogPostCardProps) {
         </CardContent>
         <CardFooter className="pt-4 border-t flex justify-between items-center">
           <Button variant="link" asChild className="text-accent p-0 hover:text-accent/80 group/link">
-            {/* In a real app, this would link to `/blog/${post.slug}` */}
-            <Link href={`#blog`}> 
+            <Link href={`/blog/${post.slug}`}> 
               Read More <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover/link:translate-x-1" />
             </Link>
           </Button>

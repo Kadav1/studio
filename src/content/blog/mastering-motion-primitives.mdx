@@ -1,0 +1,51 @@
+---
+title: "Mastering Motion Primitives in Web Design"
+date: "2024-07-15"
+summary: "A deep dive into using Framer Motion to create stunning and interactive user experiences. Learn about key concepts and practical examples."
+imageUrl: "/images/blog/mastering-motion-primitives.png"
+imageHint: "abstract animation"
+quizId: "motion-primitives-quiz"
+---
+
+Framer Motion is a powerful, production-ready animation library for React that makes it incredibly simple to create beautiful and fluid user interfaces. In this post, we'll explore some of its core concepts and see how they were applied throughout this portfolio to create an engaging user experience.
+
+### The `motion` component
+
+The heart of Framer Motion is the `motion` component. You can turn any HTML or SVG element into an animatable motion component by prefixing it with `motion.`. For example, `div` becomes `motion.div`. This gives you access to special props like `initial`, `animate`, and `transition`.
+
+```jsx
+<motion.div
+  initial={{ opacity: 0, y: 20 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.5 }}
+/>
+```
+
+This simple example will make a div fade in and slide up when it's rendered.
+
+### Variants for Cleaner Code
+
+Variants allow you to define a set of named animation states and transition between them. This helps you extract animation declarations out of your JSX, keeping your component code clean, readable, and easier to manage, especially for complex animations.
+
+```jsx
+const cardVariants = {
+  hidden: { opacity: 0, scale: 0.9 },
+  visible: { opacity: 1, scale: 1 },
+};
+
+<motion.div
+  variants={cardVariants}
+  initial="hidden"
+  animate="visible"
+/>
+```
+
+### `AnimatePresence` for Enter and Exit Animations
+
+This is one of Framer Motion's most powerful features. The `AnimatePresence` component allows you to animate components as they are added to or removed from the React tree. It's perfect for things like modals, notifications, list items, or toggling between different UI states.
+
+In this portfolio, `AnimatePresence` is used in the Theme Toggle button to create a smooth cross-fade transition between the sun and moon icons.
+
+### `whileInView` for Scroll-Triggered Animations
+
+You don't always want animations to run as soon as the page loads. The `whileInView` prop makes it easy to trigger animations only when an element enters the viewport. This is used extensively in this portfolio to animate sections as you scroll down the page, making the experience feel more dynamic and focused.
