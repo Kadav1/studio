@@ -45,7 +45,7 @@ export default async function BlogPostPage({ params }: { params: { slug: string 
       <div className="container mx-auto px-4 md:px-6">
         <div className="mb-8">
             <Button variant="ghost" asChild className="text-foreground hover:bg-accent/10 hover:text-accent">
-                <Link href="/#blog">
+                <Link href="/?tab=blog#showcase">
                 <ArrowLeft className="mr-2 h-4 w-4" />
                 Back to Blog
                 </Link>
