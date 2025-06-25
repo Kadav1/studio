@@ -1,10 +1,13 @@
+
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import type { Artwork } from "@/types";
 import ArtworkCard from "@/components/cards/ArtworkCard";
 import { Palette } from "lucide-react";
 import { motion, useScroll, useTransform } from "framer-motion";
+import { useIsMobile } from "@/hooks/use-mobile";
+import { Skeleton } from "@/components/ui/skeleton";
 
 const artworksData: Artwork[] = [
   {
@@ -73,46 +76,82 @@ const artworksData: Artwork[] = [
   },
 ];
 
-export default function ArtworksSection() {
+// Desktop-specific component for the horizontal scroll effect
+function HorizontalScrollGallery() {
   const targetRef = useRef<HTMLDivElement>(null);
-
-  // We track the scroll progress of `targetRef` as it moves through the viewport.
-  // The animation starts when the top of the target hits the top of the viewport,
-  // and ends when the bottom of the target hits the bottom of the viewport.
   const { scrollYProgress } = useScroll({
     target: targetRef,
     offset: ["start start", "end end"],
   });
 
-  // We map the vertical scroll progress (0 to 1) to a horizontal translation.
-  // The hardcoded '-75%' value depends on the number of cards and their width.
-  // A more dynamic calculation could be used for varying content.
+  // This value is an approximation. A more robust solution might calculate this dynamically.
   const x = useTransform(scrollYProgress, [0, 1], ["5%", "-75%"]);
 
   return (
-    <section id="artworks" className="bg-secondary">
-      <div className="container mx-auto px-4 md:px-6 pt-16 md:pt-24">
-        <div className="flex items-center mb-12">
-          <Palette className="h-10 w-10 text-primary mr-4" />
-          <h2 className="font-headline text-3xl md:text-4xl font-bold text-primary">My Artworks</h2>
-        </div>
-      </div>
-      
-      {/* This tall div is the target for our useScroll hook. Its height determines the scroll "distance" for the animation. */}
+    <>
       <div ref={targetRef} className="relative h-[300vh]">
-        {/* This div becomes sticky, pinning the horizontal scroller to the screen. */}
-        <div className="sticky top-0 h-screen flex items-center overflow-hidden">
-          {/* This is the motion component that will scroll horizontally. */}
+        <div className="sticky top-0 flex h-screen items-center overflow-hidden">
           <motion.div style={{ x }} className="flex gap-8">
             {artworksData.map((artwork, index) => (
-              <div key={artwork.id} className="w-[80vw] max-w-sm md:w-[45vw] md:max-w-md shrink-0">
+              <div key={artwork.id} className="w-[80vw] max-w-sm shrink-0 md:w-[45vw] md:max-w-md">
                 <ArtworkCard artwork={artwork} index={index} />
               </div>
             ))}
           </motion.div>
         </div>
       </div>
-       <div className="h-24 bg-secondary" /> {/* Spacer at the bottom to prevent content overlap */}
+      <div className="h-24 bg-secondary" />
+    </>
+  );
+}
+
+// Mobile-specific component for the vertical grid
+function VerticalGridGallery() {
+  return (
+    <div className="container mx-auto px-4 md:px-6 pb-16 md:pb-24">
+      <div className="grid grid-cols-1 gap-8 sm:grid-cols-2">
+        {artworksData.map((artwork, index) => (
+          <ArtworkCard key={artwork.id} artwork={artwork} index={index} />
+        ))}
+      </div>
+    </div>
+  );
+}
+
+// Skeleton loader to prevent layout shift during hydration
+function GallerySkeleton() {
+  return (
+    <div className="container mx-auto grid grid-cols-1 gap-8 px-4 pb-16 sm:grid-cols-2 md:px-6 md:pb-24">
+      {artworksData.slice(0, 4).map((_, index) => (
+        <div key={index} className="space-y-3">
+          <Skeleton className="aspect-[4/3] w-full rounded-xl" />
+          <Skeleton className="h-6 w-3/4" />
+          <Skeleton className="h-4 w-1/2" />
+        </div>
+      ))}
+    </div>
+  );
+}
+
+
+export default function ArtworksSection() {
+  const [isMounted, setIsMounted] = useState(false);
+  const isMobile = useIsMobile();
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  return (
+    <section id="artworks" className="bg-secondary">
+      <div className="container mx-auto px-4 md:px-6 pt-16 md:pt-24">
+        <div className="mb-12 flex items-center">
+          <Palette className="h-10 w-10 text-primary mr-4" />
+          <h2 className="font-headline text-3xl font-bold text-primary md:text-4xl">My Artworks</h2>
+        </div>
+      </div>
+
+      {!isMounted ? <GallerySkeleton /> : isMobile ? <VerticalGridGallery /> : <HorizontalScrollGallery />}
     </section>
   );
 }
