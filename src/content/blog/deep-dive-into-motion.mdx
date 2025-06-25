@@ -1,0 +1,79 @@
+---
+title: 'A Deep Dive into Motion Primitives'
+date: '2024-05-15'
+summary: 'Exploring how Framer Motion can be used to create delightful, performant, and complex animations in a React application.'
+imageUrl: 'https://placehold.co/600x400.png'
+imageHint: 'abstract animation shapes'
+quizId: 'motion-primitives-quiz'
+---
+
+Animations are a powerful tool in a developer's arsenal. When used correctly, they can guide the user, provide feedback, and create a more engaging and polished experience. In this post, we'll explore some of the "motion primitives" used throughout this portfolio, which are powered by the incredible library [Framer Motion](https://www.framer.com/motion/).
+
+### The `motion` Component
+
+The core of Framer Motion is the `motion` component. You can turn any HTML or SVG element into a motion component by prepending `motion.` to it. For example, a `div` becomes `motion.div`.
+
+This new component accepts special props that allow you to declare animations in a simple, declarative way.
+
+```jsx
+<motion.div
+  initial={{ opacity: 0, scale: 0.5 }}
+  animate={{ opacity: 1, scale: 1 }}
+  transition={{ duration: 0.5 }}
+/>
+```
+
+In this example, the `div` will animate from an initial state of being invisible and scaled down, to a final state of being fully visible and at its normal size.
+
+### Orchestrating Animations with Variants
+
+For more complex animations, especially when you need to coordinate animations between parent and child elements, `variants` are incredibly useful. Variants allow you to define named animation states and propagate them through the component tree.
+
+```jsx
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.2
+    }
+  }
+};
+
+const itemVariants = {
+  hidden: { y: 20, opacity: 0 },
+  visible: { y: 0, opacity: 1 }
+};
+
+<motion.ul
+  variants={containerVariants}
+  initial="hidden"
+  animate="visible"
+>
+  <motion.li variants={itemVariants} />
+  <motion.li variants={itemVariants} />
+</motion.ul>
+```
+
+Here, the `ul` will fade in, and then each `li` child will animate in one after the other, creating a staggered effect.
+
+### Animating on Scroll
+
+A common use case is triggering animations as elements scroll into view. Framer Motion makes this trivial with the `whileInView` prop and the `viewport` prop for configuration.
+
+```jsx
+<motion.div
+  initial={{ opacity: 0, y: 50 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  viewport={{ once: true, amount: 0.3 }}
+  transition={{ duration: 0.6 }}
+>
+  This will animate in once 30% of it is visible.
+</motion.div>
+```
+
+This is the exact technique used on the section containers in this portfolio to create that smooth, fade-in-as-you-scroll effect.
+
+### Conclusion
+
+These are just a few of the motion primitives available in Framer Motion. By combining them, you can build everything from simple button feedback to complex, orchestrated page transitions. They provide a powerful, declarative API that makes building beautiful user interfaces a joy.

@@ -8,7 +8,7 @@ const ArtworksSection = dynamic(() => import('@/components/sections/ArtworksSect
 const BlogSection = dynamic(() => import('@/components/sections/BlogSection'));
 const PortfolioEnhancementSection = dynamic(() => import('@/components/sections/PortfolioEnhancementSection'));
 const ContactSection = dynamic(() => import('@/components/sections/ContactSection'));
-// const WorkHistorySection = dynamic(() => import('@/components/sections/WorkHistorySection'));
+const WorkHistorySection = dynamic(() => import('@/components/sections/WorkHistorySection'));
 
 export default function Home() {
   const blogPosts = getSortedPostsData();
@@ -16,8 +16,8 @@ export default function Home() {
   return (
     <>
       <HeroSection />
-      {/* <WorkHistorySection /> */}
-      {/* <Separator className="my-0"/> */}
+      <WorkHistorySection />
+      <Separator className="my-0"/>
       <ProjectShowcaseSection />
       <Separator className="my-0"/>
       <ArtworksSection />

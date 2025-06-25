@@ -3,7 +3,7 @@
 import type { WorkExperience } from "@/types";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { CalendarDays, MapPin } from "lucide-react";
+import { CalendarDays, MapPin, Briefcase } from "lucide-react";
 import { motion } from "framer-motion";
 
 interface WorkHistoryCardProps {
@@ -59,29 +59,9 @@ export default function WorkHistoryCard({ experience, isLeft }: WorkHistoryCardP
       </div>
       <div className="absolute left-5 top-1/2 -translate-y-1/2 transform md:relative md:left-auto md:top-auto md:translate-y-0 md:mx-auto">
         <div className="flex h-10 w-10 items-center justify-center rounded-full bg-primary text-primary-foreground shadow-md">
-          <BriefcaseIcon className="h-5 w-5" />
+          <Briefcase className="h-5 w-5" />
         </div>
       </div>
     </motion.div>
   );
-}
-
-function BriefcaseIcon(props: React.SVGProps<SVGSVGElement>) {
-  return (
-    <svg
-      {...props}
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <rect width="20" height="14" x="2" y="7" rx="2" ry="2" />
-      <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
-    </svg>
-  )
 }
