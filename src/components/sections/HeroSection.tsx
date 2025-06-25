@@ -57,16 +57,19 @@ export default function HeroSection() {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="hidden md:flex justify-center items-center"
           >
-            <div className="relative w-80 h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden shadow-2xl border-4 border-primary">
-              <Image
-                src="/images/hero/Alex-zewebrand-1.png"
-                alt="Alex Zewebrand"
-                fill
-                priority
-                sizes="(min-width: 1024px) 384px, 320px"
-                data-ai-hint="person portrait"
-                className="object-cover transform hover:scale-105 transition-transform duration-500"
-              />
+            <div className="relative group">
+              <div className="absolute -inset-0.5 bg-gradient-to-r from-primary via-accent to-primary rounded-full blur-xl opacity-30 group-hover:opacity-70 transition duration-1000 animate-pulse-slow -z-10"></div>
+              <div className="relative w-80 h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden shadow-2xl border-2 border-secondary">
+                <Image
+                  src="/images/hero/Alex-zewebrand-1.png"
+                  alt="Alex Zewebrand"
+                  fill
+                  priority
+                  sizes="(min-width: 1024px) 384px, 320px"
+                  data-ai-hint="person portrait"
+                  className="object-cover transform group-hover:scale-105 transition-transform duration-500"
+                />
+              </div>
             </div>
           </motion.div>
         </div>

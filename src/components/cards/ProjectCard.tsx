@@ -23,7 +23,7 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
 
   return (
     <motion.div variants={cardVariants} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }}>
-      <Card className="h-full flex flex-col overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 border-accent/30 border-2 rounded-xl group">
+      <Card className="h-full flex flex-col overflow-hidden shadow-lg hover:shadow-primary/10 transition-all duration-300 border bg-card rounded-xl group hover:border-primary/30">
         <div className="relative w-full h-48 overflow-hidden">
           <Image
             src={project.imageUrl}
