@@ -84,16 +84,15 @@ function HorizontalScrollGallery() {
     offset: ["start start", "end end"],
   });
 
-  // This value is an approximation. A more robust solution might calculate this dynamically.
-  const x = useTransform(scrollYProgress, [0, 1], ["5%", "-75%"]);
+  const x = useTransform(scrollYProgress, [0, 1], ["5%", "-65%"]);
 
   return (
     <>
-      <div ref={targetRef} className="relative h-[300vh]">
+      <div ref={targetRef} className="relative h-[220vh]">
         <div className="sticky top-0 flex h-screen items-center overflow-hidden">
           <motion.div style={{ x }} className="flex gap-8">
             {artworksData.map((artwork, index) => (
-              <div key={artwork.id} className="w-[80vw] max-w-sm shrink-0 md:w-[45vw] md:max-w-md">
+              <div key={artwork.id} className="w-[80vw] max-w-sm shrink-0 md:w-[40vw] md:max-w-sm">
                 <ArtworkCard artwork={artwork} index={index} />
               </div>
             ))}
