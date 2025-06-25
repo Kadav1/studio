@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useRef, useState, useEffect } from "react";
@@ -87,20 +86,17 @@ function HorizontalScrollGallery() {
   const x = useTransform(scrollYProgress, [0, 1], ["5%", "-65%"]);
 
   return (
-    <>
-      <div ref={targetRef} className="relative h-[220vh]">
-        <div className="relative sticky top-0 flex h-screen items-center overflow-hidden">
-          <motion.div style={{ x }} className="flex gap-8">
-            {artworksData.map((artwork, index) => (
-              <div key={artwork.id} className="w-[80vw] max-w-sm shrink-0 md:w-[40vw] md:max-w-sm">
-                <ArtworkCard artwork={artwork} index={index} />
-              </div>
-            ))}
-          </motion.div>
-        </div>
+    <div ref={targetRef} className="relative h-[200vh]">
+      <div className="sticky top-0 flex h-screen items-center overflow-hidden">
+        <motion.div style={{ x }} className="flex gap-8">
+          {artworksData.map((artwork, index) => (
+            <div key={artwork.id} className="w-[70vw] max-w-xs shrink-0 md:w-[35vw] md:max-w-xs">
+              <ArtworkCard artwork={artwork} index={index} />
+            </div>
+          ))}
+        </motion.div>
       </div>
-      <div className="h-24 bg-secondary" />
-    </>
+    </div>
   );
 }
 
