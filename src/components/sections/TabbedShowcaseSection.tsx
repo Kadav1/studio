@@ -10,6 +10,7 @@ import ProjectShowcaseSection from "./ProjectShowcaseSection";
 import ArtworksSection from "./ArtworksSection";
 import BlogSection from "./BlogSection";
 import { Skeleton } from '../ui/skeleton';
+import { AppWindow, Palette, FileText } from "lucide-react";
 
 interface TabbedShowcaseSectionProps {
   posts: BlogPost[];
@@ -34,9 +35,18 @@ function TabbedShowcaseComponent({ posts }: TabbedShowcaseSectionProps) {
         className="container mx-auto"
       >
         <TabsList className="grid w-full max-w-md mx-auto grid-cols-3 mb-12 h-auto">
-          <TabsTrigger value="projects" className="py-2.5 text-base">Projects</TabsTrigger>
-          <TabsTrigger value="artworks" className="py-2.5 text-base">Artworks</TabsTrigger>
-          <TabsTrigger value="blog" className="py-2.5 text-base">Blog</TabsTrigger>
+          <TabsTrigger value="projects" className="py-2.5 text-base gap-2">
+            <AppWindow className="h-5 w-5" />
+            Projects
+          </TabsTrigger>
+          <TabsTrigger value="artworks" className="py-2.5 text-base gap-2">
+            <Palette className="h-5 w-5" />
+            Artworks
+          </TabsTrigger>
+          <TabsTrigger value="blog" className="py-2.5 text-base gap-2">
+            <FileText className="h-5 w-5" />
+            Blog
+          </TabsTrigger>
         </TabsList>
         <TabsContent value="projects">
           <AnimatedSection>

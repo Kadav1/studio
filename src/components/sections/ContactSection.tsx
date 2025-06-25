@@ -61,16 +61,16 @@ export default function ContactSection() {
                   </div>
                 </div>
                 <div className="flex space-x-4 pt-4 border-t">
-                   <Link href="#" aria-label="LinkedIn" className="text-muted-foreground hover:text-accent transition-all duration-200 hover:scale-110">
+                   <Link href="https://www.linkedin.com/in/alexzewebrand" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="text-muted-foreground hover:text-accent transition-all duration-200 hover:scale-110">
                       <Linkedin className="h-7 w-7" />
                   </Link>
-                  <Link href="#" aria-label="GitHub" className="text-muted-foreground hover:text-accent transition-all duration-200 hover:scale-110">
+                  <Link href="https://github.com/alexzewebrand" target="_blank" rel="noopener noreferrer" aria-label="GitHub" className="text-muted-foreground hover:text-accent transition-all duration-200 hover:scale-110">
                       <Github className="h-7 w-7" />
                   </Link>
-                  <Link href="#" aria-label="Instagram" className="text-muted-foreground hover:text-accent transition-all duration-200 hover:scale-110">
+                  <Link href="https://www.instagram.com/alexzewebrand" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="text-muted-foreground hover:text-accent transition-all duration-200 hover:scale-110">
                       <Instagram className="h-7 w-7" />
                   </Link>
-                  <Link href="#" aria-label="Facebook" className="text-muted-foreground hover:text-accent transition-all duration-200 hover:scale-110">
+                  <Link href="https://www.facebook.com/alexzewebrand" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="text-muted-foreground hover:text-accent transition-all duration-200 hover:scale-110">
                       <Facebook className="h-7 w-7" />
                   </Link>
                 </div>

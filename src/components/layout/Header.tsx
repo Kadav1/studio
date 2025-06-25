@@ -10,7 +10,7 @@ import { ThemeToggleButton } from "@/components/shared/ThemeToggleButton";
 import { Button } from "@/components/ui/button";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 
-const navItems: { key: string, href: string; label: string; icon: ReactNode }[] = [
+const navItems = [
   { key: "home", href: "#home", label: "Home", icon: <HomeIcon className="h-4 w-4" /> },
   { key: "projects", href: "/?tab=projects#showcase", label: "Projects", icon: <AppWindow className="h-4 w-4" /> },
   { key: "artworks", href: "/?tab=artworks#showcase", label: "Artworks", icon: <Palette className="h-4 w-4" /> },
@@ -20,51 +20,41 @@ const navItems: { key: string, href: string; label: string; icon: ReactNode }[] 
 ];
 
 export default function Header() {
-  const [activeKey, setActiveKey] = useState<string>(navItems[0]?.key || "home");
-
   const pathname = usePathname();
   const searchParams = useSearchParams();
+  const [activeKey, setActiveKey] = useState("home");
+  const [hoveredKey, setHoveredKey] = useState<string | null>(null);
 
   useEffect(() => {
-    // This effect determines the active nav item based on the URL
-    const hash = window.location.hash;
-    const tab = searchParams.get('tab');
+    const getActiveKey = () => {
+      const tab = searchParams.get('tab');
+      const hash = window.location.hash;
 
-    let currentKey = 'home';
-    if (pathname === '/') {
-        if (hash === '#showcase' && tab) {
-            currentKey = tab;
-        } else if (hash) {
-            const item = navItems.find(item => item.href === hash);
-            if (item) {
-                currentKey = item.key;
-            }
+      if (pathname.startsWith('/blog')) return 'blog';
+      if (pathname.startsWith('/projects')) return 'projects';
+      
+      if (pathname === '/') {
+        if (hash === '#showcase' && tab) return tab;
+        if (hash) {
+            const key = hash.substring(1);
+            if (navItems.some(item => item.key === key)) return key;
         }
+      }
+      return 'home';
     }
     
-    const activeItem = navItems.find(item => item.key === currentKey);
-    if(activeItem) {
-        setActiveKey(activeItem.key);
-    }
+    // Set initial active key
+    setActiveKey(getActiveKey());
+
+    // Next.js routing doesn't always trigger re-renders on hash changes,
+    // so we use a listener to ensure the active state is always correct.
+    const handleHashChange = () => setActiveKey(getActiveKey());
+    window.addEventListener('hashchange', handleHashChange, false);
+    return () => window.removeEventListener('hashchange', handleHashChange, false);
+
   }, [pathname, searchParams]);
 
-
-  const handleNavMouseLeave = () => {
-     // When mouse leaves, reset to the actual active tab based on URL
-    const hash = window.location.hash;
-    const tab = searchParams.get('tab');
-    let currentKey = 'home';
-     if (hash === '#showcase' && tab) {
-      currentKey = tab;
-    } else if (hash) {
-      currentKey = hash.substring(1);
-    }
-    const activeItem = navItems.find(item => item.key === currentKey);
-    if (activeItem) {
-      setActiveKey(activeItem.key);
-    }
-  };
-
+  const displayKey = hoveredKey || activeKey;
 
   return (
     <motion.header
@@ -79,21 +69,20 @@ export default function Header() {
         <div className="hidden md:flex items-center space-x-2">
           <nav 
             className="flex items-center space-x-1 relative"
-            onMouseLeave={handleNavMouseLeave}
+            onMouseLeave={() => setHoveredKey(null)}
           >
             {navItems.map((item) => (
               <Link
                 key={item.key}
                 href={item.href}
-                onClick={() => setActiveKey(item.key)}
-                onMouseEnter={() => setActiveKey(item.key)}
+                onMouseEnter={() => setHoveredKey(item.key)}
                 className="relative px-3 py-1.5 rounded-full text-xs font-medium text-foreground hover:text-primary transition-colors duration-150 ease-in-out focus:outline-none focus-visible:ring-2 focus-visible:ring-ring"
               >
                 <span className="flex items-center space-x-1.5">
                   {item.icon}
                   <span>{item.label}</span>
                 </span>
-                {activeKey === item.key && (
+                {displayKey === item.key && (
                   <motion.div
                     className="absolute inset-0 bg-primary/10 -z-10 rounded-full"
                     layoutId="desktop-nav-highlight"
@@ -118,7 +107,6 @@ export default function Header() {
                                 size="icon"
                                 asChild
                                 className={`rounded-full w-10 h-10 transition-colors ${activeKey === item.key ? 'bg-primary/10 text-primary' : 'text-foreground'}`}
-                                onClick={() => setActiveKey(item.key)}
                             >
                                 <Link href={item.href}>
                                     {item.icon}

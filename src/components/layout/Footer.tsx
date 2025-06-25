@@ -11,19 +11,19 @@ export default function Footer() {
     <footer className="bg-secondary text-secondary-foreground py-12">
       <div className="container mx-auto px-4 md:px-6 text-center">
         <div className="flex justify-center space-x-6 mb-6">
-          <Link href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="text-secondary-foreground hover:text-accent transition-all duration-200 hover:scale-110">
+          <Link href="https://www.linkedin.com/in/alexzewebrand" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="text-secondary-foreground hover:text-accent transition-all duration-200 hover:scale-110">
             <Linkedin className="h-6 w-6" />
           </Link>
-          <Link href="https://github.com" target="_blank" rel="noopener noreferrer" aria-label="GitHub" className="text-secondary-foreground hover:text-accent transition-all duration-200 hover:scale-110">
+          <Link href="https://github.com/alexzewebrand" target="_blank" rel="noopener noreferrer" aria-label="GitHub" className="text-secondary-foreground hover:text-accent transition-all duration-200 hover:scale-110">
             <Github className="h-6 w-6" />
           </Link>
-          <Link href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="text-secondary-foreground hover:text-accent transition-all duration-200 hover:scale-110">
+          <Link href="https://www.instagram.com/alexzewebrand" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="text-secondary-foreground hover:text-accent transition-all duration-200 hover:scale-110">
             <Instagram className="h-6 w-6" />
           </Link>
-          <Link href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="text-secondary-foreground hover:text-accent transition-all duration-200 hover:scale-110">
+          <Link href="https://www.facebook.com/alexzewebrand" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="text-secondary-foreground hover:text-accent transition-all duration-200 hover:scale-110">
             <Facebook className="h-6 w-6" />
           </Link>
-          <Link href="mailto:alex.zewebrand@example.com" aria-label="Email" className="text-secondary-foreground hover:text-accent transition-all duration-200 hover:scale-110">
+          <Link href="mailto:blndsft@proton.me" aria-label="Email" className="text-secondary-foreground hover:text-accent transition-all duration-200 hover:scale-110">
             <Mail className="h-6 w-6" />
           </Link>
         </div>

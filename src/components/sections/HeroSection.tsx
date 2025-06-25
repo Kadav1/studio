@@ -35,7 +35,7 @@ export default function HeroSection() {
               </Button>
                <Button size="lg" variant="outline" asChild className="shadow-lg transition-transform hover:scale-105 group">
                 <Link href="#contact">
-                  Get In Touch <Mail className="ml-2 h-5 w-5" />
+                  Get In Touch <Mail className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
                 </Link>
               </Button>
             </div>
