@@ -89,7 +89,7 @@ function HorizontalScrollGallery() {
   return (
     <>
       <div ref={targetRef} className="relative h-[220vh]">
-        <div className="sticky top-0 flex h-screen items-center overflow-hidden">
+        <div className="relative sticky top-0 flex h-screen items-center overflow-hidden">
           <motion.div style={{ x }} className="flex gap-8">
             {artworksData.map((artwork, index) => (
               <div key={artwork.id} className="w-[80vw] max-w-sm shrink-0 md:w-[40vw] md:max-w-sm">
