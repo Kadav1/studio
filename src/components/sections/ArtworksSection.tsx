@@ -76,16 +76,18 @@ const artworksData: Artwork[] = [
 export default function ArtworksSection() {
   const targetRef = useRef<HTMLDivElement>(null);
 
-  // We are tracking the scroll progress of `targetRef`
-  // The animation starts when the top of the target hits the center of the viewport,
-  // and ends when the bottom of the target hits the center of the viewport.
+  // We track the scroll progress of `targetRef` as it moves through the viewport.
+  // The animation starts when the top of the target hits the top of the viewport,
+  // and ends when the bottom of the target hits the bottom of the viewport.
   const { scrollYProgress } = useScroll({
     target: targetRef,
-    offset: ["start center", "end center"]
+    offset: ["start start", "end end"],
   });
 
-  // We map the vertical scroll progress to a horizontal translation.
-  const x = useTransform(scrollYProgress, [0, 1], ["5%", "-70%"]);
+  // We map the vertical scroll progress (0 to 1) to a horizontal translation.
+  // The hardcoded '-75%' value depends on the number of cards and their width.
+  // A more dynamic calculation could be used for varying content.
+  const x = useTransform(scrollYProgress, [0, 1], ["5%", "-75%"]);
 
   return (
     <section id="artworks" className="bg-secondary">
@@ -96,14 +98,13 @@ export default function ArtworksSection() {
         </div>
       </div>
       
-      {/* The scrollable container that defines the animation duration */}
-      <div ref={targetRef} className="relative h-[250vh]">
-        {/* The pinned container that holds the horizontal scroll animation */}
-        <div className="sticky top-0 h-screen flex items-center overflow-x-hidden">
-          {/* The horizontally moving track */}
-          <motion.div style={{ x }} className="flex items-center gap-8 pl-4">
+      {/* This tall div is the target for our useScroll hook. Its height determines the scroll "distance" for the animation. */}
+      <div ref={targetRef} className="relative h-[300vh]">
+        {/* This div becomes sticky, pinning the horizontal scroller to the screen. */}
+        <div className="sticky top-0 h-screen flex items-center overflow-hidden">
+          {/* This is the motion component that will scroll horizontally. */}
+          <motion.div style={{ x }} className="flex gap-8">
             {artworksData.map((artwork, index) => (
-              // Each artwork card is a flex item with a defined width
               <div key={artwork.id} className="w-[80vw] max-w-sm md:w-[45vw] md:max-w-md shrink-0">
                 <ArtworkCard artwork={artwork} index={index} />
               </div>
