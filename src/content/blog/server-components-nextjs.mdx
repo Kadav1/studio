@@ -1,23 +1,39 @@
 ---
-title: "The Rise of Server Components in Next.js"
-date: "2024-06-28"
-summary: "Exploring the benefits and best practices of using React Server Components with Next.js for improved performance and developer experience."
-imageUrl: "/images/blog/server-components-nextjs.png"
-imageHint: "code server"
+title: 'Understanding Server Components in Next.js'
+date: '2025-05-20'
+summary: 'A look into React Server Components and how they are changing the game in Next.js. Learn how they work, why they are beneficial, and when to use them.'
+imageUrl: 'https://placehold.co/600x400.png'
+imageHint: 'server code'
 ---
 
-React Server Components (RSCs) are a paradigm shift for web development, and Next.js has embraced them as the default in the App Router. They fundamentally change how we think about rendering and data fetching, leading to faster, more efficient applications. Let's explore why they're so important.
+Next.js 13 introduced the App Router, and with it, a paradigm shift in how we build React applications: **React Server Components (RSCs)**.
 
-### What are Server Components?
+## What are Server Components?
 
-In short, Server Components are React components that run exclusively on the server. They render ahead of time and their JavaScript code is never sent to the client's browser. This is a massive departure from the traditional model where React renders on the server for the initial load (SSR) but then sends all the component code to the client to "hydrate" the page and take over.
+Server Components are a new type of component that runs *exclusively* on the server. They are never downloaded to the client, and their code is not included in the client-side JavaScript bundle.
 
-### Key Benefits
+This has several key advantages:
 
-1.  **Zero Client-Side JavaScript**: By default, every component you create inside the Next.js `app` directory is a Server Component. This means less JavaScript for the user to download, parse, and execute, resulting in a significantly faster initial page load and a more responsive experience, especially on slower devices or networks.
+1.  **Zero Bundle Size:** Because they don't ship any JavaScript to the client, they don't contribute to your app's bundle size. This leads to faster initial page loads.
+2.  **Direct Backend Access:** Server Components can directly access server-side resources like databases, filesystems, or internal APIs without needing to create a separate API endpoint. This simplifies data fetching logic.
+3.  **Security:** Sensitive data and logic, like API keys or database credentials, can be kept safely on the server and never exposed to the browser.
 
-2.  **Direct Backend Access**: Since they run on the server, RSCs can directly access server-side resources. You can query a database, read from the file system, or call a secure API without having to create a separate API endpoint for your front-end to call. This simplifies your architecture and reduces network waterfalls.
+## Server vs. Client Components
 
-3.  **Improved Security**: Any sensitive data or logic, like API keys or private business logic, can be kept safely on the server. Since the component code isn't shipped to the client, you don't have to worry about exposing secrets in your browser-side code.
+In the Next.js App Router, all components are Server Components by default. To create a component that runs on the client (i.e., a traditional React component with state and effects), you need to opt-in with the `'use client'` directive at the top of the file.
 
-This entire portfolio is built using Server Components by default. Client-side interactivity is added only where needed (e.g., for animations, forms, or the navigation bar) by using the `'use client'` directive. This "server-first" approach is key to building performant modern web applications.
+```jsx
+'use client';
+
+import { useState } from 'react';
+
+export default function Counter() {
+  const [count, setCount] = useState(0);
+  return <button onClick={() => setCount(count + 1)}>{count}</button>;
+}
+```
+Any component that uses hooks like `useState` or `useEffect` must be a Client Component.
+
+## The Best of Both Worlds
+
+The power of this model lies in the ability to seamlessly interleave Server and Client Components. You can fetch data in a Server Component and pass it as props to an interactive Client Component, getting the best of both worlds: efficient data loading on the server and rich interactivity on the client.

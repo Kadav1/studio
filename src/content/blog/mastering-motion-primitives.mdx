@@ -1,51 +1,55 @@
 ---
-title: "Mastering Motion Primitives in Web Design"
-date: "2024-07-15"
-summary: "A deep dive into using Framer Motion to create stunning and interactive user experiences. Learn about key concepts and practical examples."
-imageUrl: "/images/blog/mastering-motion-primitives.png"
-imageHint: "abstract animation"
-quizId: "motion-primitives-quiz"
+title: 'Mastering Motion Primitives with Framer Motion'
+date: '2025-06-15'
+summary: 'Dive deep into Framer Motion and learn how to create stunning, fluid animations for your React applications. From basic concepts to advanced techniques.'
+imageUrl: 'https://placehold.co/600x400.png'
+imageHint: 'abstract animation'
+quizId: 'motion-primitives-quiz'
 ---
 
-Framer Motion is a powerful, production-ready animation library for React that makes it incredibly simple to create beautiful and fluid user interfaces. In this post, we'll explore some of its core concepts and see how they were applied throughout this portfolio to create an engaging user experience.
+Animations are a powerful tool in a developer's arsenal. They can guide users, provide feedback, and create a delightful user experience. In the React ecosystem, [Framer Motion](https://www.framer.com/motion/) has emerged as a go-to library for creating production-ready animations.
 
-### The `motion` component
+## The Core Concept: `motion` Components
 
-The heart of Framer Motion is the `motion` component. You can turn any HTML or SVG element into an animatable motion component by prefixing it with `motion.`. For example, `div` becomes `motion.div`. This gives you access to special props like `initial`, `animate`, and `transition`.
+The heart of Framer Motion is the `motion` component. You can turn any HTML or SVG element into a motion component by prepending `motion.` to it.
 
 ```jsx
+import { motion } from "framer-motion";
+
 <motion.div
-  initial={{ opacity: 0, y: 20 }}
-  animate={{ opacity: 1, y: 0 }}
+  animate={{ x: 100, rotate: 90 }}
   transition={{ duration: 0.5 }}
 />
 ```
 
-This simple example will make a div fade in and slide up when it's rendered.
+This simple example moves a div 100 pixels to the right and rotates it 90 degrees.
 
-### Variants for Cleaner Code
+## Variants: Reusable Animation Definitions
 
-Variants allow you to define a set of named animation states and transition between them. This helps you extract animation declarations out of your JSX, keeping your component code clean, readable, and easier to manage, especially for complex animations.
+Writing animation properties inline can get messy. Variants allow you to define animation states and transition between them by name.
 
 ```jsx
-const cardVariants = {
-  hidden: { opacity: 0, scale: 0.9 },
-  visible: { opacity: 1, scale: 1 },
+const variants = {
+  hidden: { opacity: 0 },
+  visible: { opacity: 1 },
 };
 
 <motion.div
-  variants={cardVariants}
   initial="hidden"
   animate="visible"
+  variants={variants}
 />
 ```
 
-### `AnimatePresence` for Enter and Exit Animations
+This approach is cleaner and more scalable, especially for complex animations involving parent-child relationships.
 
-This is one of Framer Motion's most powerful features. The `AnimatePresence` component allows you to animate components as they are added to or removed from the React tree. It's perfect for things like modals, notifications, list items, or toggling between different UI states.
+## AnimatePresence: Handling Enter and Exit Animations
 
-In this portfolio, `AnimatePresence` is used in the Theme Toggle button to create a smooth cross-fade transition between the sun and moon icons.
+One of the most powerful features of Framer Motion is the `AnimatePresence` component. It enables you to animate components when they are added to or removed from the React tree.
 
-### `whileInView` for Scroll-Triggered Animations
+This is essential for things like:
+- Animating list items as they are added or removed.
+- Creating smooth transitions between pages or views.
+- Modals and pop-ups that animate in and out.
 
-You don't always want animations to run as soon as the page loads. The `whileInView` prop makes it easy to trigger animations only when an element enters the viewport. This is used extensively in this portfolio to animate sections as you scroll down the page, making the experience feel more dynamic and focused.
+By wrapping your conditional components in `AnimatePresence`, you unlock declarative and beautiful exit animations with ease.

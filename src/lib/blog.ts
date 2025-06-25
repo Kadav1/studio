@@ -7,20 +7,28 @@ import { format, parseISO } from 'date-fns';
 const postsDirectory = path.join(process.cwd(), 'src/content/blog');
 
 export function getSortedPostsData(): BlogPost[] {
-  const fileNames = fs.readdirSync(postsDirectory);
-  const allPostsData = fileNames.map((fileName) => {
-    const slug = fileName.replace(/\.mdx$/, '');
-    const fullPath = path.join(postsDirectory, fileName);
-    const fileContents = fs.readFileSync(fullPath, 'utf8');
-    const { data } = matter(fileContents);
+  // Check if the directory exists. If not, return an empty array to prevent crashes.
+  if (!fs.existsSync(postsDirectory)) {
+    console.warn(`Blog posts directory not found at: ${postsDirectory}. Returning empty array.`);
+    return [];
+  }
 
-    return {
-      id: slug,
-      slug,
-      ...(data as { title: string; date: string; summary: string; imageUrl?: string; imageHint?: string; quizId?: string }),
-      date: format(parseISO(data.date), 'MMMM dd, yyyy'),
-    };
-  });
+  const fileNames = fs.readdirSync(postsDirectory);
+  const allPostsData = fileNames
+    .filter((fileName) => fileName.endsWith('.mdx')) // Process only .mdx files
+    .map((fileName) => {
+      const slug = fileName.replace(/\.mdx$/, '');
+      const fullPath = path.join(postsDirectory, fileName);
+      const fileContents = fs.readFileSync(fullPath, 'utf8');
+      const { data } = matter(fileContents);
+
+      return {
+        id: slug,
+        slug,
+        ...(data as { title: string; date: string; summary: string; imageUrl?: string; imageHint?: string; quizId?: string }),
+        date: format(parseISO(data.date), 'MMMM dd, yyyy'),
+      };
+    });
 
   return allPostsData.sort((a, b) => {
     if (new Date(a.date) < new Date(b.date)) {
@@ -32,14 +40,19 @@ export function getSortedPostsData(): BlogPost[] {
 }
 
 export function getAllPostSlugs() {
+  if (!fs.existsSync(postsDirectory)) {
+    return [];
+  }
   const fileNames = fs.readdirSync(postsDirectory);
-  return fileNames.map((fileName) => {
-    return {
-      params: {
-        slug: fileName.replace(/\.mdx$/, ''),
-      },
-    };
-  });
+  return fileNames
+    .filter((fileName) => fileName.endsWith('.mdx'))
+    .map((fileName) => {
+      return {
+        params: {
+          slug: fileName.replace(/\.mdx$/, ''),
+        },
+      };
+    });
 }
 
 export async function getPostData(slug: string) {
@@ -60,6 +73,7 @@ export async function getPostData(slug: string) {
       content,
     };
   } catch (error) {
+    console.error(`Error reading post data for slug: ${slug}`, error);
     return null;
   }
 }
