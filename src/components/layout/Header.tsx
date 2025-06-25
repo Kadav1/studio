@@ -7,7 +7,6 @@ import { usePathname, useSearchParams } from "next/navigation";
 import { AppWindow, FileText, MessageSquare, Palette, Sparkles, Home as HomeIcon } from "lucide-react";
 import { motion } from "framer-motion";
 import { ThemeToggleButton } from "@/components/shared/ThemeToggleButton";
-import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 
@@ -21,22 +20,10 @@ const navItems: { key: string, href: string; label: string; icon: ReactNode }[] 
 ];
 
 export default function Header() {
-  const [isScrolled, setIsScrolled] = useState(false);
   const [activeKey, setActiveKey] = useState<string>(navItems[0]?.key || "home");
 
   const pathname = usePathname();
   const searchParams = useSearchParams();
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-    handleScroll(); 
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
 
   useEffect(() => {
     // This effect determines the active nav item based on the URL
@@ -80,10 +67,12 @@ export default function Header() {
 
 
   return (
-    <header className={cn(
-        "fixed bottom-4 left-1/2 z-50 -translate-x-1/2 transform transition-all duration-500 ease-in-out",
-        isScrolled ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10 pointer-events-none"
-    )}>
+    <motion.header
+        className="fixed bottom-4 left-1/2 z-50 -translate-x-1/2 transform"
+        initial={{ y: 100, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ type: "spring", stiffness: 100, damping: 20, delay: 0.5 }}
+    >
       <div className="container mx-auto flex h-auto items-center justify-center rounded-full bg-background/80 px-3 py-2 shadow-lg backdrop-blur-md border border-border/20 md:px-4">
         
         {/* Desktop Nav */}
@@ -128,10 +117,7 @@ export default function Header() {
                                 variant="ghost"
                                 size="icon"
                                 asChild
-                                className={cn(
-                                    "rounded-full w-10 h-10 transition-colors",
-                                    activeKey === item.key ? 'bg-primary/10 text-primary' : 'text-foreground'
-                                )}
+                                className={`rounded-full w-10 h-10 transition-colors ${activeKey === item.key ? 'bg-primary/10 text-primary' : 'text-foreground'}`}
                                 onClick={() => setActiveKey(item.key)}
                             >
                                 <Link href={item.href}>
@@ -151,6 +137,6 @@ export default function Header() {
         </div>
 
       </div>
-    </header>
+    </motion.header>
   );
 }

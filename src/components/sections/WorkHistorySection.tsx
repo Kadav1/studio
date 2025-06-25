@@ -1,3 +1,4 @@
+
 "use client";
 
 import type { WorkExperience } from "@/types";
@@ -51,11 +52,17 @@ export default function WorkHistorySection() {
   return (
     <AnimatedSection id="work-history" className="bg-secondary">
       <div className="container mx-auto px-4 md:px-6">
-        <div className="flex items-center mb-12">
-          <Briefcase className="h-10 w-10 text-primary mr-4" />
-          <h2 className="font-headline text-3xl md:text-4xl font-bold text-primary">Work History</h2>
+        <div className="flex items-center mb-16 flex-col text-center">
+           <div className="p-3 bg-primary/10 rounded-full mb-4 inline-block">
+            <Briefcase className="h-10 w-10 text-primary" />
+          </div>
+          <h2 className="font-headline text-3xl md:text-4xl font-bold text-primary mb-3">Career Journey</h2>
+          <p className="text-lg text-muted-foreground max-w-2xl">
+            A timeline of my professional experience, highlighting key roles and accomplishments that have shaped my skills.
+          </p>
         </div>
-        <div className="relative space-y-12 before:absolute before:inset-0 before:ml-5 before:h-full before:w-0.5 before:bg-border before:-translate-x-px md:before:mx-auto md:before:translate-x-0">
+
+        <div className="relative space-y-12 before:absolute before:inset-0 before:ml-5 before:h-full before:w-1 before:bg-primary/20 before:-translate-x-px md:before:mx-auto md:before:translate-x-0">
           {workExperiences.map((exp, index) => (
             <WorkHistoryCard key={exp.id} experience={exp} isLeft={index % 2 === 0} />
           ))}

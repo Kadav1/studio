@@ -22,8 +22,15 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
   };
 
   return (
-    <motion.div variants={cardVariants} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.2 }}>
-      <Card className="h-full flex flex-col overflow-hidden shadow-lg hover:shadow-primary/10 transition-all duration-300 border bg-card rounded-xl group hover:border-primary/30">
+    <motion.div 
+        variants={cardVariants} 
+        initial="hidden" 
+        whileInView="visible" 
+        viewport={{ once: true, amount: 0.2 }}
+        whileHover={{ y: -8, boxShadow: "0 10px 20px -5px hsl(var(--primary) / 0.2)" }}
+        className="h-full"
+    >
+      <Card className="h-full flex flex-col overflow-hidden transition-all duration-300 border bg-card rounded-xl group hover:border-primary/30">
         <div className="relative w-full h-48 overflow-hidden">
           <Image
             src={project.imageUrl}
@@ -53,9 +60,9 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
           </div>
         </CardContent>
         <CardFooter className="pt-4 border-t">
-          <Button asChild className="w-full bg-accent hover:bg-accent/90 text-accent-foreground transition-transform group-hover:scale-105">
+          <Button asChild className="w-full bg-accent hover:bg-accent/90 text-accent-foreground group/link">
             <Link href={`/projects/${project.slug}`}>
-              View Case Study <ArrowRight className="ml-2 h-4 w-4" />
+              View Case Study <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover/link:translate-x-1" />
             </Link>
           </Button>
         </CardFooter>
