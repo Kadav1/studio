@@ -20,23 +20,43 @@ export function getSortedPostsData(): BlogPost[] {
       const slug = fileName.replace(/\.mdx$/, '');
       const fullPath = path.join(postsDirectory, fileName);
       const fileContents = fs.readFileSync(fullPath, 'utf8');
-      const { data } = matter(fileContents);
+      
+      try {
+        const { data } = matter(fileContents);
 
-      return {
-        id: slug,
-        slug,
-        ...(data as { title: string; date: string; summary: string; imageUrl?: string; imageHint?: string; quizId?: string }),
-        date: format(parseISO(data.date), 'MMMM dd, yyyy'),
-      };
-    });
+        // Validate that essential frontmatter exists and is of the correct type
+        if (typeof data.title !== 'string' || typeof data.date !== 'string' || typeof data.summary !== 'string') {
+          console.warn(`Skipping post "${fileName}" due to invalid or missing frontmatter (title, date, or summary).`);
+          return null;
+        }
 
-  return allPostsData.sort((a, b) => {
-    if (new Date(a.date) < new Date(b.date)) {
-      return 1;
-    } else {
-      return -1;
-    }
-  });
+        // This will throw an error if the date is not a valid ISO string, which is caught below
+        const parsedDate = parseISO(data.date);
+
+        const blogPost: BlogPost = {
+          id: slug,
+          slug,
+          title: data.title,
+          summary: data.summary,
+          date: format(parsedDate, 'MMMM dd, yyyy'),
+          imageUrl: data.imageUrl,
+          imageHint: data.imageHint,
+          quizId: data.quizId,
+        };
+
+        // Return a temporary object with raw date for accurate sorting
+        return { post: blogPost, rawDate: data.date };
+
+      } catch (e) {
+        console.error(`Could not process blog post "${fileName}" due to an error:`, e);
+        return null;
+      }
+    })
+    .filter((item): item is { post: BlogPost; rawDate: string } => item !== null) // Filter out any posts that failed to parse
+    .sort((a, b) => (a.rawDate < b.rawDate ? 1 : -1)) // Sort by raw date string (newest first)
+    .map(item => item.post); // Return just the BlogPost objects
+
+  return allPostsData;
 }
 
 export function getAllPostSlugs() {
@@ -56,13 +76,22 @@ export function getAllPostSlugs() {
 }
 
 export async function getPostData(slug: string): Promise<PostData | null> {
+  const fullPath = path.join(postsDirectory, `${slug}.mdx`);
+  if (!fs.existsSync(fullPath)) {
+      return null;
+  }
+  
   try {
-    const fullPath = path.join(postsDirectory, `${slug}.mdx`);
-    if (!fs.existsSync(fullPath)) {
-        return null;
-    }
     const fileContents = fs.readFileSync(fullPath, 'utf8');
     const { data, content } = matter(fileContents);
+
+    // Validate essential frontmatter
+    if (typeof data.title !== 'string' || typeof data.date !== 'string' || typeof data.summary !== 'string') {
+      console.warn(`Could not load post for slug "${slug}" due to invalid or missing frontmatter.`);
+      return null;
+    }
+
+    const parsedDate = parseISO(data.date);
 
     const frontmatter: DetailedPostFrontmatter = {
       title: data.title,
@@ -70,7 +99,7 @@ export async function getPostData(slug: string): Promise<PostData | null> {
       imageUrl: data.imageUrl,
       imageHint: data.imageHint,
       quizId: data.quizId,
-      date: format(parseISO(data.date), 'MMMM dd, yyyy'),
+      date: format(parsedDate, 'MMMM dd, yyyy'),
       rawDate: data.date,
     };
 
