@@ -56,10 +56,27 @@ export interface GranularFeedback {
   roleTargeting: string;
 }
 
+export interface RewrittenDescriptions {
+  standard: string;
+  technical: string;
+  business: string;
+}
+
+export interface SkillsAnalysis {
+  extracted: string[];
+  suggested: string[];
+}
+
+export interface KeywordAnalysis {
+  feedback: string;
+  suggestedKeywords: string[];
+}
+
 export interface PortfolioEnhancementOutput {
   granularFeedback: GranularFeedback;
-  rewrittenDescription: string;
-  suggestedKeywords: string[];
+  rewrittenDescriptions: RewrittenDescriptions;
+  skillsAnalysis: SkillsAnalysis;
+  keywordAnalysis: KeywordAnalysis;
 }
 
 export interface QuizQuestionOption {

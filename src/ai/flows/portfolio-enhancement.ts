@@ -1,3 +1,4 @@
+
 'use server';
 /**
  * @fileOverview An AI agent that provides feedback on portfolio project descriptions.
@@ -21,10 +22,27 @@ const GranularFeedbackSchema = z.object({
     roleTargeting: z.string().describe("Feedback on how well the description could be tailored for a specific role or industry. Suggest how to add focus."),
 });
 
+const RewrittenDescriptionsSchema = z.object({
+    standard: z.string().describe("A balanced, professional rewrite of the description suitable for a general audience like a recruiter."),
+    technical: z.string().describe("A version of the description rewritten to be more detailed and technical, aimed at a senior engineer or architect."),
+    business: z.string().describe("A version rewritten to focus on business impact and value, aimed at a product manager or non-technical stakeholder."),
+});
+
+const SkillsAnalysisSchema = z.object({
+    extracted: z.array(z.string()).describe("Skills explicitly mentioned or strongly implied in the original description."),
+    suggested: z.array(z.string()).describe("Additional relevant skills that could be added to strengthen the description."),
+});
+
+const KeywordAnalysisSchema = z.object({
+    feedback: z.string().describe("A brief analysis of how well the description uses relevant keywords and suggestions for improvement."),
+    suggestedKeywords: z.array(z.string()).describe("An array of 5-7 relevant technical or soft-skill keywords based on the description."),
+});
+
 const PortfolioEnhancementOutputSchema = z.object({
   granularFeedback: GranularFeedbackSchema,
-  rewrittenDescription: z.string().describe("An improved, rewritten version of the project description."),
-  suggestedKeywords: z.array(z.string()).describe("An array of 5-7 relevant technical or soft-skill keywords based on the description."),
+  rewrittenDescriptions: RewrittenDescriptionsSchema,
+  skillsAnalysis: SkillsAnalysisSchema,
+  keywordAnalysis: KeywordAnalysisSchema,
 });
 
 // The exported function that the UI will call
@@ -38,7 +56,7 @@ const prompt = ai.definePrompt({
   output: { schema: PortfolioEnhancementOutputSchema },
   prompt: `You are a helpful and friendly career coach and senior tech recruiter specializing in reviewing software engineering portfolios.
 
-Your task is to analyze the following project description and provide feedback to make it more impactful and appealing to hiring managers.
+Your task is to analyze the following project description and provide a comprehensive, multi-faceted review to make it more impactful and appealing to different audiences.
 
 Project Description:
 "{{{prompt}}}"
@@ -51,9 +69,18 @@ Provide the following in a structured JSON format:
     -   **Quantifiable Results**: Does it include metrics that show the impact of the work (e.g., "reduced page load time by 30%", "handled 10,000 concurrent users")?
     -   **Role Targeting**: How could the description be tailored to better appeal to specific roles, like a front-end specialist, a back-end engineer, or a team lead?
 
-2.  **Rewritten Description**: Rewrite the description to be more professional, concise, and results-oriented. Incorporate your feedback to highlight the technologies and the impact of the project.
+2.  **Rewritten Descriptions**: Provide three distinct, rewritten versions of the project description, each tailored for a different audience.
+    -   **standard**: A balanced, professional version suitable for a general audience like a recruiter or hiring manager.
+    -   **technical**: A more detailed version that emphasizes the technical architecture, challenges, and solutions, aimed at a senior engineer or architect.
+    -   **business**: A version that focuses on the business value, user impact, and problem-solving aspects, aimed at a product manager or non-technical stakeholder.
 
-3.  **Suggested Keywords**: Suggest 5-7 relevant keywords (technologies, skills, methodologies) that a recruiter might search for.
+3.  **Skills Analysis**: Analyze the skills demonstrated in the project description.
+    -   **extracted**: A list of technical and soft skills that are explicitly mentioned or strongly implied in the original description.
+    -   **suggested**: A list of additional, relevant skills that are commonly associated with this type of project and could be added to strengthen the description if applicable.
+
+4.  **Keyword Analysis**: Analyze the description from an SEO and keyword perspective for automated resume screeners (ATS).
+    -   **feedback**: A brief analysis (2-3 sentences) of how well the description utilizes relevant keywords. Suggest where keywords could be integrated more naturally.
+    -   **suggestedKeywords**: Suggest 5-7 relevant keywords (technologies, skills, methodologies) that a recruiter or ATS might search for.
 `,
 });
 
