@@ -27,12 +27,40 @@ export default function Header() {
 
   const [hidden, setHidden] = useState(true);
   const { scrollY } = useScroll();
+  const [showcaseTop, setShowcaseTop] = useState<number | null>(null);
+
+  // On the client, determine the position of the showcase section to trigger the header's visibility.
+  useEffect(() => {
+    // This logic should only apply on the homepage where the showcase section exists.
+    if (pathname === '/') {
+      const element = document.getElementById('showcase');
+      if (element) {
+        // We set the trigger point to be the top of the showcase section.
+        setShowcaseTop(element.offsetTop);
+      }
+    } else {
+      // On other pages, we don't have a showcase section, so we reset the trigger.
+      setShowcaseTop(null);
+    }
+  }, [pathname]);
 
   useMotionValueEvent(scrollY, "change", (latest) => {
-    if (latest > 150) {
-      setHidden(false);
+    // If we are on the homepage, use the showcase section as the trigger.
+    if (pathname === '/' && showcaseTop !== null) {
+      // The header will appear once the user scrolls to or past the top of the showcase section.
+      if (latest >= showcaseTop) {
+        setHidden(false);
+      } else {
+        setHidden(true);
+      }
     } else {
-      setHidden(true);
+      // On all other pages, use a simple scroll offset to show the header.
+      // This ensures it appears on pages like blog posts or project details.
+      if (latest > 150) {
+        setHidden(false);
+      } else {
+        setHidden(true);
+      }
     }
   });
 
