@@ -69,7 +69,7 @@ export const allProjects: Project[] = [
     imageUrl: "https://placehold.co/600x400.png",
     imageHint: "ai interface",
     tags: ["Next.js", "Genkit", "Gemini", "Tailwind CSS", "Framer Motion"],
-    projectUrl: "#ai-enhancer",
+    projectUrl: "/ai-lab#ai-enhancer",
     usesMotionPrimitives: true,
     caseStudy: {
  problem: "Many talented individuals struggle to effectively articulate the value and impact of their portfolio projects, often focusing on technical features rather than outcomes and key skills that resonate with recruiters and clients.",
