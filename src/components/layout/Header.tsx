@@ -1,10 +1,9 @@
-
 "use client";
 
 import Link from "next/link";
 import { useState, useEffect, type ReactNode } from "react";
 import { usePathname, useSearchParams } from "next/navigation";
-import { AppWindow, FileText, MessageSquare, Palette, Sparkles, Home as HomeIcon } from "lucide-react";
+import { AppWindow, FileText, MessageSquare, Palette, Sparkles, Home as HomeIcon, FlaskConical } from "lucide-react";
 import { motion } from "framer-motion";
 import { ThemeToggleButton } from "@/components/shared/ThemeToggleButton";
 import { Button } from "@/components/ui/button";
@@ -15,6 +14,7 @@ const navItems = [
   { key: "projects", href: "/?tab=projects#showcase", label: "Projects", icon: <AppWindow className="h-4 w-4" /> },
   { key: "artworks", href: "/?tab=artworks#showcase", label: "Artworks", icon: <Palette className="h-4 w-4" /> },
   { key: "blog", href: "/?tab=blog#showcase", label: "Blog", icon: <FileText className="h-4 w-4" /> },
+  { key: "ai-lab", href: "/ai-lab", label: "AI Lab", icon: <FlaskConical className="h-4 w-4" /> },
   { key: "ai-enhancer", href: "#ai-enhancer", label: "AI Review", icon: <Sparkles className="h-4 w-4" /> },
   { key: "contact", href: "#contact", label: "Contact", icon: <MessageSquare className="h-4 w-4" /> },
 ];
@@ -32,6 +32,7 @@ export default function Header() {
 
       if (pathname.startsWith('/blog')) return 'blog';
       if (pathname.startsWith('/projects')) return 'projects';
+      if (pathname.startsWith('/ai-lab')) return 'ai-lab';
       
       if (pathname === '/') {
         if (hash === '#showcase' && tab) return tab;

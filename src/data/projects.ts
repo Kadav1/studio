@@ -64,29 +64,29 @@ export const allProjects: Project[] = [
   {
     id: "4",
     slug: "ai-portfolio-enhancer",
-    title: "AI Portfolio Enhancer",
-    description: "An advanced AI career coach that transforms project descriptions into recruiter-ready narratives. By providing granular feedback, tailored rewrites, and keyword optimization, this tool empowers users to articulate their value and land their next role.",
+    title: "AI Portfolio Assistant",
+    description: "An innovative AI-powered tool leveraging Google's Genkit and Gemini to transform raw project details into compelling, recruiter-friendly narratives. It provides granular feedback, suggests tailored rewrites, and optimizes for keywords, helping users articulate their value and showcase their work effectively.",
     imageUrl: "https://placehold.co/600x400.png",
     imageHint: "ai interface",
     tags: ["Next.js", "Genkit", "Gemini", "Tailwind CSS", "Framer Motion"],
     projectUrl: "#ai-enhancer",
     usesMotionPrimitives: true,
     caseStudy: {
-        problem: "Many developers and designers struggle to write compelling, recruiter-friendly descriptions for their portfolio projects. They often focus on technical details but fail to convey the project's impact, the problems it solves, or the key skills demonstrated.",
-        solution: "The AI Portfolio Enhancer, built directly into this website using Google's Genkit and Gemini, acts as a personal career coach. Users can paste their project description, and the AI analyzes it, providing constructive feedback, a professionally rewritten version that highlights impact and results, and a list of relevant keywords that recruiters might search for. The feature is integrated seamlessly into the front-end with React and provides an interactive, real-time experience.",
-        outcome: "This tool adds a unique, valuable, and interactive element to the portfolio. It not only showcases advanced AI implementation skills (Genkit, LLM prompting) but also provides genuine utility to visitors, making the portfolio a memorable and helpful resource rather than just a static display of work. It effectively demonstrates the ability to build practical, AI-driven applications.",
+ problem: "Many talented individuals struggle to effectively articulate the value and impact of their portfolio projects, often focusing on technical features rather than outcomes and key skills that resonate with recruiters and clients.",
+ solution: "Built as an interactive feature within this portfolio using the power of Google's Genkit framework and the Gemini model, the AI Portfolio Assistant acts as a smart co-pilot. Users input their project description, and the AI provides insightful feedback, suggesting improvements to highlight impact, quantify results, and optimize language. It offers rewritten versions and relevant keywords. This demonstrates a practical application of AI, integrated seamlessly into a Next.js front-end, showcasing both AI development and full-stack capabilities.",
+ outcome: "More than just a static project display, this tool offers immediate value to visitors, allowing them to experience the power of AI firsthand while improving their own professional profiles. It serves as a dynamic showcase of expertise in AI integration, full-stack development, and a creative approach to building helpful applications that solve real-world problems. It positions the portfolio as an innovative and useful resource.",
         gallery: [
-            { 
+ {
                 url: "https://placehold.co/600x400.png",
                 hint: "ai feedback interface",
                 caption: "The AI enhancer providing feedback on a sample project description." 
-            }
+ }
         ]
     }
   },
   {
     id: "5",
-    slug: "focus-flow",
+ slug: "focus-flow",
     title: "Focus Flow",
     description: "A sleek and intuitive task management application designed to help users organize their daily tasks and boost productivity through focused work sessions.",
     imageUrl: "https://placehold.co/600x400.png",
