@@ -12,7 +12,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { useToast } from "@/hooks/use-toast";
-import { Loader2, Sparkles, Wand2 } from "lucide-react";
+import { Loader2, Sparkles, Wand2, ClipboardCopy, Check } from "lucide-react";
 import AnimatedSection from "@/components/shared/AnimatedSection";
 import { motion } from "framer-motion";
 import { Skeleton } from "@/components/ui/skeleton";
@@ -25,12 +25,21 @@ type FormValues = z.infer<typeof formSchema>;
 export default function PortfolioEnhancementSection() {
   const [result, setResult] = useState<PortfolioEnhancementOutput | null>(null);
   const [isPending, startTransition] = useTransition();
+  const [copied, setCopied] = useState<{ [key: string]: boolean }>({});
   const { toast } = useToast();
 
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: { description: "" },
   });
+  
+  const handleCopy = (key: string, textToCopy: string) => {
+    navigator.clipboard.writeText(textToCopy);
+    setCopied((prev) => ({ ...prev, [key]: true }));
+    setTimeout(() => {
+      setCopied((prev) => ({ ...prev, [key]: false }));
+    }, 2000);
+  };
 
   const onSubmit: SubmitHandler<FormValues> = (data) => {
     setResult(null);
@@ -136,14 +145,36 @@ export default function PortfolioEnhancementSection() {
                 </motion.div>
                 
                 <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }}>
-                  <h3 className="font-headline text-xl font-semibold text-primary mb-2">Suggested Rewrite</h3>
+                    <div className="flex justify-between items-center mb-2">
+                        <h3 className="font-headline text-xl font-semibold text-primary">Suggested Rewrite</h3>
+                        <Button
+                            variant="ghost"
+                            size="sm"
+                            onClick={() => handleCopy('rewrite', result.rewrittenDescription)}
+                            className="text-accent hover:text-accent/80 hover:bg-accent/10"
+                        >
+                            {copied['rewrite'] ? <Check className="mr-2" /> : <ClipboardCopy className="mr-2" />}
+                            {copied['rewrite'] ? 'Copied!' : 'Copy'}
+                        </Button>
+                    </div>
                    <blockquote className="border-l-4 border-accent pl-4 italic text-foreground/80 bg-accent/10 p-4 rounded-r-lg">
                     {result.rewrittenDescription}
                   </blockquote>
                 </motion.div>
 
                 <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.6 }}>
-                  <h3 className="font-headline text-xl font-semibold text-primary mb-3">Suggested Keywords</h3>
+                    <div className="flex justify-between items-center mb-3">
+                        <h3 className="font-headline text-xl font-semibold text-primary">Suggested Keywords</h3>
+                        <Button
+                            variant="ghost"
+                            size="sm"
+                            onClick={() => handleCopy('keywords', result.suggestedKeywords.join(', '))}
+                            className="text-accent hover:text-accent/80 hover:bg-accent/10"
+                        >
+                            {copied['keywords'] ? <Check className="mr-2" /> : <ClipboardCopy className="mr-2" />}
+                            {copied['keywords'] ? 'Copied!' : 'Copy'}
+                        </Button>
+                    </div>
                   <div className="flex flex-wrap gap-2">
                     {result.suggestedKeywords.map((keyword) => (
                       <Badge key={keyword} variant="secondary" className="bg-primary/10 text-primary text-sm py-1 px-3">
