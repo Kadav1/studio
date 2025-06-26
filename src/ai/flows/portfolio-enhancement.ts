@@ -14,8 +14,15 @@ import type { PortfolioEnhancementOutput } from '@/types';
 const PortfolioEnhancementInputSchema = z.string().describe('A project description to be reviewed.');
 export type PortfolioEnhancementInput = z.infer<typeof PortfolioEnhancementInputSchema>;
 
+const GranularFeedbackSchema = z.object({
+    clarity: z.string().describe("Feedback on the clarity and conciseness of the description. Be specific and provide examples."),
+    actionVerbs: z.string().describe("Feedback on the use of strong, results-oriented action verbs. Suggest stronger verbs if applicable."),
+    quantifiableResults: z.string().describe("Feedback on including measurable metrics and quantifiable results. Explain why this is important and give examples of what could be quantified."),
+    roleTargeting: z.string().describe("Feedback on how well the description could be tailored for a specific role or industry. Suggest how to add focus."),
+});
+
 const PortfolioEnhancementOutputSchema = z.object({
-  feedback: z.string().describe("Constructive feedback on how to improve the project description. This should be a single paragraph."),
+  granularFeedback: GranularFeedbackSchema,
   rewrittenDescription: z.string().describe("An improved, rewritten version of the project description."),
   suggestedKeywords: z.array(z.string()).describe("An array of 5-7 relevant technical or soft-skill keywords based on the description."),
 });
@@ -36,10 +43,17 @@ Your task is to analyze the following project description and provide feedback t
 Project Description:
 "{{{prompt}}}"
 
-Provide the following:
-1.  **Constructive Feedback:** Write a short paragraph of actionable advice. Focus on what could be clearer, what's missing, or how to better showcase the skills involved.
-2.  **Rewritten Description:** Rewrite the description to be more professional, concise, and results-oriented. Highlight the technologies and the impact of the project.
-3.  **Suggested Keywords:** Suggest 5-7 relevant keywords (technologies, skills, methodologies) that a recruiter might search for.
+Provide the following in a structured JSON format:
+
+1.  **Granular Feedback**: Provide specific, actionable feedback on the following four aspects. Each piece of feedback should be a concise paragraph.
+    -   **Clarity & Conciseness**: How clear and to-the-point is the description? Is there jargon that could be simplified?
+    -   **Action Verbs**: Does it use strong, impactful action verbs (e.g., "developed", "architected", "optimized") instead of passive ones (e.g., "was responsible for")?
+    -   **Quantifiable Results**: Does it include metrics that show the impact of the work (e.g., "reduced page load time by 30%", "handled 10,000 concurrent users")?
+    -   **Role Targeting**: How could the description be tailored to better appeal to specific roles, like a front-end specialist, a back-end engineer, or a team lead?
+
+2.  **Rewritten Description**: Rewrite the description to be more professional, concise, and results-oriented. Incorporate your feedback to highlight the technologies and the impact of the project.
+
+3.  **Suggested Keywords**: Suggest 5-7 relevant keywords (technologies, skills, methodologies) that a recruiter might search for.
 `,
 });
 

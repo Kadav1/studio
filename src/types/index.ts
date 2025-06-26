@@ -49,8 +49,15 @@ export interface Artwork {
   medium?: string;
 }
 
+export interface GranularFeedback {
+  clarity: string;
+  actionVerbs: string;
+  quantifiableResults: string;
+  roleTargeting: string;
+}
+
 export interface PortfolioEnhancementOutput {
-  feedback: string;
+  granularFeedback: GranularFeedback;
   rewrittenDescription: string;
   suggestedKeywords: string[];
 }

@@ -10,20 +10,65 @@ import type { PortfolioEnhancementOutput } from "@/types";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Badge } from "@/components/ui/badge";
 import { useToast } from "@/hooks/use-toast";
-import { Loader2, Sparkles, Wand2, ClipboardCopy, Check } from "lucide-react";
+import { Loader2, Sparkles, Wand2, ClipboardCopy, Check, Lightbulb, CheckCircle, Target, ArrowUpCircle, Award } from "lucide-react";
 import AnimatedSection from "@/components/shared/AnimatedSection";
 import { motion } from "framer-motion";
 import { Skeleton } from "@/components/ui/skeleton";
+import { diffWordsWithSpace } from 'diff';
 
 const formSchema = z.object({
   description: z.string().min(20, "Please provide at least 20 characters.").max(1000, "Description must be 1000 characters or less."),
 });
 type FormValues = z.infer<typeof formSchema>;
 
+const DiffView = ({ originalText, newText }: { originalText: string; newText: string }) => {
+  if (!originalText || !newText) return <p>{newText}</p>;
+  
+  const parts = diffWordsWithSpace(originalText, newText);
+
+  return (
+    <div className="text-foreground/90 leading-relaxed whitespace-pre-wrap">
+      {parts.map((part, index) => {
+        const style = part.added
+          ? 'bg-green-100 dark:bg-green-800/30 text-green-800 dark:text-green-300 rounded mx-[1px] px-[1px]'
+          : part.removed
+          ? 'bg-red-100 dark:bg-red-800/30 text-red-800 dark:text-red-300 line-through rounded mx-[1px] px-[1px]'
+          : '';
+        return (
+          <span key={index} className={style}>
+            {part.value}
+          </span>
+        );
+      })}
+    </div>
+  );
+};
+
+const WritingTips = () => (
+    <div className="mt-2 mb-6 p-4 bg-primary/5 border-l-4 border-primary/20 rounded-r-lg">
+        <div className="flex">
+            <div className="flex-shrink-0">
+                <Lightbulb className="h-6 w-6 text-primary mt-0.5" />
+            </div>
+            <div className="ml-3">
+                <h3 className="text-lg font-medium text-primary">Tips for a Great Description</h3>
+                <div className="mt-2 text-sm text-foreground/80 space-y-1">
+                    <p><strong>Use Action Verbs:</strong> Start sentences with words like <em>Architected, Implemented, Optimized, Led</em>.</p>
+                    <p><strong>Quantify Your Impact:</strong> Use numbers to show results. "Reduced latency by 50%" is better than "made it faster."</p>
+                    <p><strong>State the Problem:</strong> Briefly explain what problem you were solving. This gives your work context.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+);
+
+
 export default function PortfolioEnhancementSection() {
   const [result, setResult] = useState<PortfolioEnhancementOutput | null>(null);
+  const [originalDescription, setOriginalDescription] = useState<string | null>(null);
   const [isPending, startTransition] = useTransition();
   const [copied, setCopied] = useState<{ [key: string]: boolean }>({});
   const { toast } = useToast();
@@ -43,6 +88,8 @@ export default function PortfolioEnhancementSection() {
 
   const onSubmit: SubmitHandler<FormValues> = (data) => {
     setResult(null);
+    setOriginalDescription(data.description);
+
     startTransition(async () => {
       try {
         const aiResponse = await enhancePortfolio(data.description);
@@ -77,6 +124,7 @@ export default function PortfolioEnhancementSection() {
             <CardDescription>Enter a description of one of your projects to get feedback, a rewritten version, and keyword suggestions.</CardDescription>
           </CardHeader>
           <CardContent>
+            <WritingTips />
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
               <Textarea
                 {...form.register("description")}
@@ -104,13 +152,11 @@ export default function PortfolioEnhancementSection() {
 
             {isPending && (
               <div className="mt-8 space-y-6 pt-6 border-t">
-                {/* Skeleton for Feedback */}
+                {/* Skeletons for Feedback Accordion */}
                 <div className="space-y-3">
-                  <Skeleton className="h-6 w-1/3 rounded-lg" />
-                  <div className="space-y-2">
-                    <Skeleton className="h-4 w-full rounded-lg" />
-                    <Skeleton className="h-4 w-5/6 rounded-lg" />
-                  </div>
+                  <Skeleton className="h-10 w-full rounded-lg" />
+                  <Skeleton className="h-10 w-full rounded-lg" />
+                  <Skeleton className="h-10 w-full rounded-lg" />
                 </div>
                 
                 {/* Skeleton for Rewrite */}
@@ -130,8 +176,6 @@ export default function PortfolioEnhancementSection() {
                     <Skeleton className="h-7 w-24 rounded-full" />
                     <Skeleton className="h-7 w-20 rounded-full" />
                     <Skeleton className="h-7 w-28 rounded-full" />
-                    <Skeleton className="h-7 w-16 rounded-full" />
-                    <Skeleton className="h-7 w-24 rounded-full" />
                   </div>
                 </div>
               </div>
@@ -140,8 +184,25 @@ export default function PortfolioEnhancementSection() {
             {result && !isPending && (
               <div className="mt-8 space-y-6 pt-6 border-t">
                 <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}>
-                  <h3 className="font-headline text-xl font-semibold text-primary mb-2">Constructive Feedback</h3>
-                  <p className="text-foreground/90 leading-relaxed">{result.feedback}</p>
+                  <h3 className="font-headline text-xl font-semibold text-primary mb-3">Granular Feedback</h3>
+                  <Accordion type="multiple" className="w-full space-y-2">
+                    <AccordionItem value="clarity" className="bg-background/50 rounded-lg border px-4">
+                      <AccordionTrigger className="py-3 hover:no-underline"><div className="flex items-center"><CheckCircle className="mr-3 h-5 w-5 text-accent"/> Clarity & Conciseness</div></AccordionTrigger>
+                      <AccordionContent className="pb-4 text-foreground/90">{result.granularFeedback.clarity}</AccordionContent>
+                    </AccordionItem>
+                    <AccordionItem value="action-verbs" className="bg-background/50 rounded-lg border px-4">
+                      <AccordionTrigger className="py-3 hover:no-underline"><div className="flex items-center"><ArrowUpCircle className="mr-3 h-5 w-5 text-accent"/> Action Verbs</div></AccordionTrigger>
+                      <AccordionContent className="pb-4 text-foreground/90">{result.granularFeedback.actionVerbs}</AccordionContent>
+                    </AccordionItem>
+                     <AccordionItem value="quantifiable-results" className="bg-background/50 rounded-lg border px-4">
+                      <AccordionTrigger className="py-3 hover:no-underline"><div className="flex items-center"><Award className="mr-3 h-5 w-5 text-accent"/> Quantifiable Results</div></AccordionTrigger>
+                      <AccordionContent className="pb-4 text-foreground/90">{result.granularFeedback.quantifiableResults}</AccordionContent>
+                    </AccordionItem>
+                     <AccordionItem value="role-targeting" className="bg-background/50 rounded-lg border px-4">
+                      <AccordionTrigger className="py-3 hover:no-underline"><div className="flex items-center"><Target className="mr-3 h-5 w-5 text-accent"/> Role Targeting</div></AccordionTrigger>
+                      <AccordionContent className="pb-4 text-foreground/90">{result.granularFeedback.roleTargeting}</AccordionContent>
+                    </AccordionItem>
+                  </Accordion>
                 </motion.div>
                 
                 <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }}>
@@ -157,8 +218,8 @@ export default function PortfolioEnhancementSection() {
                             {copied['rewrite'] ? 'Copied!' : 'Copy'}
                         </Button>
                     </div>
-                   <blockquote className="border-l-4 border-accent pl-4 italic text-foreground/80 bg-accent/10 p-4 rounded-r-lg">
-                    {result.rewrittenDescription}
+                   <blockquote className="border-l-4 border-accent pl-4 text-foreground/80 bg-accent/10 p-4 rounded-r-lg">
+                     {originalDescription && <DiffView originalText={originalDescription} newText={result.rewrittenDescription} />}
                   </blockquote>
                 </motion.div>
 
