@@ -11,12 +11,12 @@ import { Button } from "@/components/ui/button";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 
 const navItems = [
-  { key: "home", href: "#home", label: "Home", icon: <HomeIcon className="h-4 w-4" /> },
+  { key: "home", href: "/#home", label: "Home", icon: <HomeIcon className="h-4 w-4" /> },
   { key: "projects", href: "/?tab=projects#showcase", label: "Projects", icon: <AppWindow className="h-4 w-4" /> },
   { key: "artworks", href: "/?tab=artworks#showcase", label: "Artworks", icon: <Palette className="h-4 w-4" /> },
   { key: "blog", href: "/?tab=blog#showcase", label: "Blog", icon: <FileText className="h-4 w-4" /> },
   { key: "ai-lab", href: "/ai-lab", label: "AI Lab", icon: <FlaskConical className="h-4 w-4" /> },
-  { key: "contact", href: "#contact", label: "Contact", icon: <MessageSquare className="h-4 w-4" /> },
+  { key: "contact", href: "/#contact", label: "Contact", icon: <MessageSquare className="h-4 w-4" /> },
 ];
 
 export default function Header() {
@@ -44,7 +44,7 @@ export default function Header() {
 
       if (pathname.startsWith('/blog')) return 'blog';
       if (pathname.startsWith('/projects')) return 'projects';
-      if (pathname === '/ai-lab' || (pathname ==='/' && tab === 'ai-lab')) return 'ai-lab';
+      if (pathname === '/ai-lab') return 'ai-lab';
       
       if (pathname === '/') {
         if (hash === '#showcase' && tab) return tab;
