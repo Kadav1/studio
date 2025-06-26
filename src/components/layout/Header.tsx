@@ -25,15 +25,14 @@ export default function Header() {
   const [activeKey, setActiveKey] = useState("home");
   const [hoveredKey, setHoveredKey] = useState<string | null>(null);
 
-  const [hidden, setHidden] = useState(false);
+  const [hidden, setHidden] = useState(true);
   const { scrollY } = useScroll();
 
   useMotionValueEvent(scrollY, "change", (latest) => {
-    const previous = scrollY.getPrevious();
-    if (previous !== undefined && latest > previous && latest > 150) {
-      setHidden(true);
-    } else {
+    if (latest > 150) {
       setHidden(false);
+    } else {
+      setHidden(true);
     }
   });
 
