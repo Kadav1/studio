@@ -9,8 +9,9 @@ import AnimatedSection from "@/components/shared/AnimatedSection";
 import ProjectShowcaseSection from "./ProjectShowcaseSection";
 import ArtworksSection from "./ArtworksSection";
 import BlogSection from "./BlogSection";
+import AiLabShowcaseSection from './AiLabShowcaseSection';
 import { Skeleton } from '../ui/skeleton';
-import { AppWindow, Palette, FileText } from "lucide-react";
+import { AppWindow, Palette, FileText, FlaskConical } from "lucide-react";
 
 interface TabbedShowcaseSectionProps {
   posts: BlogPost[];
@@ -34,7 +35,7 @@ function TabbedShowcaseComponent({ posts }: TabbedShowcaseSectionProps) {
         onValueChange={handleTabChange}
         className="container mx-auto"
       >
-        <TabsList className="grid w-full max-w-md mx-auto grid-cols-3 mb-12 h-auto">
+        <TabsList className="grid w-full max-w-lg mx-auto grid-cols-4 mb-12 h-auto">
           <TabsTrigger value="projects" className="py-2.5 text-base gap-2">
             <AppWindow className="h-5 w-5" />
             Projects
@@ -46,6 +47,10 @@ function TabbedShowcaseComponent({ posts }: TabbedShowcaseSectionProps) {
           <TabsTrigger value="blog" className="py-2.5 text-base gap-2">
             <FileText className="h-5 w-5" />
             Blog
+          </TabsTrigger>
+           <TabsTrigger value="ai-lab" className="py-2.5 text-base gap-2">
+            <FlaskConical className="h-5 w-5" />
+            AI Lab
           </TabsTrigger>
         </TabsList>
         <TabsContent value="projects">
@@ -63,6 +68,11 @@ function TabbedShowcaseComponent({ posts }: TabbedShowcaseSectionProps) {
             <BlogSection posts={posts} />
           </AnimatedSection>
         </TabsContent>
+        <TabsContent value="ai-lab">
+          <AnimatedSection>
+            <AiLabShowcaseSection />
+          </AnimatedSection>
+        </TabsContent>
       </Tabs>
     </AnimatedSection>
   );
@@ -72,9 +82,7 @@ function ShowcaseSkeleton() {
   return (
      <section className="bg-secondary py-16 md:py-24">
         <div className="container mx-auto px-4 md:px-6">
-            <div className="grid w-full max-w-md mx-auto grid-cols-3 mb-12 h-12">
-                <Skeleton className="h-full w-full" />
-            </div>
+            <Skeleton className="h-12 w-full max-w-lg mx-auto mb-12" />
             <div className="flex items-center mb-12">
                 <Skeleton className="h-10 w-10 mr-4 rounded-md" />
                 <Skeleton className="h-10 w-64 rounded-md" />

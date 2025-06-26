@@ -1,14 +1,10 @@
 import { aiLabProjects } from "@/data/aiLabProjects";
 import AnimatedSection from "@/components/shared/AnimatedSection";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import Image from "next/image";
-import Link from "next/link";
-import { FlaskConical, ExternalLink, Github } from "lucide-react";
+import { FlaskConical } from "lucide-react";
 import type { Metadata } from "next";
 import { Separator } from "@/components/ui/separator";
 import dynamic from "next/dynamic";
+import AiLabProjectCard from "@/components/cards/AiLabProjectCard";
 
 const PortfolioEnhancementSection = dynamic(() => import('@/components/sections/PortfolioEnhancementSection'));
 
@@ -33,50 +29,8 @@ export default function AiLabPage() {
               </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {aiLabProjects.map((project) => (
-              <Card key={project.id} className="h-full flex flex-col overflow-hidden transition-shadow duration-300 rounded-xl group border bg-card">
-                {project.imageUrl && (
-                  <div className="relative w-full h-48 overflow-hidden">
-                    <Image 
-                      src={project.imageUrl} 
-                      alt={project.title}
-                      fill
-                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                      className="object-cover transition-transform duration-500 group-hover:scale-110"
-                      data-ai-hint={project.imageHint}
-                    />
-                  </div>
-                )}
-                <CardHeader>
-                  <CardTitle className="font-headline text-xl text-primary">{project.title}</CardTitle>
-                </CardHeader>
-                <CardContent className="flex-grow">
-                   <CardDescription className="mb-4 text-foreground/90">{project.description}</CardDescription>
-                  {project.tags && (
-                    <div className="flex flex-wrap gap-2">
-                      {project.tags.map(tag => (
-                        <Badge key={tag} variant="secondary">{tag}</Badge>
-                      ))}
-                    </div>
-                  )}
-                </CardContent>
-                 <CardFooter className="pt-4 border-t flex flex-wrap gap-2">
-                  {project.demoUrl && (
-                    <Button asChild>
-                      <Link href={project.demoUrl} target="_blank" rel="noopener noreferrer">
-                        <ExternalLink className="mr-2 h-4 w-4" /> View Demo
-                      </Link>
-                    </Button>
-                  )}
-                  {project.codeUrl && (
-                    <Button variant="outline" asChild>
-                      <Link href={project.codeUrl} target="_blank" rel="noopener noreferrer">
-                        <Github className="mr-2 h-4 w-4" /> View Code
-                      </Link>
-                    </Button>
-                  )}
-                </CardFooter>
-              </Card>
+            {aiLabProjects.map((project, index) => (
+              <AiLabProjectCard key={project.id} project={project} index={index} />
             ))}
           </div>
         </div>

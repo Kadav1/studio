@@ -1,10 +1,11 @@
+
 "use client";
 
 import Link from "next/link";
 import { useState, useEffect, type ReactNode } from "react";
 import { usePathname, useSearchParams } from "next/navigation";
 import { AppWindow, FileText, MessageSquare, Palette, Home as HomeIcon, FlaskConical } from "lucide-react";
-import { motion } from "framer-motion";
+import { motion, useScroll, useMotionValueEvent } from "framer-motion";
 import { ThemeToggleButton } from "@/components/shared/ThemeToggleButton";
 import { Button } from "@/components/ui/button";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
@@ -24,6 +25,18 @@ export default function Header() {
   const [activeKey, setActiveKey] = useState("home");
   const [hoveredKey, setHoveredKey] = useState<string | null>(null);
 
+  const [hidden, setHidden] = useState(false);
+  const { scrollY } = useScroll();
+
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    const previous = scrollY.getPrevious();
+    if (previous !== undefined && latest > previous && latest > 150) {
+      setHidden(true);
+    } else {
+      setHidden(false);
+    }
+  });
+
   useEffect(() => {
     const getActiveKey = () => {
       const tab = searchParams.get('tab');
@@ -31,7 +44,7 @@ export default function Header() {
 
       if (pathname.startsWith('/blog')) return 'blog';
       if (pathname.startsWith('/projects')) return 'projects';
-      if (pathname.startsWith('/ai-lab')) return 'ai-lab';
+      if (pathname === '/ai-lab' || (pathname ==='/' && tab === 'ai-lab')) return 'ai-lab';
       
       if (pathname === '/') {
         if (hash === '#showcase' && tab) return tab;
@@ -43,11 +56,8 @@ export default function Header() {
       return 'home';
     }
     
-    // Set initial active key
     setActiveKey(getActiveKey());
 
-    // Next.js routing doesn't always trigger re-renders on hash changes,
-    // so we use a listener to ensure the active state is always correct.
     const handleHashChange = () => setActiveKey(getActiveKey());
     window.addEventListener('hashchange', handleHashChange, false);
     return () => window.removeEventListener('hashchange', handleHashChange, false);
@@ -59,9 +69,12 @@ export default function Header() {
   return (
     <motion.header
         className="fixed bottom-4 left-0 right-0 z-50 flex justify-center"
-        initial={{ y: 100, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ type: "spring", stiffness: 100, damping: 20, delay: 0.5 }}
+        variants={{
+            visible: { y: 0, opacity: 1 },
+            hidden: { y: 100, opacity: 0 },
+        }}
+        animate={hidden ? "hidden" : "visible"}
+        transition={{ duration: 0.35, ease: "easeInOut" }}
     >
       <div className="flex h-auto items-center justify-center rounded-full bg-background/80 px-3 py-2 shadow-lg backdrop-blur-md border border-border/20 md:px-4">
         
