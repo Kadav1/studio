@@ -65,7 +65,7 @@ export const allProjects: Project[] = [
     id: "4",
     slug: "ai-portfolio-enhancer",
     title: "AI Portfolio Enhancer",
-    description: "An innovative AI-powered tool built into this portfolio that provides live feedback on project descriptions to help users strengthen their professional appeal.",
+    description: "An advanced AI career coach that transforms project descriptions into recruiter-ready narratives. By providing granular feedback, tailored rewrites, and keyword optimization, this tool empowers users to articulate their value and land their next role.",
     imageUrl: "https://placehold.co/600x400.png",
     imageHint: "ai interface",
     tags: ["Next.js", "Genkit", "Gemini", "Tailwind CSS", "Framer Motion"],
